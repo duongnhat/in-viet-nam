@@ -1,0 +1,20 @@
+.page-container {
+    min-height: 1200px
+}
+.page-head {
+    min-height: 350px;
+}
+.page-head h1 {
+    color: green;
+    font-weight: bold;
+    font-size: -webkit-xxx-large;
+}
+h1 p {
+    font-weight: normal;
+    font-size: smaller;
+}
+.ba-no {
+    background-color: firebrick;
+    width: 100%;
+    min-height: 370px;
+}
