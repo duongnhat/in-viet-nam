@@ -1,9 +1,11 @@
 .selector-for-some-widget {
     box-sizing: content-box;
 }
+
 .alert-label {
     margin: 0 105px;
 }
+
 .page-container {
     min-height: 1200px
 }
@@ -18,6 +20,10 @@
     font-weight: normal;
     font-size: smaller;
     margin-bottom: unset;
+}
+
+.page-footer {
+    background-color: #6abe45;
 }
 
 .ba-no {

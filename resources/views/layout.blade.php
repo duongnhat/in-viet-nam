@@ -26,7 +26,7 @@
 </section>
 <hr>
 <section class="page-container">
-    <div class="alert-label">
+    <div class="container">
         @if (isset($error))
             <div class="alert alert-danger">
                 {{ $error }}
@@ -41,14 +41,23 @@
     @yield('content')
 </section>
 
-<footer class="container-fluid jumbotron">
-    <p>Footer Text</p>
-</footer>
-<div class="copyright text-center">
-    <div class="container">
-        <small>Copyright © invietnam.com 2020</small>
+<footer>
+    <div class="container-fluid page-footer text-center text-md-left mt-5">
+        <div class="row mt-3">
+            <div class="col-md-8 col-lg-4 col-xl-3 mx-auto mb-4 mt-4"></div>
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4 mt-4">
+                <h6 class="text-uppercase font-weight-bold">Liên hệ</h6>
+                <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                <p>Địa Chỉ: 123 Nguyễn Thị Tú, F Bình Hưng Hòa, Q. Bình Tân</p>
+                <p>Điện Thoại: 0909 394.512</p>
+                <p>Email: invietnam@gmail.com</p>
+                <p>Zalo: invietnam</p>
+                <p>Website: <a href="https://invietnam.vip/"> invietnam.vip</a></p>
+            </div>
+        </div>
     </div>
-</div>
+    <div class="text-center py-3 bg-light">© 2020 Copyright: invietnam.com</div>
+</footer>
 <script type="text/javascript" src="{{ asset('js/scripts.js') }}"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
