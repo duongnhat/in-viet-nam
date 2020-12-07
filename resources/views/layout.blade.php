@@ -26,23 +26,19 @@
 </section>
 <hr>
 <section class="page-container">
-    <div class="container-fluid">
-        <div id="box-error">
-            @if (isset($error))
-                <div class="alert alert-danger">
-                    {{ $error }}
-                </div>
-            @endif
-        </div>
-        <div id="box-success">
-            @if (isset($mess))
-                <div class="alert alert-success">
-                    {{ $mess }}
-                </div>
-            @endif
-        </div>
-        @yield('content')
+    <div class="alert-label">
+        @if (isset($error))
+            <div class="alert alert-danger">
+                {{ $error }}
+            </div>
+        @endif
+        @if (isset($mess))
+            <div class="alert alert-success">
+                {{ $mess }}
+            </div>
+        @endif
     </div>
+    @yield('content')
 </section>
 
 <footer class="container-fluid jumbotron">

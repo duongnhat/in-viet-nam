@@ -1,7 +1,9 @@
 .selector-for-some-widget {
     box-sizing: content-box;
 }
-
+.alert-label {
+    margin: 0 105px;
+}
 .page-container {
     min-height: 1200px
 }
