@@ -1,20 +1,26 @@
+.selector-for-some-widget {
+    box-sizing: content-box;
+}
+
 .page-container {
     min-height: 1200px
 }
-.page-head {
-    min-height: 350px;
-}
+
 .page-head h1 {
     color: green;
     font-weight: bold;
-    font-size: -webkit-xxx-large;
+    font-size: 37px;
 }
-h1 p {
+
+.page-head p {
     font-weight: normal;
     font-size: smaller;
+    margin-bottom: unset;
 }
+
 .ba-no {
+    border-radius: 10px;
     background-color: firebrick;
     width: 100%;
-    min-height: 370px;
+    min-height: 315px;
 }
