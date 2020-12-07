@@ -26,6 +26,11 @@
     background-color: #6abe45;
 }
 
+.div-green {
+    background-color: #00834a;
+    height: 15px;
+}
+
 .ba-no {
     border-radius: 10px;
     background-color: firebrick;

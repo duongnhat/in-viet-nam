@@ -42,8 +42,9 @@
 </section>
 
 <footer>
-    <div class="container-fluid page-footer text-center text-md-left mt-5">
-        <div class="row mt-3">
+    <div class="div-green"></div>
+    <div class="container-fluid page-footer text-center text-md-left">
+        <div class="row">
             <div class="col-md-8 col-lg-4 col-xl-3 mx-auto mb-4 mt-4"></div>
             <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4 mt-4">
                 <h6 class="text-uppercase font-weight-bold">Liên hệ</h6>
@@ -52,7 +53,7 @@
                 <p>Điện Thoại: 0909 394.512</p>
                 <p>Email: invietnam@gmail.com</p>
                 <p>Zalo: invietnam</p>
-                <p>Website: <a href="https://invietnam.vip/"> invietnam.vip</a></p>
+                <p>Website: invietnam.vip</p>
             </div>
         </div>
     </div>
