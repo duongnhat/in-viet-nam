@@ -1,6 +1,6 @@
 @extends('layout')
 @section('content')
-    <div class="container border bg-light">
+    <div class="container border border-secondary bg-light">
         <div class="m-3">
             <form method="post">
                 @csrf

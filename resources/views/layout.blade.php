@@ -12,13 +12,13 @@
 <section class="page-head pt-2">
     <div class="container-fluid">
         <div class="row content">
-            <div class="col-sm-3 text-right">
+            <div class="col-sm-12 col-md-3 text-md-right text-center">
                 <img src="{{ URL::to('/') }}/images/logo.jpg" class="img-rounded mb-2" alt="Cinque Terre" width="215">
                 <h1><p>CÔNG TY</p>IN VIỆT NAM</h1>
                 <p>Tài khoản: Admin</p>
                 <p>Taylor Swift</p>
             </div>
-            <div class="col-sm-9">
+            <div class="col-sm-12 col-md-9">
                 <div class="ba-no"></div>
             </div>
         </div>
@@ -28,13 +28,19 @@
 <section class="page-container">
     <div class="container">
         @if (isset($error))
-            <div class="alert alert-danger">
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 {{ $error }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
         @endif
         @if (isset($mess))
-            <div class="alert alert-success">
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
                 {{ $mess }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
             </div>
         @endif
     </div>
@@ -43,10 +49,11 @@
 
 <footer>
     <div class="div-green"></div>
-    <div class="container-fluid page-footer text-center text-md-left">
+    <div class="container-fluid page-footer text-center text-md-left bg-success text-light">
         <div class="row">
-            <div class="col-md-8 col-lg-4 col-xl-3 mx-auto mb-4 mt-4"></div>
-            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4 mt-4">
+            <div class="col-sm-12 col-md-8 mx-auto mb-4 mt-4">
+            </div>
+            <div class="col-sm-12 col-md-4 mx-auto mt-4">
                 <h6 class="text-uppercase font-weight-bold">Liên hệ</h6>
                 <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
                 <p>Địa Chỉ: 123 Nguyễn Thị Tú, F Bình Hưng Hòa, Q. Bình Tân</p>
@@ -57,7 +64,9 @@
             </div>
         </div>
     </div>
-    <div class="text-center py-3 bg-light">© 2020 Copyright: invietnam.com</div>
+    <div class="text-light footer-copyright text-center py-3">
+        © 2020 Copyright: invietnam.com
+    </div>
 </footer>
 <script type="text/javascript" src="{{ asset('js/scripts.js') }}"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
