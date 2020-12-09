@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Models;
-
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -19,8 +17,8 @@ class Customer extends Model
 
     protected $softDelete = true;
 
-    public function create($input)
+    public function register($input)
     {
-        $this->create($input);
+        self::create($input);
     }
 }

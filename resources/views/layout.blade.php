@@ -25,7 +25,7 @@
     </div>
 </section>
 <hr>
-<section class="page-container">
+<section class="page-container my-5">
     <div class="container">
         @if (isset($error))
             <div class="alert alert-danger alert-dismissible fade show" role="alert">

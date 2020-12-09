@@ -6,7 +6,6 @@ use App\Http\Services\Admin\CustomerService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-
 class CustomerController extends Controller
 {
     private $customerService;
@@ -16,8 +15,13 @@ class CustomerController extends Controller
         $this->customerService = $customerService;
     }
 
-    public function newForm()
+    public function registerForm()
     {
-        return $this->customerService->newForm();
+        return $this->customerService->registerForm();
+    }
+
+    public function register(Request $request)
+    {
+        return $this->customerService->register($request);
     }
 }

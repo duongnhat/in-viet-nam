@@ -12,11 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('trangchu');
+    return redirect('admin/customer/tao-khach-hang');
 });
 
 Route::group(['prefix' => 'admin'], function () {
     Route::group(['prefix' => 'customer'], function () {
-        Route::get('tao-khach-hang', 'Admin\CustomerController@newForm')->name('customer.newForm');
+        Route::get('tao-khach-hang', 'Admin\CustomerController@registerForm')->name('customer.trang-tao-moi-khach-hang');
+        Route::post('tao-khach-hang', 'Admin\CustomerController@register')->name('customer.api-tao-moi-khach-hang');
     });
 });
