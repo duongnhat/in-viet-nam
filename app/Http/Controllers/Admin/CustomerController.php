@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Modules\Admin\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Modules\Admin\Services\CustomerService;
+use App\Http\Services\Admin\CustomerService;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 

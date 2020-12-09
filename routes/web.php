@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('trangchu');
 });
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::group(['prefix' => 'customer'], function () {
+        Route::get('tao-khach-hang', 'Admin\CustomerController@newForm')->name('customer.newForm');
+    });
+});

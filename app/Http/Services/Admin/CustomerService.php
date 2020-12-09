@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Modules\Admin\Services;
+namespace App\Http\Services\Admin;
 
-use App\Modules\Admin\Models\Customer;
+use App\Http\Services\MyService;
+use App\Models\Customer;
 use Illuminate\Http\Request;
 
 class CustomerService extends MyService
@@ -16,7 +17,7 @@ class CustomerService extends MyService
 
     public function newForm()
     {
-        return view('Admin::Customer.add');
+        return view('customer.add');
     }
 
     public function create(Request $request)
