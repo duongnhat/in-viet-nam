@@ -15,6 +15,11 @@ class CustomerService extends MyService
         $this->customer = $customer;
     }
 
+    public function list()
+    {
+        return view('customer.list')->with('list', Customer::paginate(15));
+    }
+
     public function registerForm()
     {
         return view('customer.add');
@@ -27,15 +32,16 @@ class CustomerService extends MyService
 //        if ($validator->fails()) {
 //            return redirect()->back()->withInput()->withErrors($validator->errors());
 //        }
-        $this->customer->register($request->all());
+
+        for ($i = 0; $i<1000; $i++){
+            $customer = new Customer($request->all());
+            $customer->save();
+        }
 //        try {
-////dd($request->all());
-//            $request->except('_token');
-//            $customer = Customer::create($request->all());
-////            $customer = $this->customer->create($request->all());
 //            return redirect()->intended('/system-admin/company/detail/' . $customer->id)->with('mess', 'Saved');
 //        } catch (\Exception $ex) {
 //            abort(500);
 //        }
+        return view('customer.add');
     }
 }

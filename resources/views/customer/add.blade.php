@@ -1,7 +1,7 @@
 @extends('layout')
 @section('content')
-    <div class="card container border bg-light">
-        <h5 class="card-header text-center">Thêm Thông tin khách hàng</h5>
+    <div class="card container border bg-light px-0">
+        <h5 class="card-header text-center bg-secondary text-light">Đăng ký Thông tin khách hàng</h5>
         <div class="card-body">
             <form method="post">
                 @csrf

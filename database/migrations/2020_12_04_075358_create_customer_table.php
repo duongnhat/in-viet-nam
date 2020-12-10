@@ -23,7 +23,6 @@ class CreateCustomerTable extends Migration
             $table->string('info_contact')->nullable();
             $table->longText('note')->nullable();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 

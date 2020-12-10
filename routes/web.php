@@ -12,12 +12,13 @@
 */
 
 Route::get('/', function () {
-    return redirect('admin/customer/tao-khach-hang');
+    return redirect('admin/customer/theo-doi-thong-tin-khach-hang');
 });
 
 Route::group(['prefix' => 'admin'], function () {
     Route::group(['prefix' => 'customer'], function () {
-        Route::get('tao-khach-hang', 'Admin\CustomerController@registerForm')->name('customer.trang-tao-moi-khach-hang');
-        Route::post('tao-khach-hang', 'Admin\CustomerController@register')->name('customer.api-tao-moi-khach-hang');
+        Route::get('dang-ky-thong-tin-khach-hang', 'Admin\CustomerController@registerForm')->name('customer.dang-ky-thong-tin-khach-hang');
+        Route::post('dang-ky-thong-tin-khach-hang', 'Admin\CustomerController@register')->name('customer.api-dang-ky-thong-tin-khach-hang');
+        Route::get('theo-doi-thong-tin-khach-hang', 'Admin\CustomerController@list')->name('customer.theo-doi-thong-tin-khach-hang');
     });
 });
