@@ -15,7 +15,7 @@ class CustomerService extends MyService
         $this->customer = $customer;
     }
 
-    public function list()
+    public function listPage()
     {
         return view('customer.list')->with('list', Customer::paginate(15));
     }

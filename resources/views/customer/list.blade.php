@@ -3,6 +3,7 @@
 @section('description', 'Trang theo dõi thông tin khách hàng.')
 @section('content')
     <div class="container-fluid">
+        <a type="button" href="/admin/customer/dang-ky-thong-tin-khach-hang" class="btn btn-success mb-3">Tạo mới</a>
         <h5 class="card-header text-center bg-secondary text-light">Theo dõi thông tin khách hàng</h5>
         @if($list->count() == 0)
             <div class="alert alert-warning">

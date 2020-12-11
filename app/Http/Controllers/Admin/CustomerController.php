@@ -15,9 +15,9 @@ class CustomerController extends Controller
         $this->customerService = $customerService;
     }
 
-    public function list()
+    public function listPage()
     {
-        return $this->customerService->list();
+        return $this->customerService->listPage();
     }
 
     public function registerForm()

@@ -71,6 +71,7 @@
                     @enderror
                 </div>
                 <button type="submit" class="btn btn-primary">Lưu</button>
+                <a type="button" href="/admin/customer/theo-doi-thong-tin-khach-hang" class="btn btn-danger">Hủy</a>
             </form>
         </div>
     </div>
