@@ -3,7 +3,7 @@
 @section('description', 'Trang theo dõi thông tin khách hàng.')
 @section('content')
     <div class="container-fluid">
-        <h5 class="card-header text-center bg-secondary text-light">Theo dõi Thông tin khách hàng</h5>
+        <h5 class="card-header text-center bg-secondary text-light">Theo dõi thông tin khách hàng</h5>
         @if($list->count() == 0)
             <div class="alert alert-warning">
                 <strong>Sorry!</strong> Chưa có dữ liệu.

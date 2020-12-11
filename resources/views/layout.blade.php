@@ -12,7 +12,7 @@
 <section class="page-head pt-2">
     <div class="container-fluid">
         <div class="row content">
-            <div class="col-sm-12 col-md-3 text-md-right text-center">
+            <div class="col-sm-12 col-md-3 text-md-right text-center logo-company">
                 <img src="{{ URL::to('/') }}/images/logo.jpg" class="img-rounded mb-2" alt="Cty In Viet Nam" width="215">
                 <h1><p>CÔNG TY</p>IN VIỆT NAM</h1>
                 <p>Tài khoản: Admin</p>
@@ -21,7 +21,7 @@
             <div class="col-sm-12 col-md-9">
                 <div class="ba-no"></div>
                 <nav class="navbar navbar-expand-lg navbar-light bg-success mt-2">
-                    <a class="navbar-brand" href="#">Menu</a>
+                    <a class="navbar-brand" href="#"></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -78,11 +78,15 @@
 
 <footer>
     <div class="div-green"></div>
-    <div class="container-fluid page-footer text-center text-md-left bg-success text-light">
+    <div class="container-fluid page-footer text-center text-md-left">
         <div class="row">
-            <div class="col-sm-12 col-md-8 mx-auto mb-4 mt-4">
+            <div class="col-sm-12 col-md-3 text-md-right text-center logo-company m-auto">
+                <img src="{{ URL::to('/') }}/images/logo.jpg" class="img-rounded m-2" alt="Cty In Viet Nam" width="215">
+                <h1><p>CÔNG TY</p>IN VIỆT NAM</h1>
             </div>
-            <div class="col-sm-12 col-md-4 mx-auto mt-4">
+            <div class="col-sm-12 col-md-5 mx-auto mb-4 mt-4">
+            </div>
+            <div class="col-sm-12 col-md-4 mx-auto my-4">
                 <h6 class="text-uppercase font-weight-bold">Liên hệ</h6>
                 <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
                 <p>Địa Chỉ: 123 Nguyễn Thị Tú, F Bình Hưng Hòa, Q. Bình Tân</p>
