@@ -54,7 +54,9 @@
                     </tbody>
                 </table>
             </div>
-            {{ $list->links() }}
+            <div class="mt-2">
+                {{ $list->links() }}
+            </div>
         @endif
     </div>
 @endsection
