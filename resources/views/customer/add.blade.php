@@ -1,4 +1,6 @@
 @extends('layout')
+@section('title', 'Dang ky thong tin khach hang')
+@section('description', 'Trang đăng ký Thông tin khách hàng.')
 @section('content')
     <div class="card container border bg-light px-0">
         <h5 class="card-header text-center bg-secondary text-light">Đăng ký Thông tin khách hàng</h5>
@@ -68,7 +70,7 @@
                     </span>
                     @enderror
                 </div>
-                <button type="submit" class="btn btn-primary">Save</button>
+                <button type="submit" class="btn btn-primary">Lưu</button>
             </form>
         </div>
     </div>

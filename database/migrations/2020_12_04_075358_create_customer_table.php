@@ -21,7 +21,7 @@ class CreateCustomerTable extends Migration
             $table->string('address')->nullable();
             $table->string('email')->nullable();
             $table->string('info_contact')->nullable();
-            $table->longText('note')->nullable();
+            $table->string('note', 500)->nullable();
             $table->timestamps();
         });
     }
