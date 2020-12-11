@@ -8,7 +8,7 @@
             <form method="post">
                 @csrf
                 <div class="form-group">
-                    <label>Ngày /Tháng</label>
+                    <label>Ngày/Tháng</label>
                     <input class="form-control @error('day_month') is-invalid @enderror" type="text" name="day_month" value="{{old('day_month')}}" autocomplete="day_month">
                     @error('day_month')
                     <span class="invalid-feedback" role="alert">
@@ -63,7 +63,7 @@
                 </div>
                 <div class="form-group">
                     <label>Ghi chú</label>
-                    <textarea class="form-control @error('note') is-invalid @enderror" type="text" name="note" value="{{old('note')}}" autocomplete="note"></textarea>
+                    <textarea class="form-control @error('note') is-invalid @enderror" type="text" name="note" autocomplete="note">{{old('note')}}</textarea>
                     @error('note')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>

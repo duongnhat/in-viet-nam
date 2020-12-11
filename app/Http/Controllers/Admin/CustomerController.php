@@ -29,4 +29,9 @@ class CustomerController extends Controller
     {
         return $this->customerService->register($request);
     }
+
+    public function delete($id)
+    {
+        return $this->customerService->delete($id);
+    }
 }

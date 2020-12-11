@@ -20,5 +20,6 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('dang-ky-thong-tin-khach-hang', 'Admin\CustomerController@registerForm')->name('customer.dang-ky-thong-tin-khach-hang');
         Route::post('dang-ky-thong-tin-khach-hang', 'Admin\CustomerController@register')->name('customer.api-dang-ky-thong-tin-khach-hang');
         Route::get('theo-doi-thong-tin-khach-hang', 'Admin\CustomerController@listPage')->name('customer.theo-doi-thong-tin-khach-hang');
+        Route::get('delete/{id}', 'Admin\CustomerController@delete')->name('customer.xoa-thong-tin-khach-hang');
     });
 });
