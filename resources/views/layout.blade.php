@@ -14,7 +14,7 @@
         <div class="row content">
             <div class="col-sm-12 col-md-3 text-md-right text-center logo-company">
                 <img src="{{ URL::to('/') }}/images/logo.jpg" class="img-rounded mb-2" alt="Cty In Viet Nam" width="215">
-                <h1><p>CÔNG TY</p>IN VIỆT NAM</h1>
+                <h1 class="text-shadow"><p>CÔNG TY</p>IN VIỆT NAM</h1>
                 <p>Tài khoản: Admin</p>
                 <p>Taylor Swift</p>
             </div>
@@ -98,7 +98,7 @@
         <div class="row">
             <div class="col-sm-12 col-md-3 text-md-right text-center logo-company m-auto">
                 <img src="{{ URL::to('/') }}/images/logo.jpg" class="img-rounded m-2" alt="Cty In Viet Nam" width="215">
-                <h1><p>CÔNG TY</p>IN VIỆT NAM</h1>
+                <h1 class="text-shadow"><p>CÔNG TY</p>IN VIỆT NAM</h1>
             </div>
             <div class="col-sm-12 col-md-5 mx-auto mb-4 mt-4">
             </div>

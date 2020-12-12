@@ -7,48 +7,63 @@
         <div class="container">
             <div class="row button-print-type">
                 <div class="col-md-3 mb-4">
-                    <div class="card button-print-type bg-secondary">
-                        <h1 class="text-uppercase text-center font-weight-bold text-light m-auto">In offset</h1>
+                    <div class="card button-print-type bg-light card-box-shadow border border-secondary border-radius">
+                        <h1 class="text-shadow text-uppercase text-center font-weight-bold text-secondary m-auto">In offset</h1>
                     </div>
                 </div>
                 <div class="col-md-3 mb-4">
-                    <div class="card button-print-type bg-secondary">
-                        <h1 class="text-uppercase text-center font-weight-bold text-light m-auto">In offset</h1>
+                    <div class="card button-print-type bg-light card-box-shadow border border-secondary border-radius">
+                        <h1 class="text-shadow text-uppercase text-center font-weight-bold text-secondary m-auto">In offset</h1>
                     </div>
                 </div>
                 <div class="col-md-3 mb-4">
-                    <div class="card button-print-type bg-secondary">
-                        <h1 class="text-uppercase text-center font-weight-bold text-success m-auto">In offset</h1>
+                    <div class="card button-print-type bg-light card-box-shadow border border-secondary border-radius">
+                        <h1 class="text-shadow text-uppercase text-center font-weight-bold text-secondary m-auto">In offset</h1>
                     </div>
                 </div>
                 <div class="col-md-3 mb-4">
-                    <div class="card button-print-type bg-secondary">
-                        <h1 class="text-uppercase text-center font-weight-bold text-light m-auto">In offset</h1>
+                    <div class="card button-print-type bg-light card-box-shadow border border-secondary border-radius">
+                        <h1 class="text-shadow text-uppercase text-center font-weight-bold text-secondary m-auto">In offset</h1>
                     </div>
                 </div>
                 <div class="col-md-3 mb-4">
-                    <div class="card button-print-type bg-secondary">
-                        <h1 class="text-uppercase text-center font-weight-bold text-light m-auto">In offset</h1>
+                    <div class="card button-print-type bg-light card-box-shadow border border-secondary border-radius">
+                        <h1 class="text-shadow text-uppercase text-center font-weight-bold text-secondary m-auto">In offset</h1>
                     </div>
                 </div>
                 <div class="col-md-3 mb-4">
-                    <div class="card button-print-type bg-success">
-                        <h1 class="text-uppercase text-center font-weight-bold text-light m-auto">In offset</h1>
+                    <div class="card button-print-type bg-light card-box-shadow border border-secondary border-radius">
+                        <h1 class="text-shadow text-uppercase text-center font-weight-bold text-secondary m-auto">In offset</h1>
                     </div>
                 </div>
                 <div class="col-md-3 mb-4">
-                    <div class="card button-print-type bg-secondary">
-                        <h1 class="text-uppercase text-center font-weight-bold text-light m-auto">In offset</h1>
+                    <div class="card button-print-type bg-light card-box-shadow border border-secondary border-radius">
+                        <h1 class="text-shadow text-uppercase text-center font-weight-bold text-secondary m-auto">In offset</h1>
                     </div>
                 </div>
                 <div class="col-md-3 mb-4">
-                    <div class="card button-print-type bg-secondary">
-                        <h1 class="text-uppercase text-center font-weight-bold text-light m-auto">In offset</h1>
+                    <div class="card button-print-type bg-light card-box-shadow border border-secondary border-radius">
+                        <h1 class="text-shadow text-uppercase text-center font-weight-bold text-secondary m-auto">In offset</h1>
                     </div>
                 </div>
                 <div class="col-md-3 mb-4">
-                    <div class="card button-print-type bg-secondary">
-                        <h1 class="text-uppercase text-center font-weight-bold text-light m-auto">In offset</h1>
+                    <div class="card button-print-type bg-light card-box-shadow border border-secondary border-radius">
+                        <h1 class="text-shadow text-uppercase text-center font-weight-bold text-secondary m-auto">In offset</h1>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card button-print-type bg-light card-box-shadow border border-secondary border-radius">
+                        <h1 class="text-shadow text-uppercase text-center font-weight-bold text-secondary m-auto">In offset</h1>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card button-print-type bg-light card-box-shadow border border-secondary border-radius">
+                        <h1 class="text-shadow text-uppercase text-center font-weight-bold text-secondary m-auto">In offset</h1>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card button-print-type bg-light card-box-shadow border border-secondary border-radius">
+                        <h1 class="text-shadow text-uppercase text-center font-weight-bold text-secondary m-auto">In offset</h1>
                     </div>
                 </div>
             </div>

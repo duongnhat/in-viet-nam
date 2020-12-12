@@ -14,7 +14,6 @@
     color: green;
     font-weight: bold;
     font-size: 37px;
-    text-shadow: 2px 2px 4px #000000;
 }
 
 .logo-company p {
@@ -45,4 +44,16 @@
 
 .button-print-type {
     min-height: 170px;
+}
+
+.text-shadow {
+    text-shadow: 2px 2px 4px #000000;
+}
+
+.card-box-shadow {
+    box-shadow: 10px -10px 5px grey;
+}
+
+.border-radius {
+    border-radius: 15%;
 }
