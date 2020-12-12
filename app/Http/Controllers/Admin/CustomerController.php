@@ -30,6 +30,16 @@ class CustomerController extends Controller
         return $this->customerService->register($request);
     }
 
+    public function updateForm($id)
+    {
+        return $this->customerService->updateForm($id);
+    }
+
+    public function update($id, Request $request)
+    {
+        return $this->customerService->update($id, $request);
+    }
+
     public function delete($id)
     {
         return $this->customerService->delete($id);

@@ -41,15 +41,50 @@ class CustomerService extends MyService
         }
 
         try {
-            for ($i = 0; $i < 1000; $i++) {
-                $customer = new Customer($request->all());
-                $customer->save();
-            }
-//            return redirect()->intended('/system-admin/company/detail/' . $customer->id)->with('mess', 'Saved');
+//            for ($i = 0; $i < 1000; $i++) {
+//                $customer = new Customer($request->all());
+//                $customer->save();
+//            }
+            $customer = new Customer($request->all());
+            $customer->save();
+
+            return redirect()->intended('/admin/customer/thay-doi-thong-tin-khach-hang/' . $customer->id)->with('registed', true);
         } catch (\Exception $ex) {
             abort(500);
         }
-        return view('customer.add');
+    }
+
+    public function updateForm($id)
+    {
+        $customer = Customer::find($id);
+
+        if (is_null($customer)) {
+            abort(404);
+        }
+
+        return view('customer.update')->with('customer', $customer);
+    }
+
+    public function update($id, Request $request)
+    {
+        $customer = Customer::find($id);
+
+        if (is_null($customer)) {
+            abort(404);
+        }
+
+        $validator = $this->updateValidate($request->all(), $id);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator->errors());
+        }
+
+        try {
+            $customer->update($request->all());
+            return view('customer.update')->with(['customer' => $customer, 'mess' => 'Thay đổi thành công!']);
+        } catch (\Exception $ex) {
+            abort(500);
+        }
     }
 
     public function delete($id)
@@ -59,6 +94,7 @@ class CustomerService extends MyService
         if (is_null($customer)) {
             abort(404);
         }
+
         try {
             $customer->delete();
         } catch (\Exception $ex) {
@@ -71,8 +107,8 @@ class CustomerService extends MyService
     {
         return $validator = Validator::make($request, [
             'phone' => 'max:50',
-            'email' => "nullable|email|max:50|unique:customer,email",
-            'name' => "required|max:50",
+            'email' => "nullable|email|max:50",
+            'name' => "required|max:50|unique:customer,name",
             'phone' => 'max:50',
             'address' => 'max:190',
             'day_month' => 'max:50',
@@ -85,11 +121,14 @@ class CustomerService extends MyService
     private function updateValidate($request, $id)
     {
         return $validator = Validator::make($request, [
-            'email' => "required|email|max:190|unique:company,email,$id,id,deleted_at,NULL",
-            'name' => "required|max:190|unique:company,name,$id,id,deleted_at,NULL",
-            'business_plan_id' => 'required|max:190',
-            'phone' => 'max:190',
+            'phone' => 'max:50',
+            'email' => "nullable|email|max:50",
+            'name' => "required|max:50|unique:customer,name,$id",
+            'phone' => 'max:50',
             'address' => 'max:190',
+            'day_month' => 'max:50',
+            'info_contact' => 'max:190',
+            'note' => 'max:500',
         ]);
     }
 }

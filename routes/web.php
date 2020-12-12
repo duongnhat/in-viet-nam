@@ -17,9 +17,11 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'admin'], function () {
     Route::group(['prefix' => 'customer'], function () {
+        Route::get('theo-doi-thong-tin-khach-hang', 'Admin\CustomerController@listPage')->name('customer.theo-doi-thong-tin-khach-hang');
         Route::get('dang-ky-thong-tin-khach-hang', 'Admin\CustomerController@registerForm')->name('customer.dang-ky-thong-tin-khach-hang');
         Route::post('dang-ky-thong-tin-khach-hang', 'Admin\CustomerController@register')->name('customer.api-dang-ky-thong-tin-khach-hang');
-        Route::get('theo-doi-thong-tin-khach-hang', 'Admin\CustomerController@listPage')->name('customer.theo-doi-thong-tin-khach-hang');
+        Route::get('thay-doi-thong-tin-khach-hang/{id}', 'Admin\CustomerController@updateForm')->name('customer.thay-doi-thong-tin-khach-hang');
+        Route::post('thay-doi-thong-tin-khach-hang/{id}', 'Admin\CustomerController@update')->name('customer.thay-doi-thong-tin-khach-hang');
         Route::get('delete/{id}', 'Admin\CustomerController@delete')->name('customer.xoa-thong-tin-khach-hang');
     });
 });
