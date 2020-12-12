@@ -13,7 +13,7 @@
     <div class="container-fluid">
         <div class="row content">
             <div class="col-sm-12 col-md-3 text-md-right text-center logo-company">
-                <img src="{{ URL::to('/') }}/images/logo.jpg" class="img-rounded mb-2" alt="Cty In Viet Nam" width="215">
+                <img src="{{ URL::to('/') }}/images/logo.png" class="img-rounded mb-2" alt="Cty In Viet Nam" width="215">
                 <h1 class="text-shadow"><p>CÔNG TY</p>IN VIỆT NAM</h1>
                 <p>Tài khoản: Admin</p>
                 <p>Taylor Swift</p>
@@ -28,10 +28,10 @@
                     <div class="collapse navbar-collapse" id="navbarNavDropdown">
                         <ul class="navbar-nav">
                             <li class="nav-item active">
-                                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                                <a class="nav-link" href="/">Trang chủ <span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Features</a>
+                                <a class="nav-link" href="/admin/customer/theo-doi-thong-tin-khach-hang">Khách hàng</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Pricing</a>
@@ -97,7 +97,7 @@
     <div class="container-fluid page-footer text-center text-md-left">
         <div class="row">
             <div class="col-sm-12 col-md-3 text-md-right text-center logo-company m-auto">
-                <img src="{{ URL::to('/') }}/images/logo.jpg" class="img-rounded m-2" alt="Cty In Viet Nam" width="215">
+                <img src="{{ URL::to('/') }}/images/logo.png" class="img-rounded m-2" alt="Cty In Viet Nam" width="215">
                 <h1 class="text-shadow"><p>CÔNG TY</p>IN VIỆT NAM</h1>
             </div>
             <div class="col-sm-12 col-md-5 mx-auto mb-4 mt-4">

@@ -3,7 +3,7 @@
 @section('description', 'Trang chủ.')
 @section('content')
     <h1 class="card-header text-center bg-secondary text-light">Trang chủ</h1>
-    <div class="album py-5 bg-light">
+    <div class="album py-5">
         <div class="container">
             <div class="row button-print-type">
                 <div class="col-md-3 mb-4">
