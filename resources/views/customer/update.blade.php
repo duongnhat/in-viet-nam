@@ -3,7 +3,7 @@
 @section('description', 'Trang đăng ký thông tin khách hàng.')
 @section('content')
     <div class="card container border bg-light px-0">
-        <h5 class="card-header text-center bg-secondary text-light">Thay đổi thông tin khách hàng</h5>
+        <h3 class="card-header text-center bg-secondary text-light">Thay đổi thông tin khách hàng</h3>
         <div class="card-body">
             <form method="post">
                 @csrf

@@ -4,7 +4,7 @@
 @section('content')
     <div class="container-fluid">
         <a type="button" href="/admin/customer/dang-ky-thong-tin-khach-hang" class="btn btn-success mb-3">Tạo mới</a>
-        <h5 class="card-header text-center bg-secondary text-light">Theo dõi thông tin khách hàng</h5>
+        <h3 class="card-header text-center bg-secondary text-light">Theo dõi thông tin khách hàng</h3>
         @if($list->count() == 0)
             <div class="alert alert-warning">
                 <strong>Sorry!</strong> Chưa có dữ liệu.

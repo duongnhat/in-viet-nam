@@ -12,8 +12,10 @@
 */
 
 Route::get('/', function () {
-    return redirect('admin/customer/theo-doi-thong-tin-khach-hang');
+    return redirect('trang-chu');
 });
+
+Route::get('trang-chu', 'Business\PrintController@home')->name('customer.trang-chu');
 
 Route::group(['prefix' => 'admin'], function () {
     Route::group(['prefix' => 'customer'], function () {
