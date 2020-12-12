@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 Route::get('login', 'auth\LoginController@loginPage')->name('auth.trang-login');
 Route::post('login', 'auth\LoginController@login')->name('auth.api-trang-login');
+Route::get('logout', 'auth\LoginController@logout')->name('auth.api-trang-logout');
 
 Route::get('trang-chu', 'Business\PrintController@home')->name('business.trang-chu');
 

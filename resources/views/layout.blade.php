@@ -15,8 +15,10 @@
             <div class="col-sm-12 col-md-3 text-md-right text-center logo-company">
                 <img src="{{ URL::to('/') }}/images/logo.png" class="img-rounded mb-2" alt="Cty In Viet Nam" width="215">
                 <h1 class="text-shadow"><p>CÔNG TY</p>IN VIỆT NAM</h1>
-                <p>Tài khoản: {{ Auth::user()->name }}</p>
-                <p>{{ Auth::user()->email }}</p>
+                @if (Auth::check())
+                    <p>Tài khoản: {{ Auth::user()->name }}</p>
+                    <p>{{ Auth::user()->email }}</p>
+                @endif
             </div>
             <div class="col-sm-12 col-md-9">
                 <div class="ba-no"></div>
@@ -33,9 +35,6 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/admin/customer/theo-doi-thong-tin-khach-hang">Khách hàng</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Pricing</a>
-                            </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Dropdown link
@@ -45,6 +44,13 @@
                                     <a class="dropdown-item" href="#">Another action</a>
                                     <a class="dropdown-item" href="#">Something else here</a>
                                 </div>
+                            </li>
+                            <li class="nav-item">
+                                @if (Auth::check())
+                                    <a onclick="return confirm('Bạn có chắc chắn muốn đăng xuất?');" class="nav-link" href="/logout">Đăng xuất</a>
+                                @else
+                                    <a class="nav-link" href="/login">Đăng nhập</a>
+                                @endif
                             </li>
                         </ul>
                     </div>
