@@ -15,8 +15,8 @@
             <div class="col-sm-12 col-md-3 text-md-right text-center logo-company">
                 <img src="{{ URL::to('/') }}/images/logo.png" class="img-rounded mb-2" alt="Cty In Viet Nam" width="215">
                 <h1 class="text-shadow"><p>CÔNG TY</p>IN VIỆT NAM</h1>
-                <p>Tài khoản: Admin</p>
-                <p>Taylor Swift</p>
+                <p>Tài khoản: {{ Auth::user()->name }}</p>
+                <p>{{ Auth::user()->email }}</p>
             </div>
             <div class="col-sm-12 col-md-9">
                 <div class="ba-no"></div>

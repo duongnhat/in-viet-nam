@@ -15,7 +15,10 @@ Route::get('/', function () {
     return redirect('trang-chu');
 });
 
-Route::get('trang-chu', 'Business\PrintController@home')->name('customer.trang-chu');
+Route::get('login', 'auth\LoginController@loginPage')->name('auth.trang-login');
+Route::post('login', 'auth\LoginController@login')->name('auth.api-trang-login');
+
+Route::get('trang-chu', 'Business\PrintController@home')->name('business.trang-chu');
 
 Route::group(['prefix' => 'admin'], function () {
     Route::group(['prefix' => 'customer'], function () {
@@ -23,7 +26,7 @@ Route::group(['prefix' => 'admin'], function () {
         Route::get('dang-ky-thong-tin-khach-hang', 'Admin\CustomerController@registerForm')->name('customer.dang-ky-thong-tin-khach-hang');
         Route::post('dang-ky-thong-tin-khach-hang', 'Admin\CustomerController@register')->name('customer.api-dang-ky-thong-tin-khach-hang');
         Route::get('thay-doi-thong-tin-khach-hang/{id}', 'Admin\CustomerController@updateForm')->name('customer.thay-doi-thong-tin-khach-hang');
-        Route::post('thay-doi-thong-tin-khach-hang/{id}', 'Admin\CustomerController@update')->name('customer.thay-doi-thong-tin-khach-hang');
+        Route::post('thay-doi-thong-tin-khach-hang/{id}', 'Admin\CustomerController@update')->name('customer.api-thay-doi-thong-tin-khach-hang');
         Route::get('delete/{id}', 'Admin\CustomerController@delete')->name('customer.xoa-thong-tin-khach-hang');
     });
 });
