@@ -46,6 +46,10 @@
     min-height: 170px;
 }
 
+.button-print-type h1 {
+    font-size: 35px;
+}
+
 .text-shadow {
     text-shadow: 2px 2px 4px #000000;
 }
