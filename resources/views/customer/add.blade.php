@@ -9,7 +9,7 @@
                 @csrf
                 <div class="form-group">
                     <label>Ngày/Tháng</label>
-                    <input class="form-control @error('day_month') is-invalid @enderror" type="text" name="day_month" value="{{old('day_month')}}" autocomplete="day_month">
+                    <input class="form-control @error('day_month') is-invalid @enderror" type="text" name="day_month" value="{{old('day_month')}}" autocomplete="day_month" autofocus>
                     @error('day_month')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>

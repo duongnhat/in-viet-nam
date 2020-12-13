@@ -35,11 +35,11 @@ class FolderService extends MyService
         }
 
         try {
-            for ($i = 0; $i < 10000; $i++) {
-                $folder = new Folder($request->all());
-                $folder->name .= $i;
-                $folder->save();
-            }
+//            for ($i = 0; $i < 10000; $i++) {
+//                $folder = new Folder($request->all());
+//                $folder->name .= $i;
+//                $folder->save();
+//            }
             $folder = new Folder($request->all());
             $folder->save();
 
@@ -102,7 +102,7 @@ class FolderService extends MyService
     {
         return $validator = Validator::make($request, [
             'name' => "required|max:50|unique:folder,name,NULL,id,deleted_at,NULL",
-            'folder_father_id' => 'required|exists:folder,id',
+            'folder_father_id' => 'exists:folder,id',
             'description' => 'max:500',
         ]);
     }
@@ -112,7 +112,7 @@ class FolderService extends MyService
     {
         return $validator = Validator::make($request, [
             'name' => "required|max:50|unique:folder,name,$id,id,deleted_at,NULL",
-            'folder_father_id' => 'required|exists:folder,id',
+            'folder_father_id' => 'exists:folder,id',
             'description' => 'max:500',
         ]);
     }

@@ -35,6 +35,9 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="/admin/customer/theo-doi-thong-tin-khach-hang">Khách hàng</a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/admin/folder/quan-ly-thu-muc">Thư mục</a>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Dropdown link
