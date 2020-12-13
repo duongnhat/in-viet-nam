@@ -109,7 +109,7 @@ class CustomerService extends MyService
         return $validator = Validator::make($request, [
             'phone' => 'max:50',
             'email' => "nullable|email|max:50",
-            'name' => "required|max:50|unique:customer,name",
+            'name' => "required|max:50|unique:customer,name,NULL,id,deleted_at,NULL",
             'phone' => 'max:50',
             'address' => 'max:190',
             'day_month' => 'max:50',
@@ -124,7 +124,7 @@ class CustomerService extends MyService
         return $validator = Validator::make($request, [
             'phone' => 'max:50',
             'email' => "nullable|email|max:50",
-            'name' => "required|max:50|unique:customer,name,$id",
+            'name' => "required|max:50|unique:customer,name,$id,id,deleted_at,NULL",
             'phone' => 'max:50',
             'address' => 'max:190',
             'day_month' => 'max:50',
