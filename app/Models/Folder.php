@@ -1,20 +1,19 @@
 <?php
 
-namespace App\Models;
+namespace App\models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Customer extends Model
+class Folder extends Model
 {
-
     use SoftDeletes;
 
     protected $softDelete = true;
 
-    protected $table = 'customer';
+    protected $table = 'folder';
 
     protected $fillable = [
-        'day_month', 'name', 'email', 'phone', 'info_contact', 'address', 'note'
+        'name', 'folder_father_id', 'description',
     ];
 }

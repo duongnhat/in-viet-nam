@@ -41,10 +41,11 @@ class CustomerService extends MyService
         }
 
         try {
-//            for ($i = 0; $i < 1000; $i++) {
-//                $customer = new Customer($request->all());
-//                $customer->save();
-//            }
+            for ($i = 0; $i < 10000; $i++) {
+                $customer = new Customer($request->all());
+                $customer->name .= $i;
+                $customer->save();
+            }
             $customer = new Customer($request->all());
             $customer->save();
 
