@@ -9,7 +9,7 @@
                 @csrf
                 <div class="form-group">
                     <label>Tên thư mục</label>
-                    <input class="form-control @error('name') is-invalid @enderror" type="text" name="name" value="{{old('name')}}" autocomplete="name" autofocus>
+                    <input class="form-control @error('name') is-invalid @enderror" type="text" name="name" value="{{old('name', $folder->name)}}" autocomplete="name" autofocus>
                     @error('name')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -18,7 +18,14 @@
                 </div>
                 <div class="form-group">
                     <label>Thư mục cha</label>
-                    <textarea class="form-control @error('folder_father_id') is-invalid @enderror" type="text" name="folder_father_id" autocomplete="folder_father_id">{{old('folder_father_id')}}</textarea>
+                    <select class="form-control @error('folder_father_id') is-invalid @enderror" name="folder_father_id" value="{{old('folder_father_id', $folder->folder_father_id)}}">
+                        <option value=""></option>
+                        @foreach($listFolder as $i => $item)
+                            <option value="{{$item->id}}" {{ old('folder_father_id', $folder->folder_father_id) == $item->id ? 'selected' : '' }}>
+                                {{$item->name}}
+                            </option>
+                        @endforeach
+                    </select>
                     @error('folder_father_id')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -27,7 +34,7 @@
                 </div>
                 <div class="form-group">
                     <label>Miêu tả</label>
-                    <textarea class="form-control @error('description') is-invalid @enderror" type="text" name="description" autocomplete="description">{{old('description')}}</textarea>
+                    <textarea class="form-control @error('description') is-invalid @enderror" type="text" name="description" autocomplete="description">{{old('description', $folder->description)}}</textarea>
                     @error('description')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>

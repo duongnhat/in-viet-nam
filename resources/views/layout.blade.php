@@ -64,7 +64,7 @@
 </section>
 <hr>
 <section class="page-container my-5">
-    <div class="container">
+    <div class="container px-0">
         @if (isset($error))
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 {{ $error }}
@@ -92,6 +92,14 @@
         @if (session()->has('registed'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 Tạo mới thành công!
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
+        @if (session()->has('updated'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                Chỉnh sửa thành công!
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>

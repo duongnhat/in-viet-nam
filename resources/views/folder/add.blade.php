@@ -18,7 +18,14 @@
                 </div>
                 <div class="form-group">
                     <label>Thư mục cha</label>
-                    <textarea class="form-control @error('folder_father_id') is-invalid @enderror" type="text" name="folder_father_id" autocomplete="folder_father_id">{{old('folder_father_id')}}</textarea>
+                    <select class="form-control @error('folder_father_id') is-invalid @enderror" name="folder_father_id" value="{{ old('folder_father_id') }}">
+                        <option value=""></option>
+                        @foreach($listFolder as $i => $item)
+                            <option value="{{$item->id}}" {{ old('folder_father_id') == $item->id ? 'selected' : '' }}>
+                                {{$item->name}}
+                            </option>
+                        @endforeach
+                    </select>
                     @error('folder_father_id')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>

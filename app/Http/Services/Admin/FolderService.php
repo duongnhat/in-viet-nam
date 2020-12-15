@@ -15,7 +15,7 @@ class FolderService extends MyService
         $list = Folder::paginate(25);
 
         if ($list->count() == 0 && $list->currentPage() > 1) {
-            return redirect()->intended('/admin/folder/theo-doi-thong-tin-khach-hang');
+            return redirect()->intended('/admin/folder/quan-ly-thu-muc');
         }
 
         return view('folder.list')->with('list', $list);
@@ -23,7 +23,8 @@ class FolderService extends MyService
 
     public function registerForm()
     {
-        return view('folder.add');
+        $list = Folder::all();
+        return view('folder.add')->with('listFolder', $list);
     }
 
     public function register(Request $request)
@@ -43,7 +44,7 @@ class FolderService extends MyService
             $folder = new Folder($request->all());
             $folder->save();
 
-            return redirect()->intended('/admin/folder/thay-doi-thong-tin-khach-hang/' . $folder->id)->with('registed', true);
+            return redirect()->intended('/admin/folder/chinh-sua-thu-muc/' . $folder->id)->with('registed', true);
         } catch (\Exception $ex) {
             abort(500);
         }
@@ -57,7 +58,9 @@ class FolderService extends MyService
             abort(404);
         }
 
-        return view('folder.update')->with('folder', $folder);
+        $list = Folder::all();
+
+        return view('folder.update')->with(['folder' => $folder, 'listFolder' => $list]);
     }
 
     public function update($id, Request $request)
@@ -76,10 +79,10 @@ class FolderService extends MyService
 
         try {
             $folder->update($request->all());
-            return view('folder.update')->with(['folder' => $folder, 'mess' => 'Thay đổi thành công!']);
         } catch (\Exception $ex) {
             abort(500);
         }
+        return redirect()->intended('/admin/folder/chinh-sua-thu-muc/' . $folder->id)->with('updated', true);
     }
 
     public function delete($id)
@@ -102,7 +105,7 @@ class FolderService extends MyService
     {
         return $validator = Validator::make($request, [
             'name' => "required|max:50|unique:folder,name,NULL,id,deleted_at,NULL",
-            'folder_father_id' => 'exists:folder,id',
+            'folder_father_id' => 'nullable|exists:folder,id',
             'description' => 'max:500',
         ]);
     }
@@ -112,7 +115,7 @@ class FolderService extends MyService
     {
         return $validator = Validator::make($request, [
             'name' => "required|max:50|unique:folder,name,$id,id,deleted_at,NULL",
-            'folder_father_id' => 'exists:folder,id',
+            'folder_father_id' => "nullable|exists:folder,id|not_in:$id",
             'description' => 'max:500',
         ]);
     }
