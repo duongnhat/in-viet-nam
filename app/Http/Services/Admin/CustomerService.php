@@ -82,10 +82,10 @@ class CustomerService extends MyService
 
         try {
             $customer->update($request->all());
-            return view('customer.update')->with(['customer' => $customer, 'mess' => 'Thay đổi thành công!']);
         } catch (\Exception $ex) {
             abort(500);
         }
+        return redirect()->intended('/admin/customer/thay-doi-thong-tin-khach-hang/' . $customer->id)->with('updated', true);
     }
 
     public function delete($id)
