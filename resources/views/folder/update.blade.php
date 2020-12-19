@@ -3,10 +3,11 @@
 @section('description', 'Trang chỉnh sửa thư mục.')
 @section('content')
     <div class="card container border bg-light px-0">
-        <h3 class="card-header text-center bg-secondary text-light">Chỉnh sửa thư mục</h3>
+        <h3 class="card-header text-center bg-secondary text-light">Chỉnh sửa thư mục cấp {{$folder->level}}</h3>
         <div class="card-body">
             <form method="post">
                 @csrf
+                <input type="hidden" name="level" value="{{$folder->level}}">
                 <div class="form-group">
                     <label>Tên thư mục</label>
                     <input class="form-control @error('name') is-invalid @enderror" type="text" name="name" value="{{old('name', $folder->name)}}" autocomplete="name" autofocus>
@@ -42,7 +43,7 @@
                     @enderror
                 </div>
                 <button type="submit" class="btn btn-primary">Lưu</button>
-                <a type="button" href="/admin/folder/quan-ly-thu-muc" class="btn btn-danger">Hủy</a>
+                <a type="button" href="/admin/folder/quan-ly-thu-muc-cap-{{$folder->level}}" class="btn btn-danger">Hủy</a>
             </form>
         </div>
     </div>

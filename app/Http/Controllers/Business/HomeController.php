@@ -5,20 +5,20 @@ namespace App\Http\Controllers\Business;
 
 
 use App\Http\Controllers\Controller;
-use App\Http\Services\Business\PrintService;
+use App\Http\Services\Business\HomeService;
 
 class HomeController extends Controller
 {
-    private $printService;
+    private $homeService;
 
-    public function __construct(F $printService)
+    public function __construct(HomeService $homeService)
     {
-        $this->printService = $printService;
+        $this->homeService = $homeService;
     }
 
-    public function home()
+    public function homePage()
     {
-        return $this->printService->home();
+        return $this->homeService->homePage();
     }
 
 }

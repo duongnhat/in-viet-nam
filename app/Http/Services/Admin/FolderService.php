@@ -31,7 +31,7 @@ class FolderService extends MyService
 
     public function registerForm($level)
     {
-        $list = $this->folderRepository->getAllByLevel($level);
+        $list = $this->folderRepository->getAllByLevel($level - 1);
         return view('folder.add')->with(['level' => $level, 'listFolder' => $list]);
     }
 
@@ -66,7 +66,7 @@ class FolderService extends MyService
             abort(404);
         }
 
-        $list = Folder::all();
+        $list = $this->folderRepository->getAllByLevel($folder->level - 1);
 
         return view('folder.update')->with(['folder' => $folder, 'listFolder' => $list]);
     }
@@ -111,9 +111,15 @@ class FolderService extends MyService
 
     private function registerValidate($request)
     {
+        $folderFatherId = 'nullable|exists:folder,id';
+
+        if ($request['level'] != 1) {
+            $folderFatherId = 'required|exists:folder,id';
+        }
+
         return $validator = Validator::make($request, [
             'name' => "required|max:50|unique:folder,name,NULL,id,deleted_at,NULL",
-            'folder_father_id' => 'nullable|exists:folder,id',
+            'folder_father_id' => $folderFatherId,
             'level' => 'required|numeric|min:1|max:3',
             'description' => 'max:500',
         ]);
@@ -122,9 +128,15 @@ class FolderService extends MyService
 
     private function updateValidate($request, $id)
     {
+        $folderFatherId = 'nullable|exists:folder,id';
+
+        if ($request['level'] != 1) {
+            $folderFatherId = 'required|exists:folder,id';
+        }
+
         return $validator = Validator::make($request, [
             'name' => "required|max:50|unique:folder,name,$id,id,deleted_at,NULL",
-            'folder_father_id' => "nullable|exists:folder,id|not_in:$id",
+            'folder_father_id' => "$folderFatherId|not_in:$id",
             'level' => 'required|numeric|min:1|max:3',
             'description' => 'max:500',
         ]);

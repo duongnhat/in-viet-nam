@@ -21,6 +21,7 @@
                     <div class="form-group">
                         <label>Thư mục cha</label>
                         <select class="form-control @error('folder_father_id') is-invalid @enderror" name="folder_father_id" value="{{ old('folder_father_id') }}">
+                            <option value=""></option>
                             @foreach($listFolder as $i => $item)
                                 <option value="{{$item->id}}" {{ old('folder_father_id') == $item->id ? 'selected' : '' }}>
                                     {{$item->name}}

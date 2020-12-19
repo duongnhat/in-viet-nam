@@ -16,7 +16,7 @@ class HomeService extends MyService
         $this->folderRepository = $folderRepository;
     }
 
-    public function home()
+    public function homePage()
     {
         $listFolder = $this->folderRepository->getAllByLevel(1);
         return view('business.home')->with('listFolder', $listFolder);
