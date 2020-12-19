@@ -19,7 +19,7 @@ Route::get('login', 'auth\LoginController@loginPage')->name('auth.trang-login');
 Route::post('login', 'auth\LoginController@login')->name('auth.post-trang-login');
 Route::get('logout', 'auth\LoginController@logout')->name('auth.post-trang-logout');
 
-Route::get('trang-chu', 'Business\PrintController@home')->name('business.trang-chu');
+Route::get('trang-chu', 'Business\HomeController@homePage')->name('business.trang-chu');
 
 Route::group(['prefix' => 'admin'], function () {
     Route::group(['prefix' => 'customer'], function () {
@@ -32,8 +32,12 @@ Route::group(['prefix' => 'admin'], function () {
     });
 
     Route::group(['prefix' => 'folder'], function () {
-        Route::get('quan-ly-thu-muc', 'Admin\FolderController@listPage')->name('folder.quan-ly-thu-muc');
-        Route::get('tao-moi-thu-muc', 'Admin\FolderController@registerForm')->name('folder.tao-moi-thu-muc');
+        Route::get('quan-ly-thu-muc-cap-1', 'Admin\FolderController@listPage1')->name('folder.quan-ly-thu-muc-cap-1');
+        Route::get('quan-ly-thu-muc-cap-2', 'Admin\FolderController@listPage2')->name('folder.quan-ly-thu-muc-cap-2');
+        Route::get('quan-ly-thu-muc-cap-3', 'Admin\FolderController@listPage3')->name('folder.quan-ly-thu-muc-cap-3');
+        Route::get('tao-moi-thu-muc-cap-1', 'Admin\FolderController@registerForm1')->name('folder.tao-moi-thu-muc-cap-1');
+        Route::get('tao-moi-thu-muc-cap-2', 'Admin\FolderController@registerForm2')->name('folder.tao-moi-thu-muc-cap-2');
+        Route::get('tao-moi-thu-muc-cap-3', 'Admin\FolderController@registerForm3')->name('folder.tao-moi-thu-muc-cap-3');
         Route::post('tao-moi-thu-muc', 'Admin\FolderController@register')->name('folder.post-tao-moi-thu-muc');
         Route::get('chinh-sua-thu-muc/{id}', 'Admin\FolderController@updateForm')->name('folder.chinh-sua-thu-muc');
         Route::post('chinh-sua-thu-muc/{id}', 'Admin\FolderController@update')->name('folder.post-chinh-sua-thu-muc');

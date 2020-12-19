@@ -3,8 +3,8 @@
 @section('description', 'Trang quản lý thư mục.')
 @section('content')
     <div class="container-fluid">
-        <a type="button" href="/admin/folder/tao-moi-thu-muc" class="btn btn-success mb-3">Tạo mới</a>
-        <h3 class="card-header text-center bg-secondary text-light">Quản lý thư mục</h3>
+        <a type="button" href="/admin/folder/tao-moi-thu-muc-cap-{{$level}}" class="btn btn-success mb-3">Tạo mới</a>
+        <h3 class="card-header text-center bg-secondary text-light">Quản lý thư mục cấp {{$level}}</h3>
         @if($list->count() == 0)
             <div class="alert alert-warning">
                 <strong>Sorry!</strong> Chưa có dữ liệu.
@@ -26,7 +26,7 @@
                         <tr>
                             <th scope="row">{{($list->currentPage() - 1) * $list->perPage() + ($i + 1)}}</th>
                             <td>{{$folder->name}}</td>
-                            <td>{{$folder->foler_father_id}}</td>
+                            <td>{{$folder->folder_father_name}}</td>
                             <td>{{$folder->description}}</td>
                             <td class="text-center">
                                 <a href="/admin/folder/chinh-sua-thu-muc/{{$folder->id}}">

@@ -4,27 +4,35 @@ namespace App\Http\Services\Admin;
 
 use App\Http\Services\MyService;
 use App\Models\Folder;
+use App\Repositories\Admin\FolderRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class FolderService extends MyService
 {
 
-    public function listPage()
+    private $folderRepository;
+
+    public function __construct(FolderRepository $folderRepository)
     {
-        $list = Folder::paginate(25);
-
-        if ($list->count() == 0 && $list->currentPage() > 1) {
-            return redirect()->intended('/admin/folder/quan-ly-thu-muc');
-        }
-
-        return view('folder.list')->with('list', $list);
+        $this->folderRepository = $folderRepository;
     }
 
-    public function registerForm()
+    public function listPage($level)
     {
-        $list = Folder::all();
-        return view('folder.add')->with('listFolder', $list);
+        $list = $this->folderRepository->getPaginationForList($level);
+
+        if ($list->count() == 0 && $list->currentPage() > 1) {
+            return redirect()->intended('/admin/folder/quan-ly-thu-muc/' . $level);
+        }
+
+        return view('folder.list')->with(['list' => $list, 'level' => $level]);
+    }
+
+    public function registerForm($level)
+    {
+        $list = $this->folderRepository->getAllByLevel($level);
+        return view('folder.add')->with(['level' => $level, 'listFolder' => $list]);
     }
 
     public function register(Request $request)
@@ -106,6 +114,7 @@ class FolderService extends MyService
         return $validator = Validator::make($request, [
             'name' => "required|max:50|unique:folder,name,NULL,id,deleted_at,NULL",
             'folder_father_id' => 'nullable|exists:folder,id',
+            'level' => 'required|numeric|min:1|max:3',
             'description' => 'max:500',
         ]);
     }
@@ -116,6 +125,7 @@ class FolderService extends MyService
         return $validator = Validator::make($request, [
             'name' => "required|max:50|unique:folder,name,$id,id,deleted_at,NULL",
             'folder_father_id' => "nullable|exists:folder,id|not_in:$id",
+            'level' => 'required|numeric|min:1|max:3',
             'description' => 'max:500',
         ]);
     }

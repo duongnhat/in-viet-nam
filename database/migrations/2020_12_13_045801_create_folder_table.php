@@ -17,6 +17,7 @@ class CreateFolderTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->integer('folder_father_id')->nullable();
+            $table->integer('level');
             $table->string('description', 500)->nullable();
             $table->timestamps();
             $table->softDeletes();
