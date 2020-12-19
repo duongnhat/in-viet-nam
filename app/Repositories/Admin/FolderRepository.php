@@ -16,7 +16,7 @@ class FolderRepository extends MyRepository
             ->select('folder.*', 'folder_father.name as folder_father_name')
             ->leftJoin('folder as folder_father', 'folder_father.id', '=', 'folder.folder_father_id')
             ->whereNull('folder.deleted_at')
-            ->whereNull('folder_father.deleted_at')
+//            ->whereNull('folder_father.deleted_at')
             ->where('folder.level', '=', $level)
             ->paginate(25);
     }

@@ -22,6 +22,7 @@
                         <th scope="col">Email</th>
                         <th scope="col">Thông tin liên hệ</th>
                         <th scope="col">Ghi chú</th>
+                        <th scope="col">Ngày tạo</th>
                         <th scope="col" class="text-center">Action</th>
                     </tr>
                     </thead>
@@ -36,6 +37,7 @@
                             <td>{{$customer->email}}</td>
                             <td>{{$customer->info_contact}}</td>
                             <td>{{$customer->note}}</td>
+                            <td>{{\Carbon\Carbon::parse($customer->created_at)->format('d/m/Y')}}</td>
                             <td class="text-center">
                                 <a href="/admin/customer/thay-doi-thong-tin-khach-hang/{{$customer->id}}">
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

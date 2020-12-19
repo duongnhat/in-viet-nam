@@ -16,8 +16,11 @@
                     <tr>
                         <th scope="col">STT</th>
                         <th scope="col">Tên thư mục</th>
-                        <th scope="col">Thư mục cha</th>
+                        @if($level != 1)
+                            <th scope="col">Thư mục cha</th>
+                        @endif
                         <th scope="col">Miêu tả</th>
+                        <th scope="col">Ngày tạo</th>
                         <th scope="col" class="text-center">Action</th>
                     </tr>
                     </thead>
@@ -26,8 +29,11 @@
                         <tr>
                             <th scope="row">{{($list->currentPage() - 1) * $list->perPage() + ($i + 1)}}</th>
                             <td>{{$folder->name}}</td>
-                            <td>{{$folder->folder_father_name}}</td>
+                            @if($level != 1)
+                                <td>{{$folder->folder_father_name}}</td>
+                            @endif
                             <td>{{$folder->description}}</td>
+                            <td>{{\Carbon\Carbon::parse($folder->created_at)->format('d/m/Y')}}</td>
                             <td class="text-center">
                                 <a href="/admin/folder/chinh-sua-thu-muc/{{$folder->id}}">
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
