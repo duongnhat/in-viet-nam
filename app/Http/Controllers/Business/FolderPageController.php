@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Business;
 
 use App\Http\Controllers\Controller;
 use App\Http\Services\Business\FolderPageService;
+use App\models\Folder;
 
 class FolderPageController extends Controller
 {
@@ -18,7 +19,13 @@ class FolderPageController extends Controller
 
     public function folderLevelPage($id)
     {
-        return $this->folderPageService->folderLevelPage($id);
+        $folder = Folder::find($id);
+
+        if (is_null($folder)) {
+            abort(404);
+        }
+
+        return $this->folderPageService->folderLevelPage($id, $folder);
     }
 
 }

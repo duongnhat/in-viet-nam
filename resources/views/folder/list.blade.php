@@ -4,7 +4,7 @@
 @section('content')
     <div class="container-fluid">
         <a type="button" href="/admin/folder/tao-moi-thu-muc-cap-{{$level}}" class="btn btn-success mb-3">Tạo mới</a>
-        <h3 class="card-header text-center bg-secondary text-light">Quản lý thư mục cấp {{$level}}</h3>
+        <h3 class="card-header text-center bg-secondary text-light text-uppercase">Quản lý thư mục cấp {{$level}}</h3>
         @if($list->count() == 0)
             <div class="alert alert-warning">
                 <strong>Sorry!</strong> Chưa có dữ liệu.

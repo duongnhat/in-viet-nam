@@ -1,8 +1,8 @@
 @extends('layout')
-@section('title', 'Trang chu')
-@section('description', 'Trang chủ.')
+@section('title', $folderFather->name)
+@section('description', 'Danh sach cua ' . $folderFather->name)
 @section('content')
-    <h1 class="card-header text-center bg-secondary text-light text-uppercase">Trang chủ</h1>
+    <h1 class="card-header text-center bg-secondary text-light text-uppercase">{{$folderFather->name}}</h1>
     <div class="album py-5">
         <div class="container">
             @if($listFolder->count() == 0)

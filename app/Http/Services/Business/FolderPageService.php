@@ -5,7 +5,6 @@ namespace App\Http\Services\Business;
 
 
 use App\Http\Services\MyService;
-use App\models\Folder;
 use App\Repositories\Admin\FolderRepository;
 
 class FolderPageService extends MyService
@@ -17,15 +16,9 @@ class FolderPageService extends MyService
         $this->folderRepository = $folderRepository;
     }
 
-    public function folderLevelPage($id)
+    public function folderLevelPage($id, $folder)
     {
-        $folder = Folder::find($id);
-
-        if (is_null($folder)) {
-            abort(404);
-        }
-
         $listFolder = $this->folderRepository->getAllChildById($id);
-        return view('business.home')->with('listFolder', $listFolder);
+        return view('business.folder-level')->with(['listFolder' => $listFolder, 'folderFather' => $folder]);
     }
 }

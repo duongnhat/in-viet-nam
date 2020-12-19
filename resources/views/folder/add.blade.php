@@ -3,7 +3,7 @@
 @section('description', 'Trang tạo mới thư mục.')
 @section('content')
     <div class="card container border bg-light px-0">
-        <h3 class="card-header text-center bg-secondary text-light">Tạo mới thư mục cấp {{$level}}</h3>
+        <h3 class="card-header text-center bg-secondary text-light text-uppercase">Tạo mới thư mục cấp {{$level}}</h3>
         <div class="card-body">
             <form method="post" action="{{ route('folder.post-tao-moi-thu-muc') }}">
                 @csrf
@@ -37,7 +37,7 @@
                 @endif
                 <div class="form-group">
                     <label>Text domain</label>
-                    <p class="text-warning font-italic font-weight-bold">Kiểu a-b-c-d tốt nhất cho SEO</p>
+                    <p class="text-warning font-italic font-weight-bold">Kiểu a-b-c-d không dấu tốt nhất cho SEO</p>
                     <input class="form-control @error('text_domain') is-invalid @enderror" type="text" name="text_domain" value="{{old('text_domain')}}" autocomplete="text_domain">
                     @error('text_domain')
                     <span class="invalid-feedback" role="alert">
