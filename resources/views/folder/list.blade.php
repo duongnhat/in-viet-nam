@@ -19,6 +19,7 @@
                         @if($level != 1)
                             <th scope="col">Thư mục cha</th>
                         @endif
+                        <th scope="col">Text domain</th>
                         <th scope="col">Miêu tả</th>
                         <th scope="col">Ngày tạo</th>
                         <th scope="col" class="text-center">Action</th>
@@ -32,6 +33,7 @@
                             @if($level != 1)
                                 <td>{{$folder->folder_father_name}}</td>
                             @endif
+                            <td>{{$folder->text_domain}}</td>
                             <td>{{$folder->description}}</td>
                             <td>{{\Carbon\Carbon::parse($folder->created_at)->format('d/m/Y')}}</td>
                             <td class="text-center">

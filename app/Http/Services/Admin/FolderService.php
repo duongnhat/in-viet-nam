@@ -121,6 +121,7 @@ class FolderService extends MyService
             'name' => "required|max:50|unique:folder,name,NULL,id,deleted_at,NULL",
             'folder_father_id' => $folderFatherId,
             'level' => 'required|numeric|min:1|max:3',
+            'text_domain' => 'required|max:50',
             'description' => 'max:500',
         ]);
     }
@@ -138,6 +139,7 @@ class FolderService extends MyService
             'name' => "required|max:50|unique:folder,name,$id,id,deleted_at,NULL",
             'folder_father_id' => "$folderFatherId|not_in:$id",
             'level' => 'required|numeric|min:1|max:3',
+            'text_domain' => 'required|max:50',
             'description' => 'max:500',
         ]);
     }

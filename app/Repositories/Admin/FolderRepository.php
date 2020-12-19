@@ -25,4 +25,9 @@ class FolderRepository extends MyRepository
     {
         return Folder::where('level', '=', $level)->get();
     }
+
+    public function getAllChildById($id)
+    {
+        return Folder::where('folder_father_id', '=', $id)->get();
+    }
 }

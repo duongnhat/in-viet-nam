@@ -36,6 +36,16 @@
                     </div>
                 @endif
                 <div class="form-group">
+                    <label>Text domain</label>
+                    <p class="text-warning font-italic font-weight-bold">Kiểu a-b-c-d tốt nhất cho SEO</p>
+                    <input class="form-control @error('text_domain') is-invalid @enderror" type="text" name="text_domain" value="{{old('text_domain')}}" autocomplete="text_domain">
+                    @error('text_domain')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+                <div class="form-group">
                     <label>Miêu tả</label>
                     <textarea class="form-control @error('description') is-invalid @enderror" type="text" name="description" autocomplete="description">{{old('description')}}</textarea>
                     @error('description')

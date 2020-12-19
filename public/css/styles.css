@@ -46,8 +46,16 @@
     min-height: 170px;
 }
 
+.button-print-type .button-print-type:hover {
+    background-color: #cccccc !important;
+}
+
 .button-print-type h1 {
     font-size: 35px;
+}
+
+.button-print-type a {
+    text-decoration: none !important;
 }
 
 .text-shadow {
@@ -61,3 +69,5 @@
 .border-radius {
     border-radius: 15%;
 }
+
+

@@ -5,15 +5,23 @@
     <h1 class="card-header text-center bg-secondary text-light">Trang chủ</h1>
     <div class="album py-5">
         <div class="container">
-            <div class="row button-print-type">
-                @foreach($listFolder as $i => $item)
-                    <div class="col-md-3 mb-4">
-                        <div class="card button-print-type bg-light card-box-shadow border border-secondary border-radius btn">
-                            <h1 class="text-shadow text-uppercase text-center font-weight-bold text-secondary m-auto">{{$item->name}}</h1>
+            @if($listFolder->count() == 0)
+                <div class="alert alert-warning">
+                    <strong>Sorry!</strong> Chưa có dữ liệu.
+                </div>
+            @else
+                <div class="row button-print-type">
+                    @foreach($listFolder as $i => $item)
+                        <div class="col-md-3 mb-4">
+                            <a href="/f/{{$item->id}}/{{strtolower(str_replace(" ","-",$item->text_domain))}}">
+                                <div class="card button-print-type bg-light card-box-shadow border border-secondary border-radius text-break">
+                                    <h1 class="text-shadow text-uppercase text-center font-weight-bold text-secondary m-auto">{{$item->name}}</h1>
+                                </div>
+                            </a>
                         </div>
-                    </div>
-                @endforeach
-            </div>
+                    @endforeach
+                </div>
+            @endif
         </div>
     </div>
 @endsection

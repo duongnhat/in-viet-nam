@@ -21,6 +21,10 @@ Route::get('logout', 'auth\LoginController@logout')->name('auth.post-trang-logou
 
 Route::get('trang-chu', 'Business\HomeController@homePage')->name('business.trang-chu');
 
+Route::group(['prefix' => 'f'], function () {
+    Route::get('/{id}/{nameFolder}', 'Business\FolderPageController@folderLevelPage')->name('business.trang-chu');
+});
+
 Route::group(['prefix' => 'admin'], function () {
     Route::group(['prefix' => 'customer'], function () {
         Route::get('theo-doi-thong-tin-khach-hang', 'Admin\CustomerController@listPage')->name('customer.theo-doi-thong-tin-khach-hang');

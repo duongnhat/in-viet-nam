@@ -14,6 +14,6 @@ class Folder extends Model
     protected $table = 'folder';
 
     protected $fillable = [
-        'name', 'folder_father_id', 'level', 'description',
+        'name', 'folder_father_id', 'text_domain', 'level', 'description',
     ];
 }
