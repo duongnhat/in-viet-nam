@@ -52,7 +52,7 @@ class FolderService extends MyService
             $folder = new Folder($request->all());
             $folder->save();
 
-            return redirect()->intended('/admin/folder/chinh-sua-thu-muc/' . $folder->id)->with('registed', true);
+            return redirect()->intended('/admin/folder/chinh-sua-thu-muc/' . $folder->id)->with('messCommon', 'Tạo mới thành công!');
         } catch (\Exception $ex) {
             abort(500);
         }
@@ -90,7 +90,7 @@ class FolderService extends MyService
         } catch (\Exception $ex) {
             abort(500);
         }
-        return redirect()->intended('/admin/folder/chinh-sua-thu-muc/' . $folder->id)->with('updated', true);
+        return redirect()->intended('/admin/folder/chinh-sua-thu-muc/' . $folder->id)->with('messCommon', 'Chỉnh sửa thành công!');
     }
 
     public function delete($id)
@@ -106,7 +106,7 @@ class FolderService extends MyService
         } catch (\Exception $ex) {
             abort(500);
         }
-        return redirect()->back()->with('deleted', true);
+        return redirect()->back()->with('messCommon', 'Xóa thành công!');
     }
 
     private function registerValidate($request)

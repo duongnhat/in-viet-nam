@@ -49,7 +49,7 @@ class CustomerService extends MyService
             $customer = new Customer($request->all());
             $customer->save();
 
-            return redirect()->intended('/admin/customer/thay-doi-thong-tin-khach-hang/' . $customer->id)->with('registed', true);
+            return redirect()->intended('/admin/customer/thay-doi-thong-tin-khach-hang/' . $customer->id)->with('messCommon', 'Tạo mới thành công!');
         } catch (\Exception $ex) {
             abort(500);
         }
@@ -85,7 +85,7 @@ class CustomerService extends MyService
         } catch (\Exception $ex) {
             abort(500);
         }
-        return redirect()->intended('/admin/customer/thay-doi-thong-tin-khach-hang/' . $customer->id)->with('updated', true);
+        return redirect()->intended('/admin/customer/thay-doi-thong-tin-khach-hang/' . $customer->id)->with('messCommon', 'Chỉnh sửa thành công!');
     }
 
     public function delete($id)
@@ -101,7 +101,7 @@ class CustomerService extends MyService
         } catch (\Exception $ex) {
             abort(500);
         }
-        return redirect()->back()->with('deleted', true);
+        return redirect()->back()->with('messCommon', 'Xóa thành công!');
     }
 
     private function registerValidate($request)

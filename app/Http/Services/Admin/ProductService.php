@@ -50,7 +50,7 @@ class ProductService extends MyService
             $product = new Product($request->all());
             $product->save();
 
-            return redirect()->intended('/admin/product/thay-doi-san-pham/' . $product->id)->with('registed', true);
+            return redirect()->intended('/admin/product/thay-doi-san-pham/' . $product->id)->with('messCommon', 'Tạo mới thành công!');
         } catch (\Exception $ex) {
             abort(500);
         }
@@ -86,7 +86,7 @@ class ProductService extends MyService
         } catch (\Exception $ex) {
             abort(500);
         }
-        return redirect()->intended('/admin/product/thay-doi-san-pham/' . $product->id)->with('updated', true);
+        return redirect()->intended('/admin/product/thay-doi-san-pham/' . $product->id)->with('messCommon', 'Chỉnh sửa thành công!');
     }
 
     public function delete($id)
@@ -102,7 +102,7 @@ class ProductService extends MyService
         } catch (\Exception $ex) {
             abort(500);
         }
-        return redirect()->back()->with('deleted', true);
+        return redirect()->back()->with('messCommon', 'Xóa thành công!');
     }
 
     private function registerValidate($request)
