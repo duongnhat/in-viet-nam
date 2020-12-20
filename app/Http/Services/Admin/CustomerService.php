@@ -107,7 +107,6 @@ class CustomerService extends MyService
     private function registerValidate($request)
     {
         return $validator = Validator::make($request, [
-            'phone' => 'max:50',
             'email' => "nullable|email|max:50",
             'name' => "required|max:50|unique:customer,name,NULL,id,deleted_at,NULL",
             'phone' => 'max:50',
@@ -122,7 +121,6 @@ class CustomerService extends MyService
     private function updateValidate($request, $id)
     {
         return $validator = Validator::make($request, [
-            'phone' => 'max:50',
             'email' => "nullable|email|max:50",
             'name' => "required|max:50|unique:customer,name,$id,id,deleted_at,NULL",
             'phone' => 'max:50',

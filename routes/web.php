@@ -47,4 +47,13 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('chinh-sua-thu-muc/{id}', 'Admin\FolderController@update')->name('folder.post-chinh-sua-thu-muc');
         Route::get('delete/{id}', 'Admin\FolderController@delete')->name('folder.xoa-thu-muc');
     });
+
+    Route::group(['prefix' => 'product'], function () {
+        Route::get('quan-ly-san-pham', 'Admin\ProductController@listPage')->name('product.quan-ly-san-pham');
+        Route::get('dang-ky-san-pham', 'Admin\ProductController@registerForm')->name('product.dang-ky-san-pham');
+        Route::post('dang-ky-san-pham', 'Admin\ProductController@register')->name('product.post-dang-ky-san-pham');
+        Route::get('thay-doi-san-pham/{id}', 'Admin\ProductController@updateForm')->name('product.thay-doi-san-pham');
+        Route::post('thay-doi-san-pham/{id}', 'Admin\ProductController@update')->name('product.post-thay-doi-san-pham');
+        Route::get('delete/{id}', 'Admin\ProductController@delete')->name('product.xoa-san-pham');
+    });
 });

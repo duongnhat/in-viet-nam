@@ -46,6 +46,9 @@
                                 </div>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link" href="/admin/product/quan-ly-san-pham">Sản phẩm</a>
+                            </li>
+                            <li class="nav-item">
                                 @if (Auth::check())
                                     <a onclick="return confirm('Bạn có chắc chắn muốn đăng xuất?');" class="nav-link" href="/logout">Đăng xuất</a>
                                 @else
@@ -97,6 +100,14 @@
         @if (session()->has('updated'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 Chỉnh sửa thành công!
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        @endif
+        @if (session('messCommon'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('messCommon') }}
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
