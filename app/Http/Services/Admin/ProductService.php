@@ -2,6 +2,7 @@
 
 namespace App\Http\Services\Admin;
 
+use App\Http\Services\Common\ImageService;
 use App\Http\Services\MyService;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -10,10 +11,12 @@ use Illuminate\Support\Facades\Validator;
 class ProductService extends MyService
 {
     private $product;
+    private $imageService;
 
-    public function __construct(Product $product)
+    public function __construct(Product $product, ImageService $imageService)
     {
         $this->product = $product;
+        $this->imageService = $imageService;
     }
 
     public function listPage()
@@ -29,17 +32,21 @@ class ProductService extends MyService
 
     public function registerForm()
     {
-        return view('product.add')->with('test', 'ewioruewiorjelksfjsdlkf');
+        return view('product.add');
     }
 
     public function register(Request $request)
     {
 //        dd($request->all());
+
         $validator = $this->registerValidate($request->all());
 
         if ($validator->fails()) {
+//            dd($validator->errors());
             return redirect()->back()->withInput()->withErrors($validator->errors());
         }
+
+        $this->imageService->storeImage($request, 'ffff');
 
         try {
 //            for ($i = 0; $i < 10000; $i++) {
@@ -116,6 +123,8 @@ class ProductService extends MyService
             'note' => 'max:500',
             'qty' => 'nullable|numeric|digits_between:1,10',
             'active' => 'accepted',
+            'image' => 'required',
+            'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:1000',
         ]);
     }
 
@@ -131,6 +140,7 @@ class ProductService extends MyService
             'note' => 'max:500',
             'qty' => 'nullable|numeric|digits_between:1,10',
             'active' => 'accepted',
+            'image' => 'mimes:jpeg,jpg,png,gif|required|max:1000',
         ]);
     }
 }
