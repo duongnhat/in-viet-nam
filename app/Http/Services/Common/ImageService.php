@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Storage;
 
 class ImageService extends MyService
 {
-    public function storeImage(Request $request, $folderName)
+    public function storeImage(Request $request, $folderName, $id)
     {
         if ($request->hasFile('image')) {
 
@@ -38,6 +38,15 @@ class ImageService extends MyService
                     $constraint->aspectRatio();
                 });
                 $img->save($thumbnailpath);
+
+                $image = new \App\models\Image([
+                    'product_id' => $folderName == 'product' ? $id : null,
+                    'user_id' => $folderName == 'user' ? $id : null,
+                    'name_to_store' => $filenametostore,
+                    'path' => public_path('storage/' . $folderName . $filenametostore),
+                    'extension' => $extension,
+                ]);
+                $image->save();
             }
             return true;
         }

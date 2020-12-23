@@ -46,7 +46,7 @@ class ProductService extends MyService
             return redirect()->back()->withInput()->withErrors($validator->errors());
         }
 
-        $this->imageService->storeImage($request, 'ffff');
+        $this->imageService->storeImage($request, 'product');
 
         try {
 //            for ($i = 0; $i < 10000; $i++) {
@@ -56,6 +56,8 @@ class ProductService extends MyService
 //            }
             $product = new Product($request->all());
             $product->save();
+
+            $this->imageService->storeImage($request, 'product', $product->id);
 
             return redirect()->intended('/admin/product/thay-doi-san-pham/' . $product->id)->with('messCommon', 'Tạo mới thành công!');
         } catch (\Exception $ex) {
