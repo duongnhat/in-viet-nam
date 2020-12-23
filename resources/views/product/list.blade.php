@@ -15,13 +15,14 @@
                     <thead>
                     <tr>
                         <th scope="col">STT</th>
-                        <th scope="col">Ngày/Tháng</th>
-                        <th scope="col">Tên khách</th>
-                        <th scope="col">Điện thoại</th>
-                        <th scope="col">Địa chỉ</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Thông tin liên hệ</th>
+                        <th scope="col">Tên</th>
+                        <th scope="col">Thư mục</th>
+                        <th scope="col">Đơn giá</th>
+                        <th scope="col">Code</th>
+                        <th scope="col">Text domain</th>
+                        <th scope="col">Số lượng</th>
                         <th scope="col">Ghi chú</th>
+                        <th scope="col">Trạng thái</th>
                         <th scope="col">Ngày tạo</th>
                         <th scope="col" class="text-center">Action</th>
                     </tr>
@@ -30,13 +31,14 @@
                     @foreach($list as $i => $product)
                         <tr>
                             <th scope="row">{{($list->currentPage() - 1) * $list->perPage() + ($i + 1)}}</th>
-                            <td>{{$product->day_month}}</td>
                             <td>{{$product->name}}</td>
-                            <td>{{$product->phone}}</td>
-                            <td>{{$product->address}}</td>
-                            <td>{{$product->email}}</td>
-                            <td>{{$product->info_contact}}</td>
+                            <td>{{$product->folder_name}}</td>
+                            <td>{{$product->price}}</td>
+                            <td>{{$product->code}}</td>
+                            <td>{{$product->text_domain}}</td>
+                            <td>{{$product->qty}}</td>
                             <td>{{$product->note}}</td>
+                            <td>{{$product->active == 1 ? 'Hoạt động' : 'Ẩn'}}</td>
                             <td>{{\Carbon\Carbon::parse($product->created_at)->format('d/m/Y')}}</td>
                             <td class="text-center">
                                 <a href="/admin/product/thay-doi-san-pham/{{$product->id}}">

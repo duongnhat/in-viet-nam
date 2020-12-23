@@ -17,6 +17,22 @@
                     @enderror
                 </div>
                 <div class="form-group">
+                    <label>Thuộc thư mục cấp 3</label>
+                    <select class="form-control @error('folder_id') is-invalid @enderror" name="folder_id" value="{{ old('folder_id') }}">
+                        <option value=""></option>
+                        @foreach($listFolderLevel3 as $i => $item)
+                            <option value="{{$item->id}}" {{ old('folder_id') == $item->id ? 'selected' : '' }}>
+                                {{$item->name}}
+                            </option>
+                        @endforeach
+                    </select>
+                    @error('folder_id')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+                <div class="form-group">
                     <label>Đơn giá</label>
                     <input class="form-control @error('price') is-invalid @enderror" type="text" name="price" value="{{old('price')}}" autocomplete="price">
                     @error('price')
@@ -81,13 +97,13 @@
                     @enderror
                 </div>
                 <div class="form-check mb-3">
-                    <input class="form-check-input" type="checkbox" value="{{old('qty')}}" id="defaultCheck1" name="active" checked>
+                    <input class="form-check-input" type="checkbox" id="defaultCheck1" name="active" checked>
                     <label class="form-check-label" for="defaultCheck1">
                         Active
                     </label>
                 </div>
                 <button type="submit" class="btn btn-primary">Lưu</button>
-                <a type="button" href="/admin/customer/quan-ly-san-pham" class="btn btn-danger">Hủy</a>
+                <a type="button" href="/admin/product/quan-ly-san-pham" class="btn btn-danger">Hủy</a>
             </form>
         </div>
     </div>

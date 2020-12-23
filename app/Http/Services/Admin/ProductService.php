@@ -5,6 +5,8 @@ namespace App\Http\Services\Admin;
 use App\Http\Services\Common\ImageService;
 use App\Http\Services\MyService;
 use App\Models\Product;
+use App\Repositories\Admin\FolderRepository;
+use App\Repositories\Admin\ProductRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -12,16 +14,20 @@ class ProductService extends MyService
 {
     private $product;
     private $imageService;
+    private $folderRepository;
+    private $productRepository;
 
-    public function __construct(Product $product, ImageService $imageService)
+    public function __construct(Product $product, ImageService $imageService, FolderRepository $folderRepository, ProductRepository $productRepository)
     {
         $this->product = $product;
         $this->imageService = $imageService;
+        $this->folderRepository = $folderRepository;
+        $this->productRepository = $productRepository;
     }
 
     public function listPage()
     {
-        $list = Product::paginate(25);
+        $list = $this->productRepository->getPaginationForList();
 
         if ($list->count() == 0 && $list->currentPage() > 1) {
             return redirect()->intended('/admin/product/quan-ly-san-pham');
@@ -32,7 +38,8 @@ class ProductService extends MyService
 
     public function registerForm()
     {
-        return view('product.add');
+        $listFolderLevel3 = $this->folderRepository->getAllByLevel(3);
+        return view('product.add')->with('listFolderLevel3', $listFolderLevel3);
     }
 
     public function register(Request $request)
@@ -117,6 +124,7 @@ class ProductService extends MyService
     {
         return $validator = Validator::make($request, [
             'name' => "required|max:50|unique:product,name,NULL,id,deleted_at,NULL",
+            'folder_id' => 'required|exists:folder,id',
             'price' => 'nullable|numeric|digits_between:1,10',
             'introduce' => 'max:10000',
             'code' => 'max:50',
@@ -133,6 +141,7 @@ class ProductService extends MyService
     {
         return $validator = Validator::make($request, [
             'name' => "required|max:50|unique:product,name,$id,id,deleted_at,NULL",
+            'folder_id' => 'required|exists:folder,id',
             'price' => 'nullable|numeric|digits_between:1,10',
             'introduce' => 'max:10000',
             'code' => 'max:50',
