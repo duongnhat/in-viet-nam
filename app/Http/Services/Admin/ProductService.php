@@ -37,8 +37,6 @@ class ProductService extends MyService
 
     public function register(Request $request)
     {
-//        dd($request->all());
-
         $validator = $this->registerValidate($request->all());
 
         if ($validator->fails()) {
@@ -46,7 +44,7 @@ class ProductService extends MyService
             return redirect()->back()->withInput()->withErrors($validator->errors());
         }
 
-        $this->imageService->storeImage($request, 'product');
+        $request->merge(['active' => ($request->has('active'))]);
 
         try {
 //            for ($i = 0; $i < 10000; $i++) {
@@ -61,6 +59,7 @@ class ProductService extends MyService
 
             return redirect()->intended('/admin/product/thay-doi-san-pham/' . $product->id)->with('messCommon', 'Tạo mới thành công!');
         } catch (\Exception $ex) {
+            dd($ex->getMessage());
             abort(500);
         }
     }
@@ -124,9 +123,8 @@ class ProductService extends MyService
             'text_domain' => 'required|max:50',
             'note' => 'max:500',
             'qty' => 'nullable|numeric|digits_between:1,10',
-            'active' => 'accepted',
             'image' => 'required',
-            'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:1000',
+            'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:5000',
         ]);
     }
 
@@ -141,8 +139,7 @@ class ProductService extends MyService
             'text_domain' => 'required|max:50',
             'note' => 'max:500',
             'qty' => 'nullable|numeric|digits_between:1,10',
-            'active' => 'accepted',
-            'image' => 'mimes:jpeg,jpg,png,gif|required|max:1000',
+            'image' => 'mimes:jpeg,jpg,png,gif|required|max:5000',
         ]);
     }
 }

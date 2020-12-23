@@ -18,32 +18,43 @@ class ImageService extends MyService
             foreach ($request->file('image') as $file) {
 
                 //get filename with extension
-                $filenamewithextension = $file->getClientOriginalName();
+                $fileNameWithExtension = $file->getClientOriginalName();
 
                 //get filename without extension
-                $filename = pathinfo($filenamewithextension, PATHINFO_FILENAME);
+                $filename = pathinfo($fileNameWithExtension, PATHINFO_FILENAME);
 
                 //get file extension
                 $extension = $file->getClientOriginalExtension();
 
                 //filename to store
-                $filenametostore = $filename . '_' . uniqid() . '.' . $extension;
+                $fileNameToStore = $filename . '_' . uniqid() . '.' . $extension;
 
-                Storage::put('public/' . $folderName . '/' . $filenametostore, fopen($file, 'r+'));
-                Storage::put('public/' . $folderName . '/thumbnail/' . $filenametostore, fopen($file, 'r+'));
+                Storage::put('public/' . $folderName . '/' . $fileNameToStore, fopen($file, 'r+'));
+                Storage::put('public/' . $folderName . '/thumbnail/' . $fileNameToStore, fopen($file, 'r+'));
 
                 //Resize image here
-                $thumbnailpath = public_path('storage/' . $folderName . '/thumbnail/' . $filenametostore);
-                $img = Image::make($thumbnailpath)->resize(400, 150, function ($constraint) {
+                $height = Image::make($file)->height();
+                $width = Image::make($file)->width();
+                $width = $width < 1200 ? $width : 1200;
+                $height = $height < 1200 ? $height : 1200;
+
+                $path = public_path('storage/' . $folderName . '/' . $fileNameToStore);
+                $img = Image::make($path)->resize($width, $height, function ($constraint) {
                     $constraint->aspectRatio();
                 });
-                $img->save($thumbnailpath);
+                $img->save($path);
+
+                $thumbnailPath = public_path('storage/' . $folderName . '/thumbnail/' . $fileNameToStore);
+                $img = Image::make($thumbnailPath)->resize(300, 300, function ($constraint) {
+                    $constraint->aspectRatio();
+                });
+                $img->save($thumbnailPath);
 
                 $image = new \App\models\Image([
                     'product_id' => $folderName == 'product' ? $id : null,
                     'user_id' => $folderName == 'user' ? $id : null,
-                    'name_to_store' => $filenametostore,
-                    'path' => public_path('storage/' . $folderName . $filenametostore),
+                    'name_to_store' => $fileNameToStore,
+                    'path' => 'storage/' . $folderName . '/',
                     'extension' => $extension,
                 ]);
                 $image->save();

@@ -1,9 +1,9 @@
 @extends('layout')
-@section('title', 'Dang ky thong tin khach hang')
-@section('description', 'Trang đăng ký thông tin khách hàng.')
+@section('title', 'Tao moi san pham')
+@section('description', 'Trang Tạo mới sản phẩm.')
 @section('content')
     <div class="card container border bg-light px-0">
-        <h3 class="card-header text-center bg-secondary text-light text-uppercase">Đăng ký thông tin khách hàng</h3>
+        <h3 class="card-header text-center bg-secondary text-light text-uppercase">Tạo mới sản phẩm</h3>
         <div class="card-body">
             <form method="post" enctype="multipart/form-data">
                 @csrf

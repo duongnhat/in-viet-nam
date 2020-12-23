@@ -8,12 +8,12 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet" type="text/css">
 </head>
-<body style="background-image: url('{{ asset('images/background.png')}}');">
+<body style="background-image: url('{{ url('images/background.png') }}');">
 <section class="page-head pt-2">
     <div class="container-fluid">
         <div class="row content">
             <div class="col-sm-12 col-md-3 text-md-right text-center logo-company">
-                <img src="{{ URL::to('/') }}/images/logo.png" class="img-rounded mb-2" alt="Cty In Viet Nam" width="215">
+                <img src="{{ url('images/logo.png') }}" class="img-rounded mb-2" alt="Cty In Viet Nam" width="215">
                 <h1 class="text-shadow"><p>CÔNG TY</p>IN VIỆT NAM</h1>
                 @if (Auth::check())
                     <p>Tài khoản: {{ Auth::user()->name }}</p>
@@ -90,7 +90,7 @@
     <div class="container-fluid page-footer text-center text-md-left">
         <div class="row">
             <div class="col-sm-12 col-md-3 text-md-right text-center logo-company m-auto">
-                <img src="{{ URL::to('/') }}/images/logo.png" class="img-rounded m-2" alt="Cty In Viet Nam" width="215">
+                <img src="{{ url('images/logo.png') }}" class="img-rounded m-2" alt="Cty In Viet Nam" width="215">
                 <h1 class="text-shadow"><p>CÔNG TY</p>IN VIỆT NAM</h1>
             </div>
             <div class="col-sm-12 col-md-5 mx-auto mb-4 mt-4">
