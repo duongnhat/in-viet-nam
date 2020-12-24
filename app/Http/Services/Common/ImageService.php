@@ -59,7 +59,7 @@ class ImageService extends MyService
                 ]);
                 $image->save();
             }
-            return true;
         }
+        return true;
     }
 }

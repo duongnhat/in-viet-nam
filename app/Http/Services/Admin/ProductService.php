@@ -131,7 +131,7 @@ class ProductService extends MyService
             'text_domain' => 'required|max:50',
             'note' => 'max:500',
             'qty' => 'nullable|numeric|digits_between:1,10',
-            'image' => 'required',
+            'image' => 'required|max:10',
             'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:5000',
         ]);
     }
@@ -148,7 +148,8 @@ class ProductService extends MyService
             'text_domain' => 'required|max:50',
             'note' => 'max:500',
             'qty' => 'nullable|numeric|digits_between:1,10',
-            'image' => 'mimes:jpeg,jpg,png,gif|required|max:5000',
+            'image' => 'max:10',
+            'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:5000',
         ]);
     }
 }

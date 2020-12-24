@@ -19,7 +19,7 @@
                 </div>
                 @if($level != 1)
                     <div class="form-group">
-                        <label>Thư mục cha</label>
+                        <label>Thư mục cha cấp {{$level - 1}}</label>
                         <select class="form-control @error('folder_father_id') is-invalid @enderror" name="folder_father_id" value="{{ old('folder_father_id') }}">
                             <option value=""></option>
                             @foreach($listFolder as $i => $item)
