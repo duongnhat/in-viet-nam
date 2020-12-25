@@ -13,11 +13,19 @@
                 <div class="row button-print-type">
                     @foreach($listFolder as $i => $item)
                         <div class="col-md-3 mb-4">
-                            <a href="/f/{{$item->id}}/{{strtolower(str_replace(" ","-",$item->text_domain))}}">
-                                <div class="card button-print-type bg-light card-box-shadow border border-secondary border-radius text-break">
-                                    <h1 class="text-shadow text-uppercase text-center font-weight-bold text-secondary m-auto">{{$item->name}}</h1>
-                                </div>
-                            </a>
+                            @if($item->level == 3)
+                                <a href="/p/{{$item->id}}/{{strtolower(str_replace(" ","-",$item->text_domain))}}">
+                                    <div class="card button-print-type bg-light card-box-shadow border border-secondary border-radius text-break">
+                                        <h1 class="text-shadow text-uppercase text-center font-weight-bold text-secondary m-auto">{{$item->name}}</h1>
+                                    </div>
+                                </a>
+                            @else
+                                <a href="/f/{{$item->id}}/{{strtolower(str_replace(" ","-",$item->text_domain))}}">
+                                    <div class="card button-print-type bg-light card-box-shadow border border-secondary border-radius text-break">
+                                        <h1 class="text-shadow text-uppercase text-center font-weight-bold text-secondary m-auto">{{$item->name}}</h1>
+                                    </div>
+                                </a>
+                            @endif
                         </div>
                     @endforeach
                 </div>

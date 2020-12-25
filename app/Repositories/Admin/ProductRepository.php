@@ -17,4 +17,13 @@ class ProductRepository extends MyRepository
             ->whereNull('product.deleted_at')
             ->paginate(25);
     }
+
+    public function getAllByFolderId($id)
+    {
+        return DB::table('product')
+            ->where('folder_id', '=', $id)
+            ->where('active', '=', 1)
+            ->whereNull('deleted_at')
+            ->get();
+    }
 }

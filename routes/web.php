@@ -22,7 +22,11 @@ Route::get('logout', 'auth\LoginController@logout')->name('auth.post-trang-logou
 Route::get('trang-chu', 'Business\HomeController@homePage')->name('business.trang-chu');
 
 Route::group(['prefix' => 'f'], function () {
-    Route::get('/{id}/{nameFolder}', 'Business\FolderPageController@folderLevelPage')->name('business.trang-chu');
+    Route::get('/{id}/{nameFolder}', 'Business\FolderPageController@folderLevelPage')->name('business.thu-muc');
+});
+
+Route::group(['prefix' => 'p'], function () {
+    Route::get('/{folderId}/{nameFolder}', 'Business\ProductPageController@productByFolderPage')->name('business.san-pham');
 });
 
 Route::group(['prefix' => 'admin'], function () {

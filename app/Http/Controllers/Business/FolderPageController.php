@@ -25,6 +25,8 @@ class FolderPageController extends Controller
             abort(404);
         }
 
+        if ($folder->level == 3) {
+        }
         return $this->folderPageService->folderLevelPage($id, $folder);
     }
 
