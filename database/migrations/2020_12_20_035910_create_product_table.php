@@ -18,6 +18,7 @@ class CreateProductTable extends Migration
             $table->integer('folder_id');
             $table->string('name');
             $table->integer('price')->nullable();
+            $table->string('summary')->nullable();
             $table->longText('introduce')->nullable();
             $table->string('code')->nullable();
             $table->string('text_domain');

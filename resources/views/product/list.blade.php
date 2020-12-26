@@ -18,6 +18,7 @@
                         <th scope="col">Tên</th>
                         <th scope="col">Thư mục</th>
                         <th scope="col">Đơn giá</th>
+                        <th scope="col">Tóm tắt</th>
                         <th scope="col">Code</th>
                         <th scope="col">Text domain</th>
                         <th scope="col">Số lượng</th>
@@ -34,6 +35,7 @@
                             <td>{{$product->name}}</td>
                             <td>{{$product->folder_name}}</td>
                             <td>{{$product->price}}</td>
+                            <td>{{$product->summary}}</td>
                             <td>{{$product->code}}</td>
                             <td>{{$product->text_domain}}</td>
                             <td>{{$product->qty}}</td>

@@ -33,6 +33,15 @@
                     @enderror
                 </div>
                 <div class="form-group">
+                    <label>Giới thiệu tóm tắt</label>
+                    <input class="form-control @error('summary') is-invalid @enderror" type="text" name="summary" value="{{old('summary')}}" autocomplete="summary">
+                    @error('summary')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+                <div class="form-group">
                     <label>Đơn giá</label>
                     <input class="form-control @error('price') is-invalid @enderror" type="text" name="price" value="{{old('price')}}" autocomplete="price">
                     @error('price')

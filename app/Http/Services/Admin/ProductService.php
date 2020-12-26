@@ -78,8 +78,9 @@ class ProductService extends MyService
         if (is_null($product)) {
             abort(404);
         }
+        $listFolderLevel3 = $this->folderRepository->getAllByLevel(3);
 
-        return view('product.update')->with('product', $product);
+        return view('product.update')->with(['product' => $product, 'listFolderLevel3' => $listFolderLevel3]);
     }
 
     public function update($id, Request $request)
@@ -96,8 +97,11 @@ class ProductService extends MyService
             return redirect()->back()->withInput()->withErrors($validator->errors());
         }
 
+        $request->merge(['active' => ($request->has('active'))]);
+
         try {
             $product->update($request->all());
+            $this->imageService->storeImage($request, 'product', $product->id);
         } catch (\Exception $ex) {
             abort(500);
         }
@@ -126,6 +130,7 @@ class ProductService extends MyService
             'name' => "required|max:50|unique:product,name,NULL,id,deleted_at,NULL",
             'folder_id' => 'required|exists:folder,id',
             'price' => 'nullable|numeric|digits_between:1,10',
+            'summary' => 'required|max:190',
             'introduce' => 'max:10000',
             'code' => 'max:50',
             'text_domain' => 'required|max:50',
@@ -143,6 +148,7 @@ class ProductService extends MyService
             'name' => "required|max:50|unique:product,name,$id,id,deleted_at,NULL",
             'folder_id' => 'required|exists:folder,id',
             'price' => 'nullable|numeric|digits_between:1,10',
+            'summary' => 'required|max:190',
             'introduce' => 'max:10000',
             'code' => 'max:50',
             'text_domain' => 'required|max:50',

@@ -1,24 +1,15 @@
 @extends('layout')
-@section('title', 'Dang ky thong tin khach hang')
-@section('description', 'Trang đăng ký thông tin khách hàng.')
+@section('title', 'Chỉnh sửa sản phẩm')
+@section('description', 'Trang chỉnh sửa sản phẩm.')
 @section('content')
     <div class="card container border bg-light px-0">
-        <h3 class="card-header text-center bg-secondary text-light text-uppercase">Thay đổi thông tin khách hàng</h3>
+        <h3 class="card-header text-center bg-secondary text-light text-uppercase">Chỉnh sửa sản phẩm</h3>
         <div class="card-body">
-            <form method="post">
+            <form method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
-                    <label>Ngày/Tháng</label>
-                    <input class="form-control @error('day_month') is-invalid @enderror" type="text" name="day_month" value="{{old('day_month', $customer->day_month)}}" autocomplete="day_month">
-                    @error('day_month')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                </div>
-                <div class="form-group">
-                    <label>Tên khách</label>
-                    <input class="form-control @error('name') is-invalid @enderror" type="text" name="name" value="{{old('name', $customer->name)}}" autocomplete="name">
+                    <label>Tên</label>
+                    <input class="form-control @error('name') is-invalid @enderror" type="text" name="name" value="{{old('name', $product->name)}}" autocomplete="name" autofocus>
                     @error('name')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
@@ -26,36 +17,85 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label>Điện thoại</label>
-                    <input class="form-control @error('phone') is-invalid @enderror" type="text" name="phone" value="{{old('phone', $customer->phone)}}" autocomplete="phone">
-                    @error('phone')
+                    <label>Thuộc thư mục cấp 3</label>
+                    <select class="form-control @error('folder_id') is-invalid @enderror" name="folder_id" value="{{ old('folder_id', $product->folder_id) }}">
+                        <option value=""></option>
+                        @foreach($listFolderLevel3 as $i => $item)
+                            <option value="{{$item->id}}" {{ old('folder_id', $product->folder_id) == $item->id ? 'selected' : '' }}>
+                                {{$item->name}}
+                            </option>
+                        @endforeach
+                    </select>
+                    @error('folder_id')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label>Địa chỉ</label>
-                    <input class="form-control @error('address') is-invalid @enderror" type="text" name="address" value="{{old('address', $customer->address)}}" autocomplete="address">
-                    @error('address')
+                    <label>Giới thiệu tóm tắt</label>
+                    <input class="form-control @error('summary') is-invalid @enderror" type="text" name="summary" value="{{old('summary', $product->summary)}}" autocomplete="summary">
+                    @error('summary')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label>Email</label>
-                    <input class="form-control @error('email') is-invalid @enderror" type="text" name="email" value="{{old('email', $customer->email)}}" autocomplete="email">
-                    @error('email')
+                    <label>Đơn giá</label>
+                    <input class="form-control @error('price') is-invalid @enderror" type="text" name="price" value="{{old('price', $product->price)}}" autocomplete="price">
+                    @error('price')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label>Thông tin liên hệ</label>
-                    <input class="form-control @error('info_contact') is-invalid @enderror" type="text" name="info_contact" value="{{old('info_contact', $customer->info_contact)}}" autocomplete="info_contact">
-                    @error('info_contact')
+                    <label>Code</label>
+                    <input class="form-control @error('code') is-invalid @enderror" type="text" name="code" value="{{old('code', $product->code)}}" autocomplete="code">
+                    @error('code')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+                <div class="form-group">
+                    <label>Text domain</label>
+                    <p class="text-warning font-italic font-weight-bold">Kiểu a-b-c-d không dấu tốt nhất cho SEO</p>
+                    <input class="form-control @error('text_domain') is-invalid @enderror" type="text" name="text_domain" value="{{old('text_domain', $product->text_domain)}}" autocomplete="text_domain">
+                    @error('text_domain')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+                <div class="form-group">
+                    <label>Số lượng</label>
+                    <input class="form-control @error('qty') is-invalid @enderror" type="text" name="qty" value="{{old('qty', $product->qty)}}" autocomplete="qty">
+                    @error('qty')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+                <div class="form-group">
+                    <label>Bài giới thiệu</label>
+                    <textarea class="form-control @error('introduce') is-invalid @enderror" type="text" name="introduce" autocomplete="introduce">{{old('introduce', $product->introduce)}}</textarea>
+                    @error('introduce')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputFile">Hình ảnh</label>
+                    <input class="form-control-file @error('image') is-invalid @enderror @error('image.*') is-invalid @enderror" type="file" name="image[]" id="exampleInputFile" multiple accept='image/*'/>
+                    @error('image.*')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                    @error('image')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
@@ -63,15 +103,21 @@
                 </div>
                 <div class="form-group">
                     <label>Ghi chú</label>
-                    <textarea class="form-control @error('note') is-invalid @enderror" type="text" name="note" autocomplete="note">{{old('note', $customer->note)}}</textarea>
+                    <textarea class="form-control @error('note') is-invalid @enderror" type="text" name="note" autocomplete="note">{{old('note', $product->note)}}</textarea>
                     @error('note')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
                     @enderror
                 </div>
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" id="defaultCheck1" name="active" {{ $product->active == 1 ? 'checked' : '' }}>
+                    <label class="form-check-label" for="defaultCheck1">
+                        Active
+                    </label>
+                </div>
                 <button type="submit" class="btn btn-primary">Lưu</button>
-                <a type="button" href="/admin/customer/theo-doi-thong-tin-khach-hang" class="btn btn-danger">Hủy</a>
+                <a type="button" href="/admin/product/quan-ly-san-pham" class="btn btn-danger">Hủy</a>
             </form>
         </div>
     </div>
