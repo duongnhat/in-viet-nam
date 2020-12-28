@@ -79,4 +79,26 @@
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
+.custom-modal-content
+{
+    min-height:600px;
+}
+
+.carousel-indicators {
+    position: unset;
+}
+
+.carousel-indicators{
+    list-style: none;
+}
+.carousel-indicators li, .carousel-indicators li.active{
+    width: 70px;
+    height: 70px;
+    background-color: #fff;
+    position: relative;
+    margin: 10px;
+}
+.carousel-indicators img{
+    width: 100%;
+}
 

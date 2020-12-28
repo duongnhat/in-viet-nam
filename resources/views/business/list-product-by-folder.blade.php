@@ -21,7 +21,7 @@
                                     @endif
                                 @endforeach
                                 <div class="card-body">
-                                    <h4 class="card-title">{{$item->name}}</h4>
+                                    <h3 class="card-title">{{$item->name}}</h3>
                                     <p class="card-text">{{$item->summary}}</p>
                                 </div>
                                 <div class="d-flex justify-content-between align-items-center m-2">
@@ -37,44 +37,56 @@
                         <div class="modal fade bd-example-modal-xl{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-xl">
                                 <div class="modal-content">
-                                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                                        <ol class="carousel-indicators">
-                                            @foreach($listImage as $image)
-                                                @php
-                                                    $no = 0;
-                                                @endphp
-                                                @if($image->product_id == $item->id)
-                                                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                                                @endif
-                                            @endforeach
-                                        </ol>
-                                        <div class="carousel-inner">
-
-                                            @foreach($listImage as $image)
-                                                @if($image->product_id == $item->id)
-                                                    <div class="carousel-item">
-                                                        <img class="d-block w-100" src="{{ url($image->path . $image->name_to_store) }}" alt="">
+                                    <div class="container m-3">
+                                        <div class="custom-modal-content">
+                                            <div class="col-12">
+                                                <div id="carouselExampleIndicators{{$item->id}}" class="carousel slide" data-ride="carousel">
+                                                    <div class="carousel-inner">
+                                                        <ol class="carousel-indicators">
+                                                            <?php $no = 0; ?>
+                                                            @foreach($listImage as $image)
+                                                                @if($image->product_id == $item->id)
+                                                                    <li data-target="#carouselExampleIndicators{{$item->id}}" data-slide-to="{{$no}}" class="{{$no == 0 ? ' active' : ''}}">
+                                                                        <img class="d-block w-100" src="{{ url($image->path . $image->name_to_store) }}" alt="">
+                                                                    </li>
+                                                                    <?php $no++; ?>
+                                                                @endif
+                                                            @endforeach
+                                                        </ol>
+                                                        <?php $no = 0; ?>
+                                                        @foreach($listImage as $image)
+                                                            @if($image->product_id == $item->id)
+                                                                <div class="carousel-item{{$no == 0 ? ' active' : ''}}">
+                                                                    <img class="d-block w-100" src="{{ url($image->path . $image->name_to_store) }}" alt="">
+                                                                </div>
+                                                                <?php $no++; ?>
+                                                            @endif
+                                                        @endforeach
                                                     </div>
-                                                @endif
-                                            @endforeach
-
-                                            <div class="carousel-item active">
-                                                <img class="d-block w-100" src="..." alt="Third slide">
+                                                    <a class="carousel-control-prev" href="#carouselExampleIndicators{{$item->id}}" role="button" data-slide="prev">
+                                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                        <span class="sr-only">Previous</span>
+                                                    </a>
+                                                    <a class="carousel-control-next" href="#carouselExampleIndicators{{$item->id}}" role="button" data-slide="next">
+                                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                        <span class="sr-only">Next</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="card-body text-left">
+                                                    <h3 class="card-title mb-4">{{$item->name}}</h3>
+                                                    <label class="font-weight-bold">Sơ lược:</label>
+                                                    <p class="card-text">{{$item->summary}}</p>
+                                                    <label class="font-weight-bold">Bài giới thiệu:</label>
+                                                    <pre class="card-text">{{$item->introduce}}</pre>
+                                                </div>
                                             </div>
                                         </div>
-                                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                            <span class="sr-only">Previous</span>
-                                        </a>
-                                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                            <span class="sr-only">Next</span>
-                                        </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        @break
                     @endforeach
                 </div>
             @endif
