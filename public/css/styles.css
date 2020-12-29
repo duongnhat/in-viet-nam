@@ -86,17 +86,13 @@
 
 .carousel-indicators {
     position: unset;
+    min-height: 85px;
 }
 
-.carousel-indicators{
-    list-style: none;
-}
 .carousel-indicators li, .carousel-indicators li.active{
-    width: 70px;
-    height: 70px;
+    width: 110px;
     background-color: #fff;
     position: relative;
-    margin: 10px;
 }
 .carousel-indicators img{
     width: 100%;
