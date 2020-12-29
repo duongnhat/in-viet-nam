@@ -80,12 +80,20 @@
                 </div>
                 <div class="form-group">
                     <label>Bài giới thiệu</label>
-                    <textarea class="form-control @error('introduce') is-invalid @enderror" type="text" name="introduce" autocomplete="introduce">{{old('introduce', $product->introduce)}}</textarea>
+                    <textarea id="introduce" class="form-control @error('introduce') is-invalid @enderror" type="text" name="introduce" autocomplete="introduce">{{old('introduce', $product->introduce)}}</textarea>
                     @error('introduce')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
                     @enderror
+                    <script src="https://cdn.ckeditor.com/ckeditor5/11.0.1/classic/ckeditor.js"></script>
+                    <script>
+                        ClassicEditor
+                            .create(document.querySelector('#introduce'))
+                            .catch(error => {
+                                console.error(error);
+                            });
+                    </script>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputFile">Hình ảnh</label>
@@ -118,6 +126,7 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Lưu</button>
                 <a type="button" href="/admin/product/quan-ly-san-pham" class="btn btn-danger">Hủy</a>
+                <a type="button" class="btn btn-warning" href="/p/{{$product->id}}/{{strtolower(str_replace(" ","-",$product->text_domain))}}">Trang chi tiết</a>
             </form>
         </div>
     </div>

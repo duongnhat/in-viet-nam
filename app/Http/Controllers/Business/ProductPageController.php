@@ -20,4 +20,9 @@ class ProductPageController extends Controller
     {
         return $this->productPageService->productByFolderPage($folderId);
     }
+
+    public function productDetailPage($productId)
+    {
+        return $this->productPageService->productDetailPage($productId);
+    }
 }

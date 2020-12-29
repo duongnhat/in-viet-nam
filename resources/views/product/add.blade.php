@@ -80,12 +80,20 @@
                 </div>
                 <div class="form-group">
                     <label>Bài giới thiệu</label>
-                    <textarea class="form-control @error('introduce') is-invalid @enderror" type="text" name="introduce" autocomplete="introduce">{{old('introduce')}}</textarea>
+                    <textarea id="introduce" class="form-control @error('introduce') is-invalid @enderror" type="text" name="introduce" autocomplete="introduce">{{old('introduce')}}</textarea>
                     @error('introduce')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
                     @enderror
+                    <script src="https://cdn.ckeditor.com/ckeditor5/11.0.1/classic/ckeditor.js"></script>
+                    <script>
+                        ClassicEditor
+                            .create(document.querySelector('#introduce'))
+                            .catch(error => {
+                                console.error(error);
+                            });
+                    </script>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputFile">Hình ảnh</label>

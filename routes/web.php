@@ -25,8 +25,12 @@ Route::group(['prefix' => 'f'], function () {
     Route::get('/{id}/{nameFolder}', 'Business\FolderPageController@folderLevelPage')->name('business.thu-muc');
 });
 
-Route::group(['prefix' => 'p'], function () {
+Route::group(['prefix' => 'pf'], function () {
     Route::get('/{folderId}/{nameFolder}', 'Business\ProductPageController@productByFolderPage')->name('business.san-pham');
+});
+
+Route::group(['prefix' => 'p'], function () {
+    Route::get('/{productId}/{nameProduct}', 'Business\ProductPageController@productDetailPage')->name('business.chi-tiet-san-pham');
 });
 
 Route::group(['prefix' => 'admin'], function () {

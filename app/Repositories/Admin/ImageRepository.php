@@ -20,4 +20,11 @@ class ImageRepository extends MyRepository
             ->whereNull('product.deleted_at')
             ->get();
     }
+
+    public function getAllByProductId($id)
+    {
+        return DB::table('image')
+            ->where('product_id', '=', $id)
+            ->get();
+    }
 }

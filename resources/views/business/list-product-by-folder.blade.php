@@ -27,9 +27,9 @@
                                 <div class="d-flex justify-content-between align-items-center m-2">
                                     <div class="btn-group">
                                         <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal" data-target=".bd-example-modal-xl{{$item->id}}">Xem nhanh</button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary" data-toggle="modal" data-target=".bd-example-modal-xl{{$item->id}}">Xem chi tiết</button>
+                                        <a type="button" class="btn btn-sm btn-outline-secondary" href="/p/{{$item->id}}/{{strtolower(str_replace(" ","-",$item->text_domain))}}">Xem chi tiết</a>
                                     </div>
-                                    <small class="text-muted">9 mins</small>
+{{--                                    <small class="text-muted">9 mins</small>--}}
                                 </div>
                             </div>
                         </div>
@@ -55,7 +55,7 @@
                                                         @endif
                                                     @endforeach
                                                 </ol>
-                                                <div id="carouselExampleIndicators{{$item->id}}" class="carousel slide" data-ride="carousel">
+                                                <div id="carouselExampleIndicators{{$item->id}}" class="carousel slide" data-interval="false">
                                                     <div class="carousel-inner">
                                                         <?php $no = 0; ?>
                                                         @foreach($listImage as $image)
@@ -81,8 +81,8 @@
                                                 <div class="card-body text-left">
                                                     <h2 class="card-title mb-4 text-center">{{$item->name}}</h2>
                                                     <p class="card-text"><label class="font-weight-bold">Sơ lược: </label> {{$item->summary}}</p>
-                                                    <label class="font-weight-bold">Bài giới thiệu:</label>
-                                                    <pre class="card-text">{{$item->introduce}}</pre>
+{{--                                                    <label class="font-weight-bold">Bài giới thiệu:</label>--}}
+{{--                                                    <div class="container">{!! $item->introduce !!}</div>--}}
                                                 </div>
                                             </div>
                                         </div>
