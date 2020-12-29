@@ -39,6 +39,9 @@
                 <div class="col-12">
                     <div class="card-body text-left">
                         <p class="card-text"><label class="font-weight-bold">Sơ lược: </label> {{$product->summary}}</p>
+                        <p class="card-text"><label class="font-weight-bold">Mã sản phẩm: </label> {{$product->code ?? 'Đang cập nhật'}}</p>
+                        <p class="card-text"><label class="font-weight-bold">Đơn giá: </label> {{number_format($product->price) ?? 'Đang cập nhật'}}đ</p>
+                        <p class="card-text"><label class="font-weight-bold">Trạng thái: </label> {{$product->active == 1 ? 'Đang hoạt động' : 'Không hoạt động'}}</p>
                         <label class="font-weight-bold">Mô tả:</label>
                         <div class="container">{!! $product->introduce !!}</div>
                     </div>
