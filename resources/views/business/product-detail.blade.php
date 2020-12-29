@@ -11,7 +11,7 @@
                         <?php $no = 0; ?>
                         @foreach($listImage as $image)
                             <li data-target="#carouselExampleIndicators{{$product->id}}" data-slide-to="{{$no}}" class="active">
-                                <img class="d-block w-100" src="{{ url($image->path . 'thumbnail/' . $image->name_to_store) }}" alt="">
+                                <img class="rounded d-block w-100" src="{{ url($image->path . 'thumbnail/' . $image->name_to_store) }}" alt="">
                             </li>
                             <?php $no++; ?>
                         @endforeach
@@ -21,7 +21,7 @@
                             <?php $no = 0; ?>
                             @foreach($listImage as $image)
                                 <div class="carousel-item{{$no == 0 ? ' active' : ''}}">
-                                    <img class="d-block w-100 border border-secondary" src="{{ url($image->path . $image->name_to_store) }}" alt="">
+                                    <img class="rounded d-block w-100 border border-secondary" src="{{ url($image->path . $image->name_to_store) }}" alt="">
                                 </div>
                                 <?php $no++; ?>
                             @endforeach
@@ -35,6 +35,9 @@
                             <span class="sr-only">Next</span>
                         </a>
                     </div>
+                </div>
+                <div class="col-10 mx-auto my-3">
+                    <iframe width="885" height="500" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
                 </div>
                 <div class="col-12">
                     <div class="card-body text-left">
