@@ -2,10 +2,10 @@
 @section('title', $product->name)
 @section('description', $product->summary)
 @section('content')
-    <h1 class="card-header text-center bg-secondary text-light text-uppercase">Chi tiết {{$product->name}}</h1>
-    <div class="album py-5">
-        <div class="container">
-            <div class="custom-modal-content">
+    <div class="album">
+        <h1 class="container card-header text-center bg-secondary text-light text-uppercase box-shadow">Chi tiết {{$product->name}}</h1>
+        <div class="container bg-light box-shadow rounded-bottom">
+            <div class="custom-modal-content py-5">
                 <div class="col-12">
                     <label class="font-weight-bold">Một số hình ảnh của sản phẩm:</label>
                     <ol class="carousel-indicators carousel-indicators-custom mx-0">

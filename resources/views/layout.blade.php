@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet" type="text/css">
 </head>
-<body style="background-image: url('{{ url('images/background.png') }}');">
+{{--<body style="background-image: url('{{ url('images/background.png') }}');">--}}
+<body>
 <section class="page-head pt-2">
     <div class="container-fluid">
         <div class="row content">
@@ -89,7 +90,7 @@
         </div>
     </div>
 </section>
-<section class="page-container my-3">
+<section class="page-container my-2">
     <div class="container px-0">
         @if (session('messCommon'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -112,8 +113,8 @@
 </section>
 
 <footer>
-{{--    <div class="div-green"></div>--}}
-    <div class="container-fluid page-footer text-center text-md-left">
+    {{--    <div class="div-green"></div>--}}
+    <div class="container-fluid page-footer text-center text-md-left mt-4">
         <div class="row">
             <div class="col-sm-12 col-md-3 text-md-right text-center logo-company m-auto">
                 <img src="{{ url('images/logo.png') }}" class="img-rounded m-2" alt="Cty In Viet Nam" width="215">

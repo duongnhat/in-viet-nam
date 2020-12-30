@@ -2,6 +2,9 @@
     box-sizing: content-box;
 }
 
+body {
+    background-color: #e7e7e7;
+}
 .menu {
     background-color: #69b98e;
 }
@@ -27,7 +30,7 @@
 }
 
 .page-footer {
-    background-color: #69b98e;
+    background-color: #d1ecf1;
 }
 
 .footer-copyright {
@@ -72,6 +75,10 @@
     box-shadow: 10px -10px 5px grey;
 }
 
+.box-shadow {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
 .border-radius {
     border-radius: 15%;
 }
@@ -104,7 +111,7 @@
     width: 100%;
 }
 
-@media only screen and (max-width: 576px) {
+@media only screen and (max-width: 768px) {
     .ba-no .carousel-inner {
         width: 100%;
         height: 240px;
