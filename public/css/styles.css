@@ -2,6 +2,10 @@
     box-sizing: content-box;
 }
 
+.menu {
+    background-color: #69b98e;
+}
+
 .alert-label {
     margin: 0 105px;
 }
@@ -23,7 +27,7 @@
 }
 
 .page-footer {
-    background-color: #78bb15;
+    background-color: #69b98e;
 }
 
 .footer-copyright {
@@ -36,10 +40,12 @@
 }
 
 .ba-no {
-    border-radius: 10px;
-    background-color: firebrick;
     width: 100%;
-    min-height: 315px;
+}
+
+.ba-no .carousel-inner {
+    width: 100%;
+    height: 400px;
 }
 
 .button-print-type {
@@ -71,30 +77,37 @@
 }
 
 .card {
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: 0.3s;
 }
 
 .card:hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
-.custom-modal-content
-{
-    min-height:600px;
+.custom-modal-content {
+    min-height: 600px;
 }
 
-.carousel-indicators {
+.carousel-indicators-custom {
     position: unset;
     min-height: 85px;
 }
 
-.carousel-indicators li, .carousel-indicators li.active{
+.carousel-indicators-custom li, .carousel-indicators-custom li.active {
     width: 110px;
     background-color: #fff;
     position: relative;
 }
-.carousel-indicators img{
+
+.carousel-indicators-custom img {
     width: 100%;
+}
+
+@media only screen and (max-width: 576px) {
+    .ba-no .carousel-inner {
+        width: 100%;
+        height: 240px;
+    }
 }
 

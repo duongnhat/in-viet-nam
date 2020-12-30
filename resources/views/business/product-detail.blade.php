@@ -7,7 +7,8 @@
         <div class="container">
             <div class="custom-modal-content">
                 <div class="col-12">
-                    <ol class="carousel-indicators mx-0">
+                    <label class="font-weight-bold">Một số hình ảnh của sản phẩm:</label>
+                    <ol class="carousel-indicators carousel-indicators-custom mx-0">
                         <?php $no = 0; ?>
                         @foreach($listImage as $image)
                             <li data-target="#carouselExampleIndicators{{$product->id}}" data-slide-to="{{$no}}" class="active">
