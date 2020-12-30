@@ -1,0 +1,13 @@
+ENV = test
+
+clean:
+	rm -rf myapp.zip
+
+build:
+	make clean
+	mv .env .env.bk
+	mv ".env.${ENV}" .env
+	git archive -v -o myapp.zip --format=zip HEAD
+	zip myapp.zip .env
+	mv .env ".env.${ENV}"
+	mv .env.bk .env
