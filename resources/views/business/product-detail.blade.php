@@ -38,7 +38,7 @@
                     </div>
                 </div>
                 <div class="col-10 mx-auto my-3">
-                    <iframe width="885" height="500" src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
+                    <iframe src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
                 </div>
                 <div class="col-12">
                     <div class="card-body text-left">
