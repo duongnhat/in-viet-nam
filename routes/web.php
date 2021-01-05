@@ -64,4 +64,8 @@ Route::group(['prefix' => 'admin'], function () {
         Route::post('thay-doi-san-pham/{id}', 'Admin\ProductController@update')->name('product.post-thay-doi-san-pham');
         Route::get('delete/{id}', 'Admin\ProductController@delete')->name('product.xoa-san-pham');
     });
+
+    Route::group(['prefix' => 'ad'], function () {
+        Route::get('tao-bai-dang-mang-xa-hoi/{id}', 'Admin\AdvertisementController@createNewsProduct')->name('advertisement.tao-bai-dang-mang-xa-hoi');
+    });
 });
