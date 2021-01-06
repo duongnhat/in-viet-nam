@@ -2,17 +2,34 @@ $(document).ready(function () {
     // postStatusToPageFacebook();
 });
 
-function toPostStatusToPageFacebook() {
-    postStatusToPageFacebook('ưeiuriewruewioruweioruweioruweioruweioruweioru', 'https://bootsnipp.com/snippets/o85lM');
+function toPostStatusToPageFacebook(link) {
+    let message = $("#additional").val();
+    postStatusToPageFacebook(message + new Date().getTime(), link);
+}
+
+function toPostPhotoToPageFacebook() {
+    let message = $("#additional").val();
+    postPhotoToPageFacebook(message + new Date().getTime());
 }
 function postStatusToPageFacebook(message, link) {
     $.post("https://graph.facebook.com/103693188334656/feed",
         {
             message: message,
-            // message: new Date().getTime(),
             link: link,
-            // link: "https://www.youtube.com/watch?v=2jYmxWC11ac",
-            access_token: "EAADY7PbMPbkBAIq9ypDpOzMI7fGJ5hrZC6mZAh27vmg8ZBajYO4lIXr8zrfTPNTVR8IrVTbFCYF00iQmSmYTB4tZBrhq3lpEjblk17STsVPZBNHkb3qbYB9PtRs0s7cgs2UqPk6xBUiMA1Ugl3fNtnvPTnMqobqOAz5jMe7kSinyzl8S9gPRNEZAfet6ZCHS0VLilZCC1SOC5wZDZD"
+            access_token: "EAADY7PbMPbkBALyHaAbS0mapEorpCZANfVZAlZB3TNAZCVFM2kTH1yC5kZCLHQeC6IngO47TsNK9ZAqOw4rJmE06tAuU4SJjRl2uja8hjVk9yLBEzOw43FLRhjUjVq1C255fgISNZAMS86kivpRxMQNn97raClxFQkdSfM8tjKEZBWcuJwY7cZA0ZCqoQMso42AIQgs8OoCkow7QZDZD"
+        })
+        .done(function (data) {
+            alert(data.id);
+            console.log(data);
+        });
+}
+
+function postPhotoToPageFacebook(message, url) {
+    $.post("https://graph.facebook.com/103693188334656/photos",
+        {
+            message: message,
+            url: 'http://testlaravel.ap-southeast-1.elasticbeanstalk.com/images/2.jpg',
+            access_token: "EAADY7PbMPbkBALyHaAbS0mapEorpCZANfVZAlZB3TNAZCVFM2kTH1yC5kZCLHQeC6IngO47TsNK9ZAqOw4rJmE06tAuU4SJjRl2uja8hjVk9yLBEzOw43FLRhjUjVq1C255fgISNZAMS86kivpRxMQNn97raClxFQkdSfM8tjKEZBWcuJwY7cZA0ZCqoQMso42AIQgs8OoCkow7QZDZD"
         })
         .done(function (data) {
             alert(data.id);
