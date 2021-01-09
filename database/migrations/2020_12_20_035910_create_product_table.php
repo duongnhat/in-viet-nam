@@ -23,6 +23,7 @@ class CreateProductTable extends Migration
             $table->string('code')->nullable();
             $table->string('text_domain');
             $table->integer('image_id')->nullable();
+            $table->string('youtube')->nullable();
             $table->string('note')->nullable();
             $table->string('qty')->nullable();
             $table->boolean('active');

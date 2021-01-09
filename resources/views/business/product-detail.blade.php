@@ -37,9 +37,11 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-10 mx-auto my-3">
-                    <iframe src="https://www.youtube.com/embed/mw5VIEIvuMI"></iframe>
-                </div>
+                @if($product->youtube != null)
+                    <div class="col-10 mx-auto my-3">
+                        <iframe src="https://www.youtube.com/embed/{{$product->youtube}}"></iframe>
+                    </div>
+                @endif
                 <div class="col-12">
                     <div class="card-body text-left">
                         <p class="card-text"><label class="font-weight-bold">Sơ lược: </label> {{$product->summary}}</p>
