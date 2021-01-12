@@ -4,6 +4,7 @@ namespace App\Http\Services\Admin;
 
 use App\Http\Services\Common\ImageService;
 use App\Http\Services\MyService;
+use App\models\Facebook;
 use App\Models\Product;
 use App\Repositories\Admin\FolderRepository;
 use App\Repositories\Admin\ProductRepository;
@@ -33,5 +34,22 @@ class AdvertisementService extends MyService
             abort(404);
         }
         return view('advertisement.social_networking')->with('product', $product);
+    }
+
+    public function saveLogFacebook(Request $request)
+    {
+        $product = Product::find($request->input('product_id'));
+
+        if (is_null($product)) {
+            abort(404);
+        }
+
+        try {
+            $facebook = new Facebook($request->all());
+            $facebook->save();
+        } catch (\Exception $ex) {
+            return 'false';
+        }
+        return 'true';
     }
 }

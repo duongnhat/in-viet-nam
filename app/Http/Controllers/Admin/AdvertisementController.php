@@ -19,4 +19,9 @@ class AdvertisementController extends Controller
     {
         return $this->advertisementService->createNewsProduct($id);
     }
+
+    public function saveLogFacebook(Request $request)
+    {
+        return $this->advertisementService->saveLogFacebook($request);
+    }
 }

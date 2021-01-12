@@ -68,4 +68,8 @@ Route::group(['prefix' => 'admin'], function () {
     Route::group(['prefix' => 'ad'], function () {
         Route::get('tao-bai-dang-mang-xa-hoi/{id}', 'Admin\AdvertisementController@createNewsProduct')->name('advertisement.tao-bai-dang-mang-xa-hoi');
     });
+
+    Route::group(['prefix' => 'facebook'], function () {
+        Route::post('luu-log-bai-post', 'Admin\AdvertisementController@saveLogFacebook')->name('facebook.luu-log-bai-post');
+    });
 });

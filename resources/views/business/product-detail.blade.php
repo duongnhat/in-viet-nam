@@ -1,6 +1,23 @@
 @extends('layout')
 @section('title', $product->name)
 @section('description', $product->summary)
+@section('meta')
+    <!-- META FOR FACEBOOK -->
+    <meta property="og:site_name" content="vnexpress.net"/>
+    <meta property="og:rich_attachment" content="true"/>
+    <meta property="og:type" content="article"/>
+    <meta property="article:publisher" content="https://www.facebook.com/congdongvnexpress/"/>
+    <meta property="og:url" itemprop="url" content="https://vnexpress.net/make-in-vietnam-se-giup-nganh-ict-tang-truong-gap-2-4-lan-gdp-4219697.html"/>
+    <meta property="og:image" itemprop="thumbnailUrl" content="https://i1-kinhdoanh.vnecdn.net/2021/01/12/botruongnguyenmanhhungleson-16-8844-3684-1610428969.jpg?w=1200&h=0&q=100&dpr=1&fit=crop&s=R1SAF0JsKPu7WKpYoLBbXQ"/>
+    <meta property="og:image:width" content="800"/>
+    <meta property="og:image:height" content="354"/>
+    <meta content="'Make in Vietnam sẽ giúp ngành ICT tăng trưởng gấp 2-4 lần GDP'" itemprop="headline" property="og:title"/>
+    <meta content="Theo Bộ trưởng Nguyễn Mạnh Hùng, chiến lược &quot;Make in Vietnam&quot; sẽ giúp ngành công nghiệp ICT thực hiện sứ mệnh mới, giúp biến Việt Nam thành quốc gia công nghệ." itemprop="description" property="og:description"/>
+    <meta property="article:tag" content="make in vietnam,Bộ trưởng Nguyễn Mạnh Hùng,Make in Vietnam,Tin nóng,Chính sách kinh tế,Tin"/>
+    <meta name="liston_category" content="1003159,1003184"/>
+    <meta name="tt_site_id_detail" content="1003159" catename="Kinh doanh"/>
+    <!-- END META FOR FACEBOOK -->
+@endsection
 @section('content')
     <div class="album">
         <h1 class="container card-header text-center bg-secondary text-light text-uppercase box-shadow">Chi tiết {{$product->name}}</h1>
