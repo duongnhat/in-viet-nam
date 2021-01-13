@@ -1,3 +1,3 @@
 $(document).ready(function () {
-    // postStatusToPageFacebook();
+    // $("#access-token").val('ertretertetg');
 });

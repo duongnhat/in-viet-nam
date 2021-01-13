@@ -38,10 +38,12 @@ class AdvertisementService extends MyService
 
     public function saveLogFacebook(Request $request)
     {
+        \Illuminate\Support\Facades\Session::put('access_token', $request->input('access_token'));
+
         $product = Product::find($request->input('product_id'));
 
         if (is_null($product)) {
-            abort(404);
+            return 'false';
         }
 
         try {
