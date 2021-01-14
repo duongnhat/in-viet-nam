@@ -34,8 +34,8 @@ Route::group(['prefix' => 'p'], function () {
 });
 
 Route::group(['prefix' => 'rg'], function () {
-    Route::get('dang-ky-thong-tin-san-pham/{id}', 'Business\RegisteredGuestController@registerForm')->name('registered-guest.dang-ky-thong-tin-san-pham');
-    Route::post('dang-ky-thong-tin-san-pham/{id}', 'Business\RegisteredGuestController@register')->name('registered-guest.post-dang-ky-thong-tin-san-pham');
+    Route::get('{id}/dang-ky-thong-tin-san-pham', 'Business\RegisteredGuestController@registerForm')->name('registered-guest.dang-ky-thong-tin-san-pham');
+    Route::post('{id}/dang-ky-thong-tin-san-pham', 'Business\RegisteredGuestController@register')->name('registered-guest.post-dang-ky-thong-tin-san-pham');
 });
 
 Route::group(['prefix' => 'admin'], function () {

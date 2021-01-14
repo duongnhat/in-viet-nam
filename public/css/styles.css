@@ -118,6 +118,10 @@ iframe {
     width: 100%;
 }
 
+.max-width {
+    max-width: 550px;
+}
+
 @media only screen and (max-width: 992px) {
     .ba-no .carousel-inner {
         width: 100%;

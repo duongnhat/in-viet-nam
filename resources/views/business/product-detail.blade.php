@@ -70,7 +70,7 @@
                         <p class="card-text"><label class="font-weight-bold">Trạng thái: </label> {{$product->active == 1 ? 'Đang hoạt động' : 'Không hoạt động'}}</p>
                         <label class="font-weight-bold">Mô tả:</label>
                         <div class="container">{!! $product->introduce !!}</div>
-                        <a href="/rg/dang-ky-thong-tin-san-pham/{{$product->id}}" class="btn btn-info">Đăng ký thông tin sản phẩm</a>
+                        <a href="/rg/{{$product->id}}/dang-ky-thong-tin-san-pham" class="btn btn-info">Đăng ký thông tin sản phẩm</a>
                     </div>
                 </div>
             </div>
