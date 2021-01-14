@@ -78,6 +78,9 @@
                                         <a class="dropdown-item" href="/admin/folder/quan-ly-thu-muc-cap-3">Cấp 3</a>
                                     </div>
                                 </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/admin/registered-guest/danh-sach-dang-ky-thong-tin-san-pham">Đơn hàng</a>
+                                </li>
                             @endif
                             <li class="nav-item">
                                 @if (Auth::check())

@@ -21,6 +21,17 @@ class RegisteredGuestController extends Controller
         $this->registeredGuestService = $registeredGuestService;
     }
 
+    public function listPage()
+    {
+        $list = RegisteredGuest::paginate(25);
+
+        if ($list->count() == 0 && $list->currentPage() > 1) {
+            return redirect()->intended('/admin/registered-guest/danh-sach-dang-ky-thong-tin-san-pham');
+        }
+
+        return view('registered_guest.list')->with('list', $list);
+    }
+
     public function registerForm($id)
     {
         $product = Product::find($id);

@@ -70,6 +70,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
         Route::get('delete/{id}', 'Admin\ProductController@delete')->name('product.xoa-san-pham');
     });
 
+    Route::group(['prefix' => 'registered-guest'], function () {
+        Route::get('danh-sach-dang-ky-thong-tin-san-pham', 'Business\RegisteredGuestController@listPage')->name('registered-guest.danh-sach-dang-ky-thong-tin-san-pham');
+    });
+
     Route::group(['prefix' => 'ad'], function () {
         Route::get('tao-bai-dang-mang-xa-hoi/{id}', 'Admin\AdvertisementController@createNewsProduct')->name('advertisement.tao-bai-dang-mang-xa-hoi');
     });
