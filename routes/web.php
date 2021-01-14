@@ -33,6 +33,11 @@ Route::group(['prefix' => 'p'], function () {
     Route::get('/{productId}/{nameProduct}', 'Business\ProductPageController@productDetailPage')->name('business.chi-tiet-san-pham');
 });
 
+Route::group(['prefix' => 'rg'], function () {
+    Route::get('dang-ky-thong-tin-san-pham/{id}', 'Business\RegisteredGuestController@registerForm')->name('registered-guest.dang-ky-thong-tin-san-pham');
+    Route::post('dang-ky-thong-tin-san-pham/{id}', 'Business\RegisteredGuestController@register')->name('registered-guest.post-dang-ky-thong-tin-san-pham');
+});
+
 Route::group(['prefix' => 'admin'], function () {
     Route::group(['prefix' => 'customer'], function () {
         Route::get('theo-doi-thong-tin-khach-hang', 'Admin\CustomerController@listPage')->name('customer.theo-doi-thong-tin-khach-hang');

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRegisteredGuestTable extends Migration
+class CreateAdvisoryInfoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateRegisteredGuestTable extends Migration
      */
     public function up()
     {
-        Schema::create('registered_guest', function (Blueprint $table) {
+        Schema::create('advisory_info', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('product_id');
-            $table->integer('qty');
-            $table->string('specification')->nullable();
             $table->string('phone');
-            $table->string('email');
+            $table->string('email')->nullable();
             $table->string('note')->nullable();
             $table->boolean('completed');
             $table->timestamps();
@@ -34,6 +31,6 @@ class CreateRegisteredGuestTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('registered_guest');
+        Schema::dropIfExists('advisory_info');
     }
 }

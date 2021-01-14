@@ -9,10 +9,10 @@
     <meta property="article:publisher" content="https://www.facebook.com/congdongvnexpress/"/>
     <meta property="og:url" itemprop="url" content="{{config('app.url')}}/p/{{$product->id}}/{{strtolower(str_replace(" ","-",$product->text_domain))}}"/>
     @foreach($listImage as $image)
-<meta property="og:image" itemprop="thumbnailUrl" content="{{ url($image->path . $image->name_to_store) }}"/>
-    @break
+        <meta property="og:image" itemprop="thumbnailUrl" content="{{ url($image->path . $image->name_to_store) }}"/>
+        @break
     @endforeach
-<meta property="og:image:width" content="800"/>
+    <meta property="og:image:width" content="800"/>
     <meta property="og:image:height" content="354"/>
     <meta content="'{{$product->name}}'" itemprop="headline" property="og:title"/>
     <meta content="{{$product->summary}}" itemprop="description" property="og:description"/>
@@ -70,6 +70,7 @@
                         <p class="card-text"><label class="font-weight-bold">Trạng thái: </label> {{$product->active == 1 ? 'Đang hoạt động' : 'Không hoạt động'}}</p>
                         <label class="font-weight-bold">Mô tả:</label>
                         <div class="container">{!! $product->introduce !!}</div>
+                        <a href="/rg/dang-ky-thong-tin-san-pham/{{$product->id}}" class="btn btn-info">Đăng ký thông tin sản phẩm</a>
                     </div>
                 </div>
             </div>
