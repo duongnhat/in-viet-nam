@@ -61,22 +61,24 @@
                             <li class="nav-item active">
                                 <a class="nav-link" href="/">Trang chủ <span class="sr-only">(current)</span></a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/admin/product/quan-ly-san-pham">Sản phẩm</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/admin/customer/theo-doi-thong-tin-khach-hang">Khách hàng</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Thư mục
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                    <a class="dropdown-item" href="/admin/folder/quan-ly-thu-muc-cap-1">Cấp 1</a>
-                                    <a class="dropdown-item" href="/admin/folder/quan-ly-thu-muc-cap-2">Cấp 2</a>
-                                    <a class="dropdown-item" href="/admin/folder/quan-ly-thu-muc-cap-3">Cấp 3</a>
-                                </div>
-                            </li>
+                            @if (Auth::check())
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/admin/product/quan-ly-san-pham">Sản phẩm</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/admin/customer/theo-doi-thong-tin-khach-hang">Khách hàng</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Thư mục
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                        <a class="dropdown-item" href="/admin/folder/quan-ly-thu-muc-cap-1">Cấp 1</a>
+                                        <a class="dropdown-item" href="/admin/folder/quan-ly-thu-muc-cap-2">Cấp 2</a>
+                                        <a class="dropdown-item" href="/admin/folder/quan-ly-thu-muc-cap-3">Cấp 3</a>
+                                    </div>
+                                </li>
+                            @endif
                             <li class="nav-item">
                                 @if (Auth::check())
                                     <a onclick="return confirm('Bạn có chắc chắn muốn đăng xuất?');" class="nav-link" href="/logout">Đăng xuất</a>

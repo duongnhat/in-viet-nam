@@ -15,7 +15,7 @@ Route::get('/', function () {
     return redirect('trang-chu');
 });
 
-Route::get('login', 'auth\LoginController@loginPage')->name('auth.trang-login');
+Route::get('login', 'auth\LoginController@loginPage')->name('login');
 Route::post('login', 'auth\LoginController@login')->name('auth.post-trang-login');
 Route::get('logout', 'auth\LoginController@logout')->name('auth.post-trang-logout');
 
@@ -38,7 +38,7 @@ Route::group(['prefix' => 'rg'], function () {
     Route::post('{id}/dang-ky-thong-tin-san-pham', 'Business\RegisteredGuestController@register')->name('registered-guest.post-dang-ky-thong-tin-san-pham');
 });
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
     Route::group(['prefix' => 'customer'], function () {
         Route::get('theo-doi-thong-tin-khach-hang', 'Admin\CustomerController@listPage')->name('customer.theo-doi-thong-tin-khach-hang');
         Route::get('dang-ky-thong-tin-khach-hang', 'Admin\CustomerController@registerForm')->name('customer.dang-ky-thong-tin-khach-hang');
