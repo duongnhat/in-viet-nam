@@ -18,8 +18,8 @@
                 <img src="{{ url('images/logo.png') }}" class="img-rounded mb-2" alt="Cty In Viet Nam" width="215">
                 <h1 class="text-shadow"><p>CÔNG TY</p>IN VIỆT NAM</h1>
                 @if (Auth::check())
-                    <p>Tài khoản: {{ Auth::user()->name }}</p>
-                    <p>{{ Auth::user()->email }}</p>
+                    <p class="font-italic">Tài khoản: {{ Auth::user()->name }}</p>
+                    <p class="font-italic">{{ Auth::user()->email }}</p>
                     <a onclick="return confirm('Bạn có chắc chắn muốn đăng xuất?');" class="btn btn-outline-info btn-sm mt-1" href="/logout">Logout</a>
                 @else
                     <a class="btn btn-outline-info btn-sm mt-1" href="/login">Login</a>

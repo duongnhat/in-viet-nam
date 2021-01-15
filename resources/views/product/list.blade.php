@@ -33,7 +33,9 @@
                     @foreach($list as $i => $product)
                         <tr>
                             <th scope="row">{{($list->currentPage() - 1) * $list->perPage() + ($i + 1)}}</th>
-                            <td>{{$product->name}}</td>
+                            <td>
+                                <a href="/p/{{$product->id}}/{{strtolower(str_replace(" ","-",$product->text_domain))}}">{{$product->name}}</a>
+                            </td>
                             <td>{{$product->folder_name}}</td>
                             <td>{{$product->price}}</td>
                             <td>{{$product->summary}}</td>
@@ -45,12 +47,6 @@
                             <td>{!!$product->active == 1 ? '<div class="badge badge-primary text-wrap" style="width: 6rem;">Hoạt động</div>' : '<div class="badge badge-danger text-wrap" style="width: 6rem;">Ẩn</div>'!!}</td>
                             <td>{{\Carbon\Carbon::parse($product->created_at)->format('d/m/Y')}}</td>
                             <td class="text-center">
-                                <a href="/p/{{$product->id}}/{{strtolower(str_replace(" ","-",$product->text_domain))}}">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-layout-text-window" viewBox="0 0 16 16">
-                                        <path d="M3 6.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 3a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5z"/>
-                                        <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v1H1V2a1 1 0 0 1 1-1h12zm1 3v10a1 1 0 0 1-1 1h-2V4h3zm-4 0v11H2a1 1 0 0 1-1-1V4h10z"/>
-                                    </svg>
-                                </a>
                                 <a href="/admin/product/thay-doi-san-pham/{{$product->id}}">
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>

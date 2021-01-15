@@ -29,9 +29,13 @@
                     @foreach($list as $i => $folder)
                         <tr>
                             <th scope="row">{{($list->currentPage() - 1) * $list->perPage() + ($i + 1)}}</th>
-                            <td>{{$folder->name}}</td>
+                            <td>
+                                <a href="/{{$folder->level == 3 ? 'pf' : 'f'}}/{{$folder->id}}/{{strtolower(str_replace(" ","-",$folder->text_domain))}}">{{$folder->name}}</a>
+                            </td>
                             @if($level != 1)
-                                <td>{{$folder->folder_father_name}}</td>
+                                <td>
+                                    <a href="/f/{{$folder->folder_father_id}}/{{strtolower(str_replace(" ","-",$folder->folder_father_text_domain))}}">{{$folder->folder_father_name}}</a>
+                                </td>
                             @endif
                             <td>{{$folder->text_domain}}</td>
                             <td>{{$folder->description}}</td>

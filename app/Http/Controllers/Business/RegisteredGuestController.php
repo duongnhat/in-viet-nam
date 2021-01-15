@@ -43,16 +43,20 @@ class RegisteredGuestController extends Controller
             return redirect()->back()->withInput()->withErrors($validator->errors());
         }
 
+        $product = Product::find($request->input('product_id'));
+        if ($product->active == 0) {
+            abort(500);
+        }
+
         $request->merge(['status' => false]);
 
         try {
-            $registeredGuest = $this->registeredGuestService->register($request->all());
-            $product = Product::find($registeredGuest->product_id);
-
-            return redirect()->intended('/p/' . $product->id . '/' . strtolower(str_replace(" ", "-", $product->text_domain)))->with('messCommon', 'Đăng ký thành công!');
+            $this->registeredGuestService->register($request->all());
         } catch (\Exception $ex) {
             abort(500);
         }
+
+        return redirect()->intended('/p/' . $product->id . '/' . strtolower(str_replace(" ", "-", $product->text_domain)))->with('messCommon', 'Đăng ký thành công!');
     }
 
     public function changeStatus($id, $status)

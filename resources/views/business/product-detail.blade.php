@@ -71,6 +71,9 @@
                         <label class="font-weight-bold">Mô tả:</label>
                         <div class="container">{!! $product->introduce !!}</div>
                         <a href="/rg/{{$product->id}}/dang-ky-thong-tin-san-pham" class="btn btn-info">Đăng ký thông tin sản phẩm</a>
+                        @if (Auth::check())
+                            <a href="/admin/product/thay-doi-san-pham/{{$product->id}}" class="btn btn-warning">Chỉnh sửa</a>
+                        @endif
                     </div>
                 </div>
             </div>
