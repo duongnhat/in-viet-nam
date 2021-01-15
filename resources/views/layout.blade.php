@@ -20,6 +20,9 @@
                 @if (Auth::check())
                     <p>Tài khoản: {{ Auth::user()->name }}</p>
                     <p>{{ Auth::user()->email }}</p>
+                    <a onclick="return confirm('Bạn có chắc chắn muốn đăng xuất?');" class="btn btn-outline-info btn-sm mt-1" href="/logout">Logout</a>
+                @else
+                    <a class="btn btn-outline-info btn-sm mt-1" href="/login">Login</a>
                 @endif
             </div>
             <div class="col-sm-12 col-md-9 col-xl-8">
@@ -82,13 +85,6 @@
                                     <a class="nav-link" href="/admin/registered-guest/danh-sach-dang-ky-thong-tin-san-pham">Đơn hàng</a>
                                 </li>
                             @endif
-                            <li class="nav-item">
-                                @if (Auth::check())
-                                    <a onclick="return confirm('Bạn có chắc chắn muốn đăng xuất?');" class="nav-link" href="/logout">Đăng xuất</a>
-                                @else
-                                    <a class="nav-link" href="/login">Đăng nhập</a>
-                                @endif
-                            </li>
                         </ul>
                     </div>
                 </nav>

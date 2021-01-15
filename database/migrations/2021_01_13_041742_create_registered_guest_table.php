@@ -21,7 +21,7 @@ class CreateRegisteredGuestTable extends Migration
             $table->string('phone');
             $table->string('email');
             $table->string('note')->nullable();
-            $table->boolean('completed');
+            $table->boolean('status');
             $table->timestamps();
             $table->softDeletes();
         });

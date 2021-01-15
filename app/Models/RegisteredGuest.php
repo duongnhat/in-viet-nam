@@ -14,6 +14,6 @@ class RegisteredGuest extends Model
     protected $table = 'registered_guest';
 
     protected $fillable = [
-        'product_id', 'qty', 'specification', 'phone', 'email', 'note', 'completed',
+        'product_id', 'qty', 'specification', 'phone', 'email', 'note', 'status',
     ];
 }

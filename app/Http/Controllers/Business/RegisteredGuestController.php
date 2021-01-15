@@ -4,10 +4,8 @@ namespace App\Http\Controllers\Business;
 
 use App\Http\Controllers\Controller;
 use App\Http\Services\Business\RegisteredGuestService;
-use App\Http\Services\Common\ImageService;
 use App\models\Product;
 use App\Models\RegisteredGuest;
-use App\Repositories\Admin\FolderRepository;
 use App\Repositories\Admin\RegisteredGuestRepository;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -23,7 +21,7 @@ class RegisteredGuestController extends Controller
 
     public function listPage()
     {
-        $list = RegisteredGuest::paginate(25);
+        $list = $this->registeredGuestService->getPaginationForList();
 
         if ($list->count() == 0 && $list->currentPage() > 1) {
             return redirect()->intended('/admin/registered-guest/danh-sach-dang-ky-thong-tin-san-pham');
@@ -61,19 +59,7 @@ class RegisteredGuestController extends Controller
         }
     }
 
-    public function updateForm($id)
-    {
-        $registeredGuest = RegisteredGuest::find($id);
-
-        if (is_null($registeredGuest)) {
-            abort(404);
-        }
-        $listFolderLevel3 = $this->folderRepository->getAllByLevel(3);
-
-        return view('registered_guest.update')->with(['product' => $registeredGuest, 'listFolderLevel3' => $listFolderLevel3]);
-    }
-
-    public function update($id, Request $request)
+    public function changeStatus($id, $status)
     {
         $registeredGuest = RegisteredGuest::find($id);
 
@@ -81,21 +67,18 @@ class RegisteredGuestController extends Controller
             abort(404);
         }
 
-        $validator = $this->updateValidate($request->all(), $id);
+        $validator = $this->registeredGuestService->changeStatusValidate(['status' => $status]);
 
         if ($validator->fails()) {
-            return redirect()->back()->withInput()->withErrors($validator->errors());
+            return redirect()->back()->with('errorCommon', 'Chỉnh sửa thất bại!');
         }
 
-        $request->merge(['active' => ($request->has('active'))]);
-
         try {
-            $registeredGuest->update($request->all());
-            $this->imageService->storeImage($request, 'product', $registeredGuest->id);
+            $registeredGuest->update(['status' => $status]);
         } catch (\Exception $ex) {
             abort(500);
         }
-        return redirect()->intended('/admin/product/thay-doi-san-pham/' . $registeredGuest->id)->with('messCommon', 'Chỉnh sửa thành công!');
+        return redirect()->back()->with('messCommon', 'Chỉnh sửa thành công!');
     }
 
     public function delete($id)
@@ -112,40 +95,5 @@ class RegisteredGuestController extends Controller
             abort(500);
         }
         return redirect()->back()->with('messCommon', 'Xóa thành công!');
-    }
-
-    private function registerValidate($request)
-    {
-        return $validator = Validator::make($request, [
-            'name' => "required|max:50|unique:product,name,NULL,id,deleted_at,NULL",
-            'folder_id' => 'required|exists:folder,id',
-            'price' => 'nullable|numeric|digits_between:1,10',
-            'summary' => 'required|max:190',
-            'introduce' => 'max:10000',
-            'code' => 'max:50',
-            'text_domain' => 'required|max:50',
-            'note' => 'max:500',
-            'qty' => 'nullable|numeric|digits_between:1,10',
-            'image' => 'required|max:10',
-            'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:5000',
-        ]);
-    }
-
-
-    private function updateValidate($request, $id)
-    {
-        return $validator = Validator::make($request, [
-            'name' => "required|max:50|unique:product,name,$id,id,deleted_at,NULL",
-            'folder_id' => 'required|exists:folder,id',
-            'price' => 'nullable|numeric|digits_between:1,10',
-            'summary' => 'required|max:190',
-            'introduce' => 'max:10000',
-            'code' => 'max:50',
-            'text_domain' => 'required|max:50',
-            'note' => 'max:500',
-            'qty' => 'nullable|numeric|digits_between:1,10',
-            'image' => 'max:10',
-            'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:5000',
-        ]);
     }
 }

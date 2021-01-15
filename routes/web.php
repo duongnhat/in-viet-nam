@@ -16,8 +16,8 @@ Route::get('/', function () {
 });
 
 Route::get('login', 'auth\LoginController@loginPage')->name('login');
-Route::post('login', 'auth\LoginController@login')->name('auth.post-trang-login');
-Route::get('logout', 'auth\LoginController@logout')->name('auth.post-trang-logout');
+Route::post('login', 'auth\LoginController@login')->name('post-login');
+Route::get('logout', 'auth\LoginController@logout')->name('logout');
 
 Route::get('trang-chu', 'Business\HomeController@homePage')->name('business.trang-chu');
 
@@ -72,6 +72,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
     Route::group(['prefix' => 'registered-guest'], function () {
         Route::get('danh-sach-dang-ky-thong-tin-san-pham', 'Business\RegisteredGuestController@listPage')->name('registered-guest.danh-sach-dang-ky-thong-tin-san-pham');
+        Route::get('change-status/{id}/{status}', 'Business\RegisteredGuestController@changeStatus')->name('registered-guest.thay-doi-trang-thai');
+        Route::get('delete/{id}', 'Business\RegisteredGuestController@delete')->name('registered-guest.xoa');
     });
 
     Route::group(['prefix' => 'ad'], function () {
