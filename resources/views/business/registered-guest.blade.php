@@ -66,6 +66,11 @@
                     </span>
                     @enderror
                 </div>
+                <div class="form-group">
+                    {!! NoCaptcha::renderJs() !!}
+                    {!! NoCaptcha::display() !!}
+                    <span class="text-danger">{{ $errors->first('g-recaptcha-response') }}</span>
+                </div>
                 <button type="submit" class="btn btn-primary">Đăng ký</button>
                 <a type="button" class="btn btn-danger" href="/p/{{$product->id}}/{{strtolower(str_replace(" ","-",$product->text_domain))}}">Hủy</a>
             </form>

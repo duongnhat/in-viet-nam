@@ -34,7 +34,8 @@ class RegisteredGuestService extends MyService
             'phone' => 'required|max:50',
             'specification' => 'max:190',
             'note' => 'max:190',
-            'qty' => 'nullable|numeric|digits_between:1,10',
+            'qty' => 'required|numeric|digits_between:1,10',
+            'g-recaptcha-response' => 'required|captcha',
         ]);
     }
 

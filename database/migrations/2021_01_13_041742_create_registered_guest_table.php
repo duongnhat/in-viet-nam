@@ -19,7 +19,7 @@ class CreateRegisteredGuestTable extends Migration
             $table->integer('qty');
             $table->string('specification')->nullable();
             $table->string('phone');
-            $table->string('email');
+            $table->string('email')->nullable();
             $table->string('note')->nullable();
             $table->boolean('status');
             $table->timestamps();
