@@ -4,7 +4,7 @@
 @section('content')
     <h1 class="card-header text-center bg-secondary text-light text-uppercase">{{$folderFather->name}}</h1>
     <div class="album py-5">
-        <div class="container">
+        <div class="container max-width-960">
             @if($listFolder->count() == 0)
                 <div class="alert alert-warning">
                     <strong>Sorry!</strong> Chưa có dữ liệu.
@@ -12,7 +12,7 @@
             @else
                 <div class="row button-print-type">
                     @foreach($listFolder as $i => $item)
-                        <div class="col-md-3 mb-4">
+                        <div class="col-lg-3 col-md-4 col-6 mb-4">
                             @if($item->level == 3)
                                 <a href="/pf/{{$item->id}}/{{strtolower(str_replace(" ","-",$item->text_domain))}}">
                                     <div class="card button-print-type bg-light card-box-shadow border border-secondary border-radius text-break">

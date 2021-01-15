@@ -14,7 +14,7 @@
 <section class="page-head pt-2">
     <div class="container-fluid">
         <div class="row content">
-            <div class="col-sm-12 col-md-3 text-md-right text-center logo-company">
+            <div class="col-sm-12 col-md-3 text-md-right text-center logo-company mb-2">
                 <img src="{{ url('images/logo.png') }}" class="img-rounded mb-2" alt="Cty In Viet Nam" width="215">
                 <h1 class="text-shadow"><p>CÔNG TY</p>IN VIỆT NAM</h1>
                 @if (Auth::check())

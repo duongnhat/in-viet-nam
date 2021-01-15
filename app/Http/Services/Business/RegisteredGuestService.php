@@ -4,7 +4,6 @@ namespace App\Http\Services\Business;
 
 use App\Http\Services\MyService;
 use App\models\RegisteredGuest;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 

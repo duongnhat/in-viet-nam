@@ -8,7 +8,7 @@
             <form method="post">
                 @csrf
                 <div class="form-group">
-                    <label>Tên sản phẩm: <strong>{{$product->name}}</strong></label>
+                    <label>Tên sản phẩm:&nbsp;</label><label><h1 class="font-weight-bold" style="font-size: larger">{{$product->name}}</h1></label>
                     <input class="form-control" type="hidden" name="product_id" value="{{$product->id}}">
                 </div>
                 <div class="input-group mb-3">
