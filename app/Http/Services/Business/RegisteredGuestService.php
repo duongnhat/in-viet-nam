@@ -20,10 +20,9 @@ class RegisteredGuestService extends MyService
             ->paginate(25);
     }
 
-    public function register(Request $request)
+    public function register($input)
     {
-        $request->merge(['completed' => false]);
-        $registeredGuest = new RegisteredGuest($request->all());
+        $registeredGuest = new RegisteredGuest($input);
         $registeredGuest->save();
         return $registeredGuest;
     }

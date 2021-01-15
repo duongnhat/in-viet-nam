@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Services\Admin\FolderService;
+use App\models\Folder;
 use Illuminate\Http\Request;
 
 class FolderController extends Controller
@@ -17,51 +18,116 @@ class FolderController extends Controller
 
     public function listPage1()
     {
-        return $this->folderService->listPage(1);
+        return $this->listPage(1);
     }
 
     public function listPage2()
     {
-        return $this->folderService->listPage(2);
+        return $this->listPage(2);
     }
 
     public function listPage3()
     {
-        return $this->folderService->listPage(3);
+        return $this->listPage(3);
     }
 
     public function registerForm1()
     {
-        return $this->folderService->registerForm(1);
+        return $this->registerForm(1);
     }
 
     public function registerForm2()
     {
-        return $this->folderService->registerForm(2);
+        return $this->registerForm(2);
     }
 
     public function registerForm3()
     {
-        return $this->folderService->registerForm(3);
+        return $this->registerForm(3);
+    }
+
+    private function listPage($level)
+    {
+        $list = $this->folderService->getPaginationForList($level);
+
+        if ($list->count() == 0 && $list->currentPage() > 1) {
+            return redirect()->intended('/admin/folder/quan-ly-thu-muc/' . $level);
+        }
+
+        return view('folder.list')->with(['list' => $list, 'level' => $level]);
+    }
+
+    public function registerForm($level)
+    {
+        $list = $this->folderService->getAllByLevel($level - 1);
+        return view('folder.add')->with(['level' => $level, 'listFolder' => $list]);
     }
 
     public function register(Request $request)
     {
-        return $this->folderService->register($request);
+        $validator = $this->folderService->registerValidate($request->all());
+
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator->errors());
+        }
+
+        try {
+            $folder = $this->folderService->register($request->all());
+
+            return redirect()->intended('/admin/folder/chinh-sua-thu-muc/' . $folder->id)->with('messCommon', 'Tạo mới thành công!');
+        } catch (\Exception $ex) {
+            abort(500);
+        }
     }
 
     public function updateForm($id)
     {
-        return $this->folderService->updateForm($id);
+        $folder = Folder::find($id);
+
+        if (is_null($folder)) {
+            abort(404);
+        }
+
+        $list = $this->folderService->getAllByLevel($folder->level - 1);
+
+        return view('folder.update')->with(['folder' => $folder, 'listFolder' => $list]);
     }
 
     public function update($id, Request $request)
     {
-        return $this->folderService->update($id, $request);
+        $folder = Folder::find($id);
+
+        if (is_null($folder)) {
+            abort(404);
+        }
+
+        $validator = $this->folderService->updateValidate($request->all(), $id);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator->errors());
+        }
+
+        try {
+            $folder->update($request->all());
+        } catch (\Exception $ex) {
+            abort(500);
+        }
+        return redirect()->intended('/admin/folder/chinh-sua-thu-muc/' . $folder->id)->with('messCommon', 'Chỉnh sửa thành công!');
     }
 
     public function delete($id)
     {
-        return $this->folderService->delete($id);
+        $folder = Folder::find($id);
+
+        if (is_null($folder)) {
+            abort(404);
+        }
+
+        try {
+            $folder->delete();
+        } catch (\Exception $ex) {
+            abort(500);
+        }
+        return redirect()->back()->with('messCommon', 'Xóa thành công!');
     }
 }

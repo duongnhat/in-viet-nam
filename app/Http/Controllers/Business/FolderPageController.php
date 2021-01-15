@@ -5,16 +5,16 @@ namespace App\Http\Controllers\Business;
 
 
 use App\Http\Controllers\Controller;
-use App\Http\Services\Business\FolderPageService;
+use App\Http\Services\Admin\FolderService;
 use App\models\Folder;
 
 class FolderPageController extends Controller
 {
-    private $folderPageService;
+    private $folderService;
 
-    public function __construct(FolderPageService $folderPageService)
+    public function __construct(FolderService $folderService)
     {
-        $this->folderPageService = $folderPageService;
+        $this->folderService = $folderService;
     }
 
     public function folderLevelPage($id)
@@ -25,9 +25,7 @@ class FolderPageController extends Controller
             abort(404);
         }
 
-        if ($folder->level == 3) {
-        }
-        return $this->folderPageService->folderLevelPage($id, $folder);
+        $listFolder = $this->folderService->getAllChildById($id);
+        return view('business.folder-level')->with(['listFolder' => $listFolder, 'folderFather' => $folder]);
     }
-
 }

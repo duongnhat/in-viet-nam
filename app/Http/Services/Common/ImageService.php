@@ -6,6 +6,7 @@ namespace App\Http\Services\Common;
 
 use App\Http\Services\MyService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Image;
 use Illuminate\Support\Facades\Storage;
 
@@ -61,5 +62,23 @@ class ImageService extends MyService
             }
         }
         return true;
+    }
+
+    public function getAllByFolderId($id)
+    {
+        return DB::table('image')
+            ->select('image.*')
+            ->join('product', 'image.product_id', '=', 'product.id')
+            ->where('product.folder_id', '=', $id)
+            ->where('product.active', '=', 1)
+            ->whereNull('product.deleted_at')
+            ->get();
+    }
+
+    public function getAllByProductId($id)
+    {
+        return DB::table('image')
+            ->where('product_id', '=', $id)
+            ->get();
     }
 }

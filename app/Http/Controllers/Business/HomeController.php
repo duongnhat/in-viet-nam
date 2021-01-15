@@ -5,20 +5,20 @@ namespace App\Http\Controllers\Business;
 
 
 use App\Http\Controllers\Controller;
-use App\Http\Services\Business\HomeService;
+use App\Http\Services\Admin\FolderService;
 
 class HomeController extends Controller
 {
-    private $homeService;
+    private $folderService;
 
-    public function __construct(HomeService $homeService)
+    public function __construct(FolderService $folderService)
     {
-        $this->homeService = $homeService;
+        $this->folderService = $folderService;
     }
 
     public function homePage()
     {
-        return $this->homeService->homePage();
+        $listFolder = $this->folderService->getAllByLevel(1);
+        return view('business.home')->with('listFolder', $listFolder);
     }
-
 }

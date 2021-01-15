@@ -8,7 +8,6 @@ use App\models\Product;
 use App\Models\RegisteredGuest;
 use App\Repositories\Admin\RegisteredGuestRepository;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 
 class RegisteredGuestController extends Controller
 {
@@ -44,13 +43,10 @@ class RegisteredGuestController extends Controller
             return redirect()->back()->withInput()->withErrors($validator->errors());
         }
 
+        $request->merge(['status' => false]);
+
         try {
-//            for ($i = 0; $i < 10000; $i++) {
-//                $registeredGuest = new RegisteredGuest($request->all());
-//                $registeredGuest->name .= $i;
-//                $registeredGuest->save();
-//            }
-            $registeredGuest = $this->registeredGuestService->register($request);
+            $registeredGuest = $this->registeredGuestService->register($request->all());
             $product = Product::find($registeredGuest->product_id);
 
             return redirect()->intended('/p/' . $product->id . '/' . strtolower(str_replace(" ", "-", $product->text_domain)))->with('messCommon', 'Đăng ký thành công!');
@@ -64,7 +60,7 @@ class RegisteredGuestController extends Controller
         $registeredGuest = RegisteredGuest::find($id);
 
         if (is_null($registeredGuest)) {
-            abort(404);
+            return redirect()->back()->with('errorCommon', 'Chỉnh sửa thất bại!');
         }
 
         $validator = $this->registeredGuestService->changeStatusValidate(['status' => $status]);

@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Services\Admin\AdvertisementService;
+use App\models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class AdvertisementController extends Controller
 {
+
     private $advertisementService;
 
     public function __construct(AdvertisementService $advertisementService)
@@ -17,11 +19,29 @@ class AdvertisementController extends Controller
 
     public function createNewsProduct($id)
     {
-        return $this->advertisementService->createNewsProduct($id);
+        $product = Product::find($id);
+
+        if (is_null($product)) {
+            abort(404);
+        }
+        return view('advertisement.social_networking')->with('product', $product);
     }
 
     public function saveLogFacebook(Request $request)
     {
-        return $this->advertisementService->saveLogFacebook($request);
+        \Illuminate\Support\Facades\Session::put('access_token', $request->input('access_token'));
+
+        $product = Product::find($request->input('product_id'));
+
+        if (is_null($product)) {
+            return 'false';
+        }
+
+        try {
+            $this->advertisementService->saveLogFacebook($request->all());
+        } catch (\Exception $ex) {
+            return 'false';
+        }
+        return 'true';
     }
 }
