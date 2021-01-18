@@ -29,7 +29,7 @@ class AdvertisementController extends Controller
 
     public function saveLogFacebook(Request $request)
     {
-        \Illuminate\Support\Facades\Session::put('access_token', $request->input('access_token'));
+        \Illuminate\Support\Facades\Session::put('access_token_facebook', $request->input('access_token_facebook'));
 
         $product = Product::find($request->input('product_id'));
 

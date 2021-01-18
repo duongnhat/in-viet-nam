@@ -8,6 +8,16 @@
             <form method="post">
                 @csrf
                 <div class="form-group">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="facebook">
+                        <label class="form-check-label" for="facebook">Facebook</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="zalo">
+                        <label class="form-check-label" for="zalo">Zalo</label>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label>Bài giới thiệu thêm</label>
                     <textarea id="additional" class="form-control @error('additional') is-invalid @enderror" type="text" name="additional" autocomplete="additional" rows="6">{{old('additional')}}</textarea>
                     @error('additional')
@@ -19,13 +29,13 @@
                 <div class="form-group">
                     <label>Access token</label>
                     <div class="input-group">
-                        <input id="access-token" class="form-control" type="text" name="access_token" value="{{old('access_token', \Illuminate\Support\Facades\Session::get('access_token'))}}" autocomplete="access_token" required>
+                        <input id="access-token-facebook" class="form-control" type="text" name="access_token_facebook" value="{{old('access_token_facebook', \Illuminate\Support\Facades\Session::get('access_token_facebook'))}}" autocomplete="access_token_facebook" required>
                         <div class="input-group-append">
                             <a href="https://developers.facebook.com/tools/explorer/" class="btn btn-outline-secondary" type="button" target="_blank">Lấy mã mới</a>
                         </div>
                     </div>
                 </div>
-                <button type="button" onclick="postStatusToPageFacebook()" class="btn btn-primary">Đăng</button>
+                <button type="button" onclick="checkAndPostStatus()" class="btn btn-primary" id="post-status">Đăng</button>
                 {{--                <button type="button" onclick="toPostPhotoToPageFacebook('http://testlaravel.ap-southeast-1.elasticbeanstalk.com/p/{{$product->id}}/{{strtolower(str_replace(" ","-",$product->text_domain))}}')" class="btn btn-primary">Đăng</button>--}}
                 <a type="button" href="/admin/product/quan-ly-san-pham" class="btn btn-danger">Hủy</a>
                 <a type="button" class="btn btn-warning" href="/p/{{$product->id}}/{{strtolower(str_replace(" ","-",$product->text_domain))}}">Trang chi tiết</a>
@@ -35,8 +45,24 @@
 
     <script lang="js">
 
+        function checkAndPostStatus() {
+
+            let has = false;
+
+            if ($("#facebook").is(":checked")) {
+                has = true;
+                postStatusToPageFacebook();
+            }
+
+            if (!has) {
+                alert('Chưa chọn kênh đăng tin!');
+            } else {
+                $("#post-status").prop('disabled', true);
+            }
+        }
+
         function postStatusToPageFacebook() {
-            let access_token = $("#access-token").val();
+            let access_token_facebook = $("#access-token-facebook").val();
             let message = $("#additional").val();
             let link = 'https://vnexpress.net/vo-la-lach-va-than-sau-tai-nan-giao-thong-4219693.html';
 
@@ -44,7 +70,7 @@
                 {
                     message: message,
                     link: link,
-                    access_token: access_token
+                    access_token: access_token_facebook
                 })
                 .done(function (data) {
                     let post_id = data.id.substr((data.id.indexOf("_") + 1))
@@ -53,15 +79,16 @@
                 })
                 .fail(function (err) {
                     alert(JSON.parse(err.responseText).error.message);
+                    $("#post-status").prop('disabled', false);
                 });
         }
 
         function postLogFacebook(post_id) {
-            let access_token = $("#access-token").val();
+            let access_token_facebook = $("#access-token-facebook").val();
             $.post("{{ config('app.url')}}/admin/facebook/luu-log-bai-post",
                 {
                     _token: "{{ csrf_token() }}",
-                    access_token: access_token,
+                    access_token_facebook: access_token_facebook,
                     product_id: {{$product->id}},
                     page_id: 103693188334656,
                     post_id: parseInt(post_id)
