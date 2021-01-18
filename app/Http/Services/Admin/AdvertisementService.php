@@ -4,6 +4,7 @@ namespace App\Http\Services\Admin;
 
 use App\Http\Services\MyService;
 use App\models\Facebook;
+use App\models\Zalo;
 
 class AdvertisementService extends MyService
 {
@@ -13,5 +14,12 @@ class AdvertisementService extends MyService
         $facebook = new Facebook($input);
         $facebook->save();
         return $facebook;
+    }
+
+    public function saveLogZalo($input)
+    {
+        $zalo = new Zalo($input);
+        $zalo->save();
+        return $zalo;
     }
 }

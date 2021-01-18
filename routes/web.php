@@ -78,9 +78,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
     Route::group(['prefix' => 'ad'], function () {
         Route::get('tao-bai-dang-mang-xa-hoi/{id}', 'Admin\AdvertisementController@createNewsProduct')->name('advertisement.tao-bai-dang-mang-xa-hoi');
-    });
-
-    Route::group(['prefix' => 'facebook'], function () {
-        Route::post('luu-log-bai-post', 'Admin\AdvertisementController@saveLogFacebook')->name('facebook.luu-log-bai-post');
+        Route::post('luu-log-bai-post-facebook', 'Admin\AdvertisementController@saveLogFacebook')->name('advertisement.luu-log-bai-post-facebook');
+        Route::post('luu-log-bai-post-zalo', 'Admin\AdvertisementController@saveLogZalo')->name('advertisement.luu-log-bai-post-zalo');
     });
 });

@@ -27,11 +27,20 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label>Access token</label>
+                    <label>Access token Facebook</label>
                     <div class="input-group">
                         <input id="access-token-facebook" class="form-control" type="text" name="access_token_facebook" value="{{old('access_token_facebook', \Illuminate\Support\Facades\Session::get('access_token_facebook'))}}" autocomplete="access_token_facebook" required>
                         <div class="input-group-append">
                             <a href="https://developers.facebook.com/tools/explorer/" class="btn btn-outline-secondary" type="button" target="_blank">Lấy mã mới</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Access token Zalo</label>
+                    <div class="input-group">
+                        <input id="access-token-zalo" class="form-control" type="text" name="access_token_zalo" value="{{old('access_token_zalo', \Illuminate\Support\Facades\Session::get('access_token_zalo'))}}" autocomplete="access_token_zalo" required>
+                        <div class="input-group-append">
+                            <a href="https://developers.zalo.com/tools/explorer/" class="btn btn-outline-secondary" type="button" target="_blank">Lấy mã mới</a>
                         </div>
                     </div>
                 </div>
@@ -52,6 +61,11 @@
             if ($("#facebook").is(":checked")) {
                 has = true;
                 postStatusToPageFacebook();
+            }
+
+            if ($("#zalo").is(":checked")) {
+                has = true;
+                postStatusToPageZalo();
             }
 
             if (!has) {
@@ -75,7 +89,29 @@
                 .done(function (data) {
                     let post_id = data.id.substr((data.id.indexOf("_") + 1))
                     postLogFacebook(post_id);
-                    alert('Đăng thành công');
+                    alert('Đăng Facebook thành công');
+                })
+                .fail(function (err) {
+                    alert(JSON.parse(err.responseText).error.message);
+                    $("#post-status").prop('disabled', false);
+                });
+        }
+
+        function postStatusToPageZalo() {
+            let access_token_zalo = $("#access-token-zalo").val();
+            let message = $("#additional").val();
+            let link = 'https://vnexpress.net/vo-la-lach-va-than-sau-tai-nan-giao-thong-4219693.html';
+
+            $.post("https://graph.zalo.me/v2.0/me/feed",
+                {
+                    message: message,
+                    link: link,
+                    access_token: access_token_zalo
+                })
+                .done(function (data) {
+                    let post_id = data.id.substr((data.id.indexOf("_") + 1))
+                    postLogZalo(post_id);
+                    alert('Đăng Zalo thành công');
                 })
                 .fail(function (err) {
                     alert(JSON.parse(err.responseText).error.message);
@@ -85,10 +121,25 @@
 
         function postLogFacebook(post_id) {
             let access_token_facebook = $("#access-token-facebook").val();
-            $.post("{{ config('app.url')}}/admin/facebook/luu-log-bai-post",
+            $.post("{{ config('app.url')}}/admin/advertisement/luu-log-bai-post-facebook",
                 {
                     _token: "{{ csrf_token() }}",
                     access_token_facebook: access_token_facebook,
+                    product_id: {{$product->id}},
+                    page_id: 103693188334656,
+                    post_id: parseInt(post_id)
+                })
+                .done(function (data) {
+                    console.log(data);
+                });
+        }
+
+        function postLogZalo(post_id) {
+            let access_token_zalo = $("#access-token-zalo").val();
+            $.post("{{ config('app.url')}}/admin/advertisement/luu-log-bai-post-zalo",
+                {
+                    _token: "{{ csrf_token() }}",
+                    access_token_zalo: access_token_zalo,
                     product_id: {{$product->id}},
                     page_id: 103693188334656,
                     post_id: parseInt(post_id)

@@ -44,4 +44,22 @@ class AdvertisementController extends Controller
         }
         return 'true';
     }
+
+    public function saveLogZalo(Request $request)
+    {
+        \Illuminate\Support\Facades\Session::put('access_token_zalo', $request->input('access_token_zalo'));
+
+        $product = Product::find($request->input('product_id'));
+
+        if (is_null($product)) {
+            return 'false';
+        }
+
+        try {
+            $this->advertisementService->saveLogZalo($request->all());
+        } catch (\Exception $ex) {
+            return 'false';
+        }
+        return 'true';
+    }
 }
