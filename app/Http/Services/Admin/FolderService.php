@@ -28,7 +28,12 @@ class FolderService extends MyService
 
     public function getAllChildById($id)
     {
-        return Folder::where('folder_father_id', '=', $id)->get();
+        return DB::table('folder')
+            ->select('folder.*', 'image.path as image_path', 'image.name_to_store as image_name_to_store')
+            ->leftJoin('image', 'image.folder_id', '=', 'folder.id')
+            ->where('folder_father_id', '=', $id)
+            ->whereNull('folder.deleted_at')
+            ->paginate(25);
     }
 
     public function register($input)
@@ -52,6 +57,8 @@ class FolderService extends MyService
             'level' => 'required|numeric|min:1|max:3',
             'text_domain' => 'required|max:50',
             'description' => 'max:500',
+            'image' => 'max:1',
+            'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:5000',
         ]);
     }
 
@@ -70,6 +77,8 @@ class FolderService extends MyService
             'level' => 'required|numeric|min:1|max:3',
             'text_domain' => 'required|max:50',
             'description' => 'max:500',
+            'image' => 'max:1',
+            'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:5000',
         ]);
     }
 }

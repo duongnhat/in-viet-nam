@@ -17,10 +17,10 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label>Thuộc thư mục cấp 3</label>
+                    <label>Thuộc thư mục cấp 2</label>
                     <select class="form-control @error('folder_id') is-invalid @enderror" name="folder_id" value="{{ old('folder_id') }}">
                         <option value=""></option>
-                        @foreach($listFolderLevel3 as $i => $item)
+                        @foreach($listFolderLevel2 as $i => $item)
                             <option value="{{$item->id}}" {{ old('folder_id') == $item->id ? 'selected' : '' }}>
                                 {{$item->name}}
                             </option>

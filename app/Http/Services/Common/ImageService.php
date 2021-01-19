@@ -54,6 +54,7 @@ class ImageService extends MyService
                 $image = new \App\models\Image([
                     'product_id' => $folderName == 'product' ? $id : null,
                     'user_id' => $folderName == 'user' ? $id : null,
+                    'folder_id' => $folderName == 'folder' ? $id : null,
                     'name_to_store' => $fileNameToStore,
                     'path' => 'storage/' . $folderName . '/',
                     'extension' => $extension,

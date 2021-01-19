@@ -35,8 +35,8 @@ class ProductController extends Controller
 
     public function registerForm()
     {
-        $listFolderLevel3 = $this->folderService->getAllByLevel(3);
-        return view('product.add')->with('listFolderLevel3', $listFolderLevel3);
+        $listFolderLevel2 = $this->folderService->getAllByLevel(2);
+        return view('product.add')->with('listFolderLevel3', $listFolderLevel2);
     }
 
     public function register(Request $request)

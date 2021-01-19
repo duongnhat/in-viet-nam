@@ -4,16 +4,19 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Services\Admin\FolderService;
+use App\Http\Services\Common\ImageService;
 use App\models\Folder;
 use Illuminate\Http\Request;
 
 class FolderController extends Controller
 {
     private $folderService;
+    private $imageService;
 
-    public function __construct(FolderService $folderService)
+    public function __construct(FolderService $folderService, ImageService $imageService)
     {
         $this->folderService = $folderService;
+        $this->imageService = $imageService;
     }
 
     public function listPage1()
@@ -73,6 +76,7 @@ class FolderController extends Controller
 
         try {
             $folder = $this->folderService->register($request->all());
+            $this->imageService->storeImage($request, 'folder', $folder->id);
 
             return redirect()->intended('/admin/folder/chinh-sua-thu-muc/' . $folder->id)->with('messCommon', 'Tạo mới thành công!');
         } catch (\Exception $ex) {
@@ -109,6 +113,7 @@ class FolderController extends Controller
 
         try {
             $folder->update($request->all());
+            $this->imageService->storeImage($request, 'folder', $folder->id);
         } catch (\Exception $ex) {
             abort(500);
         }

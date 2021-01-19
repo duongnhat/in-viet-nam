@@ -5,7 +5,7 @@
     <div class="card container border bg-light px-0">
         <h3 class="card-header text-center bg-secondary text-light text-uppercase">Chỉnh sửa thư mục cấp {{$folder->level}}</h3>
         <div class="card-body">
-            <form method="post">
+            <form method="post" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="level" value="{{$folder->level}}">
                 <div class="form-group">
@@ -29,6 +29,20 @@
                             @endforeach
                         </select>
                         @error('folder_father_id')
+                        <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                        @enderror
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputFile">Hình ảnh</label>
+                        <input class="form-control-file @error('image') is-invalid @enderror @error('image.*') is-invalid @enderror" type="file" name="image[]" id="exampleInputFile" multiple accept='image/*'/>
+                        @error('image.*')
+                        <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                        @enderror
+                        @error('image')
                         <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
