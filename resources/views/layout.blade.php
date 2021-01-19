@@ -9,21 +9,24 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet" type="text/css">
 </head>
-{{--<body style="background-image: url('{{ url('images/background.png') }}');">--}}
-<body>
+<body style="background-image: url('{{ url('images/background.png') }}');">
 <section class="page-head pt-2">
     <div class="container-fluid">
         <div class="row content">
-            <div class="col-sm-12 col-md-3 text-md-right text-center logo-company mb-2">
-                <img src="{{ url('images/logo.png') }}" class="img-rounded mb-2" alt="Cty In Viet Nam" width="215">
-                <h1 class="text-shadow"><p>CÔNG TY</p>IN VIỆT NAM</h1>
-                @if (Auth::check())
-                    <p class="font-italic">Tài khoản: {{ Auth::user()->name }}</p>
-                    <p class="font-italic">{{ Auth::user()->email }}</p>
-                    <a onclick="return confirm('Bạn có chắc chắn muốn đăng xuất?');" class="btn btn-outline-info btn-sm mt-1" href="/logout">Logout</a>
-                @else
-                    <a class="btn btn-outline-info btn-sm mt-1" href="/login">Login</a>
-                @endif
+            <div class="col-sm-12 col-md-3 text-md-right text-center logo-company mb-2 d-flex flex-row-reverse">
+                <div>
+                    <h1 class="text-shadow"><p>CÔNG TY</p>IN VIỆT NAM</h1>
+                    @if (Auth::check())
+                        <p class="font-italic">Tài khoản: {{ Auth::user()->name }}</p>
+                        <p class="font-italic">{{ Auth::user()->email }}</p>
+                        <a onclick="return confirm('Bạn có chắc chắn muốn đăng xuất?');" class="btn btn-outline-info btn-sm mt-1" href="/logout">Logout</a>
+                    @else
+                        <a class="btn btn-outline-info btn-sm mt-1" href="/login">Login</a>
+                    @endif
+                </div>
+                <div class="mr-1">
+                    <img src="{{ url('images/logo.png') }}" class="img-rounded mb-2" alt="Cty In Viet Nam" width="85" height="85">
+                </div>
             </div>
             <div class="col-sm-12 col-md-9 col-xl-8">
                 <div class="ba-no">

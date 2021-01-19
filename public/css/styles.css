@@ -27,12 +27,12 @@ iframe {
 .logo-company h1 {
     color: green;
     font-weight: bold;
-    font-size: 37px;
+    font-size: 18px;
 }
 
 .logo-company p {
     font-weight: normal;
-    font-size: smaller;
+    font-size: 9px;
     margin-bottom: unset;
 }
 
