@@ -57,7 +57,7 @@
                         </a>
                     </div>
                 </div>
-                <nav class="menu navbar navbar-expand-lg navbar-light mt-2 rounded">
+                <nav class="menu navbar navbar-expand-lg navbar-light mt-2 rounded p-0 m-0">
                     <a class="navbar-brand" href="#"></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>

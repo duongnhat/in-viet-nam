@@ -2,7 +2,7 @@
 @section('title', 'Trang chu')
 @section('description', 'Trang chủ.')
 @section('content')
-    <h1 class="text-center text-uppercase mt-3">Trang chủ</h1>
+    <h1 class="text-center text-uppercase mt-3 h1-header">Trang chủ</h1>
     <div class="album py-5">
         <div class="container">
             @if($listFolder->count() == 0)

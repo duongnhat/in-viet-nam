@@ -2,7 +2,7 @@
 @section('title', $folderFather->name)
 @section('description', 'Danh sach cua ' . $folderFather->name)
 @section('content')
-    <h1 class="text-center text-uppercase mt-3">{{$folderFather->name}}</h1>
+    <h1 class="text-center text-uppercase mt-3 h1-header">{{$folderFather->name}}</h1>
     <div class="album py-5">
         <div class="container-fluid">
             @if($listFolder->count() == 0)
@@ -11,7 +11,7 @@
                 </div>
             @else
                 <div class="row">
-                    <div class="col-4">
+                    <div class="col-5">
                         @foreach($listFolder as $i => $item)
                             <div class="d-sm-flex justify-content-between my-1 pb-1 border-bottom">
                                 <div class="media d-block d-sm-flex text-center text-sm-left">
@@ -23,15 +23,17 @@
                                 </div>
                             </div>
                         @endforeach
-                        <div class="mt-2">
-                            {{ $listFolder->links() }}
-                        </div>
                     </div>
-                    <div class="col-8">
-
+                    <div class="col-7">
+                        <div class="mx-auto my-2">
+                            <iframe src="https://www.youtube.com/embed/XKu_SEDAykw"></iframe>
+                        </div>
                     </div>
                 </div>
             @endif
+        </div>
+        <div class="mt-2">
+            {{ $listFolder->links() }}
         </div>
     </div>
 @endsection

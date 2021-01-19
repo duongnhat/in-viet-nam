@@ -67,9 +67,9 @@ class ProductController extends Controller
         if (is_null($product)) {
             abort(404);
         }
-        $listFolderLevel3 = $this->folderService->getAllByLevel(3);
+        $listFolderLevel2 = $this->folderService->getAllByLevel(2);
 
-        return view('product.update')->with(['product' => $product, 'listFolderLevel3' => $listFolderLevel3]);
+        return view('product.update')->with(['product' => $product, 'listFolderLevel2' => $listFolderLevel2]);
     }
 
     public function update($id, Request $request)
