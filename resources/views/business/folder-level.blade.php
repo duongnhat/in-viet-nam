@@ -10,30 +10,30 @@
                     <strong>Sorry!</strong> Chưa có dữ liệu.
                 </div>
             @else
-                <div class="row">
+                <div class="row m-3">
                     <div class="col-5">
                         @foreach($listFolder as $i => $item)
                             <div class="d-sm-flex justify-content-between my-1 pb-1 border-bottom">
                                 <div class="media d-block d-sm-flex text-center text-sm-left">
-                                    <a class="cart-item-thumb mx-auto mr-sm-4" href="/pf/{{$item->id}}/{{strtolower(str_replace(" ","-",$item->text_domain))}}"><img src="{{ url($item->image_path . 'thumbnail/' . $item->image_name_to_store) }}" alt="Product" width="100px"></a>
+                                    <a class="cart-item-thumb mx-auto mr-sm-4" href="/pf/{{$item->id}}/{{strtolower(str_replace(" ","-",$item->text_domain))}}"><img src="{{ url($item->image_path != null ? ($item->image_path . 'thumbnail/' . $item->image_name_to_store) : 'images/logo.png') }}" alt="Product" width="100px"></a>
                                     <div class="media-body pt-1">
-                                        <h3 class="product-card-title font-weight-semibold border-0 pb-0" style="font-size: 13px"><a href="/pf/{{$item->id}}/{{strtolower(str_replace(" ","-",$item->text_domain))}}">{{$item->name}}</a></h3>
-                                        <div class="font-size-lg" style="font-size: 10px">{{$item->description}}</div>
+                                        <h3 class="product-card-title font-weight-semibold border-0 pb-0" style="font-size: 15px"><a href="/pf/{{$item->id}}/{{strtolower(str_replace(" ","-",$item->text_domain))}}">{{$item->name}}</a></h3>
+                                        <div class="font-size-lg" style="font-size: 11px">{{$item->description}}</div>
                                     </div>
                                 </div>
                             </div>
                         @endforeach
+                        <div class="mt-2">
+                            {{ $listFolder->links() }}
+                        </div>
                     </div>
                     <div class="col-7">
-                        <div class="mx-auto my-2">
+                        <div class="mx-auto">
                             <iframe src="https://www.youtube.com/embed/XKu_SEDAykw"></iframe>
                         </div>
                     </div>
                 </div>
             @endif
-        </div>
-        <div class="mt-2">
-            {{ $listFolder->links() }}
         </div>
     </div>
 @endsection

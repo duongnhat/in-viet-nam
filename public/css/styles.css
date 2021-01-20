@@ -31,12 +31,12 @@ iframe {
 .logo-company h1 {
     color: green;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 23px;
 }
 
 .logo-company p {
     font-weight: normal;
-    font-size: 9px;
+    font-size: 12px;
     margin-bottom: unset;
 }
 
@@ -59,7 +59,7 @@ iframe {
 
 .ba-no .carousel-inner {
     width: 100%;
-    height: 400px;
+    height: 240px;
 }
 
 .button-print-type {

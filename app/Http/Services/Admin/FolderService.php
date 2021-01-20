@@ -33,7 +33,7 @@ class FolderService extends MyService
             ->leftJoin('image', 'image.folder_id', '=', 'folder.id')
             ->where('folder_father_id', '=', $id)
             ->whereNull('folder.deleted_at')
-            ->paginate(25);
+            ->paginate(8);
     }
 
     public function register($input)
