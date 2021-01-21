@@ -10,25 +10,18 @@
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet" type="text/css">
 </head>
 <body style="background-image: url('{{ url('images/background.png') }}');">
-<section class="page-head pt-2">
+<section class="page-head pt-1">
     <div class="container-fluid">
         <div class="row content">
-            <div class="col-sm-12 col-md-3 text-md-right text-center logo-company mb-2 d-flex flex-row-reverse">
+            <div class="col-sm-12 col-md-3 col-xl-2 text-md-right text-center logo-company mb-2 d-flex flex-row-reverse">
                 <div>
                     <h1 class="text-shadow"><p>CÔNG TY</p>IN VIỆT NAM</h1>
-                    @if (Auth::check())
-                        <p class="font-italic">Tài khoản: {{ Auth::user()->name }}</p>
-                        <p class="font-italic">{{ Auth::user()->email }}</p>
-                        <a onclick="return confirm('Bạn có chắc chắn muốn đăng xuất?');" class="btn btn-outline-info btn-sm mt-1" href="/logout">Logout</a>
-                    @else
-                        <a class="btn btn-outline-info btn-sm mt-1" href="/login">Login</a>
-                    @endif
                 </div>
                 <div class="mr-1">
                     <img src="{{ url('images/logo.png') }}" class="img-rounded mb-2" alt="Cty In Viet Nam" width="85" height="85">
                 </div>
             </div>
-            <div class="col-sm-12 col-md-9 col-xl-8">
+            <div class="col-sm-12 col-md-6 col-xl-8">
                 <div class="ba-no">
                     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                         <ol class="carousel-indicators">
@@ -57,45 +50,54 @@
                         </a>
                     </div>
                 </div>
-                <nav class="menu navbar navbar-expand-lg navbar-light mt-2 rounded p-0 m-0">
-                    <a class="navbar-brand" href="#"></a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                        <ul class="navbar-nav font-weight-bold">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="/">Trang chủ <span class="sr-only">(current)</span></a>
-                            </li>
-                            @if (Auth::check())
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/admin/product/quan-ly-san-pham">Sản phẩm</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/admin/customer/theo-doi-thong-tin-khach-hang">Khách hàng</a>
-                                </li>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        Thư mục
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <a class="dropdown-item" href="/admin/folder/quan-ly-thu-muc-cap-1">Cấp 1</a>
-                                        <a class="dropdown-item" href="/admin/folder/quan-ly-thu-muc-cap-2">Cấp 2</a>
-{{--                                        <a class="dropdown-item" href="/admin/folder/quan-ly-thu-muc-cap-3">Cấp 3</a>--}}
-                                    </div>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/admin/registered-guest/danh-sach-dang-ky-thong-tin-san-pham">Đơn hàng</a>
-                                </li>
-                            @endif
-                        </ul>
-                    </div>
-                </nav>
+            </div>
+            <div class="col-sm-12 col-md-3 col-xl-2">
+                @if (Auth::check())
+                    <p class="font-italic">Tài khoản: {{ Auth::user()->name }}</p>
+                    <p class="font-italic">{{ Auth::user()->email }}</p>
+                    <a onclick="return confirm('Bạn có chắc chắn muốn đăng xuất?');" class="btn btn-outline-info btn-sm mt-1" href="/logout">Logout</a>
+                @else
+                    <a class="btn btn-outline-info btn-sm mt-1" href="/login">Login</a>
+                @endif
             </div>
         </div>
+        <nav class="menu navbar navbar-expand-lg navbar-light mt-1 rounded p-0 m-0">
+            <a class="navbar-brand" href="#"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav font-weight-bold">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Trang chủ <span class="sr-only">(current)</span></a>
+                    </li>
+                    @if (Auth::check())
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/product/quan-ly-san-pham">Sản phẩm</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/customer/theo-doi-thong-tin-khach-hang">Khách hàng</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Thư mục
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <a class="dropdown-item" href="/admin/folder/quan-ly-thu-muc-cap-1">Cấp 1</a>
+                                <a class="dropdown-item" href="/admin/folder/quan-ly-thu-muc-cap-2">Cấp 2</a>
+                                {{--                                        <a class="dropdown-item" href="/admin/folder/quan-ly-thu-muc-cap-3">Cấp 3</a>--}}
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/registered-guest/danh-sach-dang-ky-thong-tin-san-pham">Đơn hàng</a>
+                        </li>
+                    @endif
+                </ul>
+            </div>
+        </nav>
     </div>
 </section>
-<section class="page-container my-2">
+<section class="page-container my-1">
     <div class="container px-0">
         @if (session('messCommon'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
