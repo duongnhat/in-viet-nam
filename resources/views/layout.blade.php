@@ -47,7 +47,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-3 col-xl-2">
+            <div class="col-sm-12 col-md-3 col-xl-2 logo-company">
                 @if (Auth::check())
                     <p class="font-italic">Tài khoản: {{ Auth::user()->name }}</p>
                     <p class="font-italic">{{ Auth::user()->email }}</p>
@@ -81,7 +81,6 @@
                             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <a class="dropdown-item" href="/admin/folder/quan-ly-thu-muc-cap-1">Cấp 1</a>
                                 <a class="dropdown-item" href="/admin/folder/quan-ly-thu-muc-cap-2">Cấp 2</a>
-                                {{--                                        <a class="dropdown-item" href="/admin/folder/quan-ly-thu-muc-cap-3">Cấp 3</a>--}}
                             </div>
                         </li>
                         <li class="nav-item">

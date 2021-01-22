@@ -52,10 +52,8 @@ Route::group(['middleware' => 'load.common'], function () {
         Route::group(['prefix' => 'folder'], function () {
             Route::get('quan-ly-thu-muc-cap-1', 'Admin\FolderController@listPage1')->name('folder.quan-ly-thu-muc-cap-1');
             Route::get('quan-ly-thu-muc-cap-2', 'Admin\FolderController@listPage2')->name('folder.quan-ly-thu-muc-cap-2');
-//        Route::get('quan-ly-thu-muc-cap-3', 'Admin\FolderController@listPage3')->name('folder.quan-ly-thu-muc-cap-3');
             Route::get('tao-moi-thu-muc-cap-1', 'Admin\FolderController@registerForm1')->name('folder.tao-moi-thu-muc-cap-1');
             Route::get('tao-moi-thu-muc-cap-2', 'Admin\FolderController@registerForm2')->name('folder.tao-moi-thu-muc-cap-2');
-//        Route::get('tao-moi-thu-muc-cap-3', 'Admin\FolderController@registerForm3')->name('folder.tao-moi-thu-muc-cap-3');
             Route::post('tao-moi-thu-muc', 'Admin\FolderController@register')->name('folder.post-tao-moi-thu-muc');
             Route::get('chinh-sua-thu-muc/{id}', 'Admin\FolderController@updateForm')->name('folder.chinh-sua-thu-muc');
             Route::post('chinh-sua-thu-muc/{id}', 'Admin\FolderController@update')->name('folder.post-chinh-sua-thu-muc');
