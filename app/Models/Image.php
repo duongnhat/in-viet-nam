@@ -10,6 +10,6 @@ class Image extends Model
     protected $table = 'image';
 
     protected $fillable = [
-        'product_id', 'user_id', 'folder_id', 'name_to_store', 'path', 'extension',
+        'product_id', 'user_id', 'folder_id', 'pano_id', 'name_to_store', 'path', 'extension',
     ];
 }

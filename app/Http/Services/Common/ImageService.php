@@ -55,6 +55,7 @@ class ImageService extends MyService
                     'product_id' => $folderName == 'product' ? $id : null,
                     'user_id' => $folderName == 'user' ? $id : null,
                     'folder_id' => $folderName == 'folder' ? $id : null,
+                    'pano_id' => $folderName == 'pano' ? $id : null,
                     'name_to_store' => $fileNameToStore,
                     'path' => 'storage/' . $folderName . '/',
                     'extension' => $extension,

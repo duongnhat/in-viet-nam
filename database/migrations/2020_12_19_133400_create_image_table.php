@@ -18,6 +18,7 @@ class CreateImageTable extends Migration
             $table->integer('product_id')->nullable();
             $table->integer('user_id')->nullable();
             $table->integer('folder_id')->nullable();
+            $table->integer('pano_id')->nullable();
             $table->string('name_to_store');
             $table->string('path');
             $table->string('extension');

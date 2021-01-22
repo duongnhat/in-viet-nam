@@ -25,20 +25,16 @@
                 <div class="ba-no">
                     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                         <ol class="carousel-indicators">
-                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                            @foreach($PANO_1 as $i => $image)
+                                <li data-target="#carouselExampleIndicators" data-slide-to="{{$i}}" class="{{$i == 0 ? 'active' : ''}}"></li>
+                            @endforeach
                         </ol>
                         <div class="carousel-inner rounded" role="listbox">
-                            <div class="carousel-item active">
-                                <img src="{{ url('images/1.jpg') }}" class="d-block w-100 border border-secondary" alt="...">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ url('images/2.jpg') }}" class="d-block w-100 border border-secondary" alt="...">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ url('images/3.jpg') }}" class="d-block w-100 border border-secondary" alt="...">
-                            </div>
+                            @foreach($PANO_1 as $i => $image)
+                                <div class="carousel-item {{$i == 0 ? 'active' : ''}}">
+                                    <img src="{{ url($image->path . $image->name_to_store) }}" class="d-block w-100 border border-secondary" alt="">
+                                </div>
+                            @endforeach
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -90,6 +86,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/admin/registered-guest/danh-sach-dang-ky-thong-tin-san-pham">Đơn hàng</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/pano/quan-ly-pano">Pano</a>
                         </li>
                     @endif
                 </ul>
