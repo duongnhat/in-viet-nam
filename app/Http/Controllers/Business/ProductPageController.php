@@ -21,7 +21,7 @@ class ProductPageController extends Controller
         $this->imageService = $imageService;
     }
 
-    public function productByFolderPage($folderId)
+    public function productByFolderPage($folderId, $currentProductId)
     {
         $folderFather = Folder::find($folderId);
 
@@ -30,9 +30,23 @@ class ProductPageController extends Controller
         }
 
         $list = $this->productService->getAllByFolderId($folderId);
+        $currentProduct = null;
+        foreach ($list as $product) {
+            if ($currentProductId != 0) {
+                foreach ($list as $product) {
+                    if ($product->id == $currentProductId) {
+                        $currentProduct = $product;
+                        break;
+                    }
+                }
+            } else {
+                $currentProduct = $product;
+                break;
+            }
+        }
         $listImage = $this->imageService->getAllByFolderId($folderId);
 
-        return view('business.list-product-by-folder')->with(['list' => $list, 'listImage' => $listImage, 'folderFather' => $folderFather]);
+        return view('business.list-product-by-folder')->with(['list' => $list, 'currentProduct' => $currentProduct, 'listImage' => $listImage, 'folderFather' => $folderFather]);
     }
 
     public function productDetailPage($productId)

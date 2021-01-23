@@ -27,7 +27,7 @@ Route::group(['middleware' => 'load.common'], function () {
     });
 
     Route::group(['prefix' => 'pf'], function () {
-        Route::get('/{folderId}/{nameFolder}', 'Business\ProductPageController@productByFolderPage')->name('business.san-pham');
+        Route::get('/{folderId}/{currentProductId}/{nameFolder}', 'Business\ProductPageController@productByFolderPage')->name('business.san-pham');
     });
 
     Route::group(['prefix' => 'p'], function () {
