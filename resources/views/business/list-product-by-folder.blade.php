@@ -12,27 +12,56 @@
             @else
                 <div class="row mx-1">
                     <div class="col-8">
-                        <div class="card border bg-light p-0" style="height: 450px">
+                        <div class="card border bg-light p-0">
                             <div>
                                 <ul class="nav nav-tabs" id="image-video-product" role="tablist">
                                     <li class="nav-item">
-                                        <a class="nav-link active" id="image-tab" data-toggle="tab" href="#image" role="tab" aria-controls="image" aria-selected="true">Đăng ký thông tin sản phẩm</a>
+                                        <a class="nav-link active" id="image-tab" data-toggle="tab" href="#image" role="tab" aria-controls="image" aria-selected="true">Xem hình ảnh</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" id="video-tab" data-toggle="tab" href="#video" role="tab" aria-controls="video" aria-selected="false">Thông tin kỹ thuật</a>
+                                        <a class="nav-link" id="video-tab" data-toggle="tab" href="#video" role="tab" aria-controls="video" aria-selected="false">Xem video</a>
                                     </li>
                                 </ul>
                             </div>
-                            <div class="card-body overflow-auto my-2">
+                            <div class="card-body my-2">
                                 <div class="tab-content" id="image-video-productContent">
                                     <div class="tab-pane fade show active" id="image" role="tabpanel" aria-labelledby="image-tab">
                                         <div class="card-body">
-                                            image
+                                            <ol class="carousel-indicators carousel-indicators-custom mx-0">
+                                                <?php $no = 0; ?>
+                                                @foreach($listImage as $image)
+                                                    <li data-target="#carouselExampleIndicators{{$currentProduct->id}}" data-slide-to="{{$no}}" class="active">
+                                                        <img class="rounded d-block w-100" src="{{ url($image->path . 'thumbnail/' . $image->name_to_store) }}" alt="">
+                                                    </li>
+                                                    <?php $no++; ?>
+                                                @endforeach
+                                            </ol>
+                                            <div id="carouselExampleIndicators{{$currentProduct->id}}" class="carousel slide" data-interval="false">
+                                                <div class="carousel-inner">
+                                                    <?php $no = 0; ?>
+                                                    @foreach($listImage as $image)
+                                                        <div class="carousel-item{{$no == 0 ? ' active' : ''}}">
+                                                            <img class="rounded d-block w-100 border border-secondary" src="{{ url($image->path . $image->name_to_store) }}" alt="">
+                                                        </div>
+                                                        <?php $no++; ?>
+                                                    @endforeach
+                                                </div>
+                                                <a class="carousel-control-prev" href="#carouselExampleIndicators{{$currentProduct->id}}" role="button" data-slide="prev">
+                                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                    <span class="sr-only">Previous</span>
+                                                </a>
+                                                <a class="carousel-control-next" href="#carouselExampleIndicators{{$currentProduct->id}}" role="button" data-slide="next">
+                                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                    <span class="sr-only">Next</span>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="video" role="tabpanel" aria-labelledby="video-tab">
                                         <div class="card-body">
-                                            video
+                                            <div class="mx-auto iframe-youtube">
+                                                <iframe src="https://www.youtube.com/embed/XKu_SEDAykw"></iframe>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -40,7 +69,7 @@
                         </div>
                     </div>
                     <div class="col-4">
-                        <div class="card border bg-light p-0" style="height: 450px">
+                        <div class="card border bg-light p-0" style="height: 550px">
                             <div>
                                 <ul class="nav nav-tabs" id="product-info" role="tablist">
                                     <li class="nav-item">
