@@ -23,10 +23,10 @@
                                     </li>
                                 </ul>
                             </div>
-                            <div class="card-body my-2">
+                            <div class="card-body p-1">
                                 <div class="tab-content" id="image-video-productContent">
                                     <div class="tab-pane fade show active" id="image" role="tabpanel" aria-labelledby="image-tab">
-                                        <div class="card-body">
+                                        <div class="card-body p-0">
                                             <ol class="carousel-indicators carousel-indicators-custom mx-0">
                                                 <?php $no = 0; ?>
                                                 @foreach($listImage as $image)
@@ -58,9 +58,9 @@
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="video" role="tabpanel" aria-labelledby="video-tab">
-                                        <div class="card-body">
+                                        <div class="card-body p-0">
                                             <div class="mx-auto iframe-youtube">
-                                                <iframe src="https://www.youtube.com/embed/XKu_SEDAykw"></iframe>
+                                                <iframe src="https://www.youtube.com/embed/{{$currentProduct->youtube}}"></iframe>
                                             </div>
                                         </div>
                                     </div>

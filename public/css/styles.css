@@ -3,6 +3,7 @@
 }
 
 body {
+    font-size: 0.9rem;
     background-color: #e7e7e7;
 }
 
@@ -139,6 +140,10 @@ body {
 
 .max-width-960 {
     max-width: 960px;
+}
+
+.nav-tabs {
+    flex-wrap: nowrap;
 }
 
 @media only screen and (max-width: 992px) {
