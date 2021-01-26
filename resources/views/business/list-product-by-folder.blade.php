@@ -12,7 +12,7 @@
             @else
                 <div class="row mx-1">
                     <div class="col-8">
-                        <div class="card border bg-light p-0">
+                        <div class="card border bg-light p-0 w-75 m-auto">
                             <div>
                                 <ul class="nav nav-tabs" id="image-video-product" role="tablist">
                                     <li class="nav-item">
@@ -27,7 +27,7 @@
                                 <div class="tab-content" id="image-video-productContent">
                                     <div class="tab-pane fade show active" id="image" role="tabpanel" aria-labelledby="image-tab">
                                         <div class="card-body p-0">
-                                            <ol class="carousel-indicators carousel-indicators-custom mx-0">
+                                            <ol class="carousel-indicators carousel-indicators-custom m-0">
                                                 <?php $no = 0; ?>
                                                 @foreach($listImage as $image)
                                                     <li data-target="#carouselExampleIndicators{{$currentProduct->id}}" data-slide-to="{{$no}}" class="active">
@@ -40,8 +40,8 @@
                                                 <div class="carousel-inner">
                                                     <?php $no = 0; ?>
                                                     @foreach($listImage as $image)
-                                                        <div class="carousel-item{{$no == 0 ? ' active' : ''}}">
-                                                            <img class="rounded d-block w-100 border border-secondary" src="{{ url($image->path . $image->name_to_store) }}" alt="">
+                                                        <div class="carousel-item-div carousel-item{{$no == 0 ? ' active' : ''}}">
+                                                            <img class="m-auto h-100 rounded d-block border border-secondary" src="{{ url($image->path . $image->name_to_store) }}" alt="">
                                                         </div>
                                                         <?php $no++; ?>
                                                     @endforeach

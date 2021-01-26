@@ -146,6 +146,10 @@ body {
     flex-wrap: nowrap;
 }
 
+.carousel-item-div {
+    height: 400px;
+}
+
 @media only screen and (max-width: 992px) {
     .ba-no .carousel-inner {
         width: 100%;
