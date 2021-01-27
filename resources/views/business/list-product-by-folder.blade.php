@@ -31,10 +31,12 @@
                                                 <div class="carousel-inner">
                                                     <?php $no = 0; ?>
                                                     @foreach($listImage as $image)
-                                                        <div class="carousel-item-div carousel-item{{$no == 0 ? ' active' : ''}}">
-                                                            <img class="carousel-item-img m-auto h-100 rounded d-block" src="{{ url($image->path . $image->name_to_store) }}" alt="">
-                                                        </div>
-                                                        <?php $no++; ?>
+                                                        @if($image->product_id == $currentProduct->id)
+                                                            <div class="carousel-item-div carousel-item{{$no == 0 ? ' active' : ''}}">
+                                                                <img class="carousel-item-img m-auto h-100 rounded d-block" src="{{ url($image->path . $image->name_to_store) }}" alt="">
+                                                            </div>
+                                                            <?php $no++; ?>
+                                                        @endif
                                                     @endforeach
                                                 </div>
                                                 <a class="carousel-control-prev" href="#carouselExampleIndicators{{$currentProduct->id}}" role="button" data-slide="prev">
@@ -49,10 +51,12 @@
                                             <ol class="carousel-indicators carousel-indicators-custom m-0">
                                                 <?php $no = 0; ?>
                                                 @foreach($listImage as $image)
-                                                    <li data-target="#carouselExampleIndicators{{$currentProduct->id}}" data-slide-to="{{$no}}" class="active" style="height: 34px">
-                                                        <img class="rounded d-block h-100" src="{{ url($image->path . 'thumbnail/' . $image->name_to_store) }}" alt="">
-                                                    </li>
-                                                    <?php $no++; ?>
+                                                    @if($image->product_id == $currentProduct->id)
+                                                        <li data-target="#carouselExampleIndicators{{$currentProduct->id}}" data-slide-to="{{$no}}" class="active bg-light" style="height: 50px">
+                                                            <img class="rounded d-block h-100 m-auto" src="{{ url($image->path . 'thumbnail/' . $image->name_to_store) }}" alt="">
+                                                        </li>
+                                                        <?php $no++; ?>
+                                                    @endif
                                                 @endforeach
                                             </ol>
                                         </div>
@@ -173,26 +177,53 @@
                         </div>
                     </div>
                 </div>
-                <div>
-                    <div class="card-group mt-5 row">
-                        @foreach($list as $i => $item)
-                            <div class="card col-2 card-hover">
-                                @foreach($listImage as $image)
-                                    @if($image->product_id == $item->id)
-                                        <img class="card-img-top" src="{{ url($image->path . 'thumbnail/' . $image->name_to_store) }}" alt="">
-                                        @break
-                                    @endif
-                                @endforeach
-                                <div class="card-body">
-                                    <h5 class="card-title">{{$item->name}}</h5>
-                                    <p class="card-text">{{$item->summary}}</p>
-                                </div>
-                                <div class="card-footer">
-                                    <a type="button" class="btn btn-sm btn-outline-secondary card-text" href="/pf/{{$folderFather->id}}/{{$item->id}}/{{strtolower(str_replace(" ","-",$item->text_domain))}}">Xem chi tiết</a>
-                                </div>
+                <div class="container-fluid">
+                    <section>
+                        <div id="carousel-example-multi" class="carousel slide carousel-multi-item v-2 product-carousel" data-ride="carousel">
+                            <!--Controls-->
+                            <div class="controls-top my-3">
+                                <a class="btn-floating btn-sm" href="#carousel-example-multi" data-slide="prev"><i class="fas fa-chevron-left"></i></a>
+                                <a class="btn-floating btn-sm" href="#carousel-example-multi" data-slide="next"><i class="fas fa-chevron-right"></i></a>
                             </div>
-                        @endforeach
-                    </div>
+                            <!--/.Controls-->
+                            <!-- Indicators -->
+                            <ol class="carousel-indicators">
+                                <?php $no = 0; ?>
+                                @foreach($list as $i => $item)
+                                    <li data-target="#carousel-example-multi" data-slide-to="{{$no}}" class="{{$no == 0 ? ' active' : ''}}"></li>
+                                    <?php $no++; ?>
+                                @endforeach
+                            </ol>
+                            <!--/.Indicators-->
+                            <div class="carousel-inner" role="listbox">
+                                <?php $no = 0; ?>
+                                @foreach($list as $i => $item)
+                                    <div class="carousel-item{{$no == 0 ? ' active mx-auto' : ''}}">
+                                        <div class="col-12 col-md-4 col-lg-2 mx-auto">
+                                            <div class="card mb-2">
+                                                <div class="view overlay">
+                                                    @foreach($listImage as $image)
+                                                        @if($image->product_id == $item->id)
+                                                            <img class="card-img-top" src="{{ url($image->path . 'thumbnail/' . $image->name_to_store) }}" alt="">
+                                                            @break
+                                                        @endif
+                                                    @endforeach
+                                                </div>
+                                                <div class="card-body">
+                                                    <h5 class="card-title">{{$item->name}}</h5>
+                                                    <p class="card-text">{{$item->summary}}</p>
+                                                </div>
+                                                <div class="card-footer">
+                                                    <a type="button" class="btn btn-sm btn-outline-secondary card-text" href="/pf/{{$folderFather->id}}/{{$item->id}}/{{strtolower(str_replace(" ","-",$item->text_domain))}}">Xem chi tiết</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <?php $no++; ?>
+                                @endforeach
+                            </div>
+                        </div>
+                    </section>
                 </div>
             @endif
         </div>

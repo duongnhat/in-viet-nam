@@ -56,6 +56,7 @@ class ProductController extends Controller
 
             return redirect()->intended('/admin/product/thay-doi-san-pham/' . $product->id)->with('messCommon', 'Tạo mới thành công!');
         } catch (\Exception $ex) {
+            dd($ex->getMessage());
             abort(500);
         }
     }
