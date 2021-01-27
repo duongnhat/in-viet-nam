@@ -27,21 +27,12 @@
                                 <div class="tab-content" id="image-video-productContent">
                                     <div class="tab-pane fade show active" id="image" role="tabpanel" aria-labelledby="image-tab">
                                         <div class="card-body p-0">
-                                            <ol class="carousel-indicators carousel-indicators-custom m-0">
-                                                <?php $no = 0; ?>
-                                                @foreach($listImage as $image)
-                                                    <li data-target="#carouselExampleIndicators{{$currentProduct->id}}" data-slide-to="{{$no}}" class="active">
-                                                        <img class="rounded d-block w-100" src="{{ url($image->path . 'thumbnail/' . $image->name_to_store) }}" alt="">
-                                                    </li>
-                                                    <?php $no++; ?>
-                                                @endforeach
-                                            </ol>
                                             <div id="carouselExampleIndicators{{$currentProduct->id}}" class="carousel slide" data-interval="false">
                                                 <div class="carousel-inner">
                                                     <?php $no = 0; ?>
                                                     @foreach($listImage as $image)
                                                         <div class="carousel-item-div carousel-item{{$no == 0 ? ' active' : ''}}">
-                                                            <img class="m-auto h-100 rounded d-block border border-secondary" src="{{ url($image->path . $image->name_to_store) }}" alt="">
+                                                            <img class="carousel-item-img m-auto h-100 rounded d-block" src="{{ url($image->path . $image->name_to_store) }}" alt="">
                                                         </div>
                                                         <?php $no++; ?>
                                                     @endforeach
@@ -55,6 +46,15 @@
                                                     <span class="sr-only">Next</span>
                                                 </a>
                                             </div>
+                                            <ol class="carousel-indicators carousel-indicators-custom m-0">
+                                                <?php $no = 0; ?>
+                                                @foreach($listImage as $image)
+                                                    <li data-target="#carouselExampleIndicators{{$currentProduct->id}}" data-slide-to="{{$no}}" class="active" style="height: 34px">
+                                                        <img class="rounded d-block h-100" src="{{ url($image->path . 'thumbnail/' . $image->name_to_store) }}" alt="">
+                                                    </li>
+                                                    <?php $no++; ?>
+                                                @endforeach
+                                            </ol>
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="video" role="tabpanel" aria-labelledby="video-tab">

@@ -121,7 +121,6 @@ body {
 
 .carousel-indicators-custom {
     position: unset;
-    min-height: 85px;
 }
 
 .carousel-indicators-custom li, .carousel-indicators-custom li.active {
@@ -148,6 +147,16 @@ body {
 
 .carousel-item-div {
     height: 400px;
+    position: relative;
+    overflow: hidden;
+}
+
+.carousel-item-img {
+    position: absolute;
+    left: -100%;
+    top: 0;
+    bottom: 0;
+    right: -100%;
 }
 
 @media only screen and (max-width: 992px) {
