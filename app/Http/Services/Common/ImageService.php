@@ -74,6 +74,7 @@ class ImageService extends MyService
             ->where('product.folder_id', '=', $id)
             ->where('product.active', '=', 1)
             ->whereNull('product.deleted_at')
+            ->orderByDesc('id')
             ->get();
     }
 
