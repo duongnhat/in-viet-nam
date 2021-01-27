@@ -210,10 +210,6 @@ body {
     color: #9B1B30;
 }
 
-.carousel-multi-item .controls-top .btn-floating {
-    background: #F8CDCD;
-}
-
 .carousel-multi-item .carousel-indicators li {
     height: .75rem;
     width: .75rem;
