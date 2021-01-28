@@ -25,6 +25,7 @@
                         <th scope="col">Youtube</th>
                         <th scope="col">Ghi chú</th>
                         <th scope="col">Trạng thái</th>
+                        <th scope="col">Hình ảnh</th>
                         <th scope="col">Ngày tạo</th>
                         <th scope="col" class="text-center">Action</th>
                     </tr>
@@ -45,6 +46,7 @@
                             <td>{!!$product->youtube != null ? '<div class="badge badge-primary text-wrap" style="width: 6rem;">Có</div>' : '<div class="badge badge-danger text-wrap" style="width: 6rem;">Không</div>'!!}</td>
                             <td>{{$product->note}}</td>
                             <td>{!!$product->active == 1 ? '<div class="badge badge-primary text-wrap" style="width: 6rem;">Hoạt động</div>' : '<div class="badge badge-danger text-wrap" style="width: 6rem;">Ẩn</div>'!!}</td>
+                            <td><a type="button" href="/admin/product/quan-ly-hinh-anh-san-pham/{{$product->id}}" class="btn btn-warning">Xem</a></td>
                             <td>{{\Carbon\Carbon::parse($product->created_at)->format('d/m/Y')}}</td>
                             <td class="text-center">
                                 <a href="/admin/product/thay-doi-san-pham/{{$product->id}}">

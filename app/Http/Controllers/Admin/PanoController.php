@@ -2,11 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Services\Admin\FolderService;
 use App\Http\Services\Admin\PanoService;
-use App\Http\Services\Admin\ProductService;
 use App\Http\Services\Common\ImageService;
-use App\models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -56,14 +53,8 @@ class PanoController extends Controller
 
     public function delete($id)
     {
-        $product = Product::find($id);
-
-        if (is_null($product)) {
-            abort(404);
-        }
-
         try {
-            $product->delete();
+            $this->imageService->delete($id);
         } catch (\Exception $ex) {
             abort(500);
         }

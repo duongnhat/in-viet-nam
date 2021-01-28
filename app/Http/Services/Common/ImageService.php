@@ -66,6 +66,22 @@ class ImageService extends MyService
         return true;
     }
 
+    public function delete($id)
+    {
+        $image = \App\models\Image::find($id);
+
+        if (is_null($image)) {
+            abort(404);
+        }
+
+        unlink(public_path($image->path . $image->name_to_store));
+        unlink(public_path($image->path . '/thumbnail/' . $image->name_to_store));
+
+        $image->delete();
+
+        return true;
+    }
+
     public function getAllByFolderId($id)
     {
         return DB::table('image')

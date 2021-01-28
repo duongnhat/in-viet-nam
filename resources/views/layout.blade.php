@@ -13,12 +13,12 @@
 <section class="page-head pt-1">
     <div class="container-fluid">
         <div class="row content">
-            <div class="col-sm-12 col-md-3 col-xl-2 text-md-right text-center logo-company mb-2 d-flex flex-row-reverse">
+            <div class="col-sm-12 col-md-3 col-xl-2 text-md-right text-center logo-company mb-2">
                 <div>
-                    <h1 class="text-shadow"><p>CÔNG TY</p>IN VIỆT NAM</h1>
+                    <h1 class="text-shadow text-center"><p>CÔNG TY</p>IN VIỆT NAM</h1>
                 </div>
                 <div class="mr-1">
-                    <img src="{{ url('images/logo.png') }}" class="img-rounded mb-2" alt="Cty In Viet Nam" width="85" height="85">
+                    <img src="{{ url('images/logo.png') }}" class="img-rounded mb-2" alt="Cty In Viet Nam" width="100" height="100">
                 </div>
             </div>
             <div class="col-sm-12 col-md-6 col-xl-8">
@@ -48,13 +48,15 @@
                 </div>
             </div>
             <div class="col-sm-12 col-md-3 col-xl-2 logo-company">
-                @if (Auth::check())
-                    <p class="font-italic">Tài khoản: {{ Auth::user()->name }}</p>
-                    <p class="font-italic">{{ Auth::user()->email }}</p>
-                    <a onclick="return confirm('Bạn có chắc chắn muốn đăng xuất?');" class="btn btn-outline-info btn-sm mt-1" href="/logout">Logout</a>
-                @else
-                    <a class="btn btn-outline-info btn-sm mt-1" href="/login">Login</a>
-                @endif
+                <div class="mt-1 float-right">
+                    @if (Auth::check())
+                        <p class="font-italic">Tài khoản: {{ Auth::user()->name }}</p>
+                        <p class="font-italic">{{ Auth::user()->email }}</p>
+                        <a onclick="return confirm('Bạn có chắc chắn muốn đăng xuất?');" class="btn btn-outline-info btn-sm mt-1" href="/logout">Logout</a>
+                    @else
+                        <a class="btn btn-outline-info btn-sm mt-1" href="/login">Login</a>
+                    @endif
+                </div>
             </div>
         </div>
         <nav class="menu navbar navbar-expand-lg navbar-light mt-1 rounded p-0 m-0">

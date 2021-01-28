@@ -67,6 +67,8 @@ Route::group(['middleware' => 'load.common'], function () {
             Route::get('thay-doi-san-pham/{id}', 'Admin\ProductController@updateForm')->name('product.thay-doi-san-pham');
             Route::post('thay-doi-san-pham/{id}', 'Admin\ProductController@update')->name('product.post-thay-doi-san-pham');
             Route::get('delete/{id}', 'Admin\ProductController@delete')->name('product.xoa-san-pham');
+            Route::get('quan-ly-hinh-anh-san-pham/{id}', 'Admin\ProductController@listImagePage')->name('product.quan-ly-hinh-anh-san-pham');
+            Route::get('delete-image/{id}', 'Admin\ProductController@deleteImage')->name('product.xoa-hinh-anh-san-pham');
         });
 
         Route::group(['prefix' => 'registered-guest'], function () {

@@ -33,6 +33,19 @@ class ProductController extends Controller
         return view('product.list')->with('list', $list);
     }
 
+    public function listImagePage($id)
+    {
+        $product = Product::find($id);
+
+        if (is_null($product)) {
+            abort(404);
+        }
+
+        $list = $this->imageService->getAllByProductId($id);
+
+        return view('product.list-image')->with(['list' => $list, 'product' => $product]);
+    }
+
     public function registerForm()
     {
         $listFolderLevel2 = $this->folderService->getAllByLevel(2);
@@ -108,6 +121,16 @@ class ProductController extends Controller
 
         try {
             $product->delete();
+        } catch (\Exception $ex) {
+            abort(500);
+        }
+        return redirect()->back()->with('messCommon', 'Xóa thành công!');
+    }
+
+    public function deleteImage($id)
+    {
+        try {
+            $this->imageService->delete($id);
         } catch (\Exception $ex) {
             abort(500);
         }
