@@ -71,6 +71,24 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="w-75 mx-auto mt-3">
+                            <strong>Share on: </strong>
+                            <a class="mr-1" href="https://www.facebook.com/sharer.php?u={{url('')}}/pf/{{$folderFather->id}}/{{$currentProduct->id}}/{{strtolower(str_replace(" ","-",$currentProduct->text_domain))}}">
+                                <img src="{{ url('images/facebook.png') }}" alt="facebook">
+                            </a>
+                            <a class="mr-1" href="https://www.facebook.com/sharer.php?u={{url('')}}/pf/{{$folderFather->id}}/{{$currentProduct->id}}/{{strtolower(str_replace(" ","-",$currentProduct->text_domain))}}">
+                                <img src="{{ url('images/zalo.png') }}" alt="zalo">
+                            </a>
+                            <a class="mr-1" href="https://www.facebook.com/sharer.php?u={{url('')}}/pf/{{$folderFather->id}}/{{$currentProduct->id}}/{{strtolower(str_replace(" ","-",$currentProduct->text_domain))}}">
+                                <img src="{{ url('images/instagram.png') }}" alt="instagram">
+                            </a>
+                            <a class="mr-1" href="https://www.facebook.com/sharer.php?u={{url('')}}/pf/{{$folderFather->id}}/{{$currentProduct->id}}/{{strtolower(str_replace(" ","-",$currentProduct->text_domain))}}">
+                                <img src="{{ url('images/gmail.png') }}" alt="gmail">
+                            </a>
+                            <a class="mr-1" href="https://www.facebook.com/sharer.php?u={{url('')}}/pf/{{$folderFather->id}}/{{$currentProduct->id}}/{{strtolower(str_replace(" ","-",$currentProduct->text_domain))}}">
+                                <img src="{{ url('images/telegram.png') }}" alt="telegram">
+                            </a>
+                        </div>
                     </div>
                     <div class="col-4">
                         <div class="card border bg-light p-0" style="height: 550px">
