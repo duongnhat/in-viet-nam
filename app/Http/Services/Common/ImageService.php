@@ -71,7 +71,7 @@ class ImageService extends MyService
         $image = \App\models\Image::find($id);
 
         if (is_null($image)) {
-            abort(404);
+            return false;
         }
 
         unlink(public_path($image->path . $image->name_to_store));
