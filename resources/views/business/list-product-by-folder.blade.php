@@ -1,6 +1,26 @@
 @extends('layout')
-@section('title', $folderFather->name)
-@section('description', $folderFather->description)
+@section('title', $currentProduct->name)
+@section('description', $currentProduct->summary)
+@section('meta')
+    <!-- META FOR FACEBOOK -->
+    <meta property="og:site_name" content="{{config('app.url')}}"/>
+    <meta property="og:rich_attachment" content="true"/>
+    <meta property="og:type" content="article"/>
+    <meta property="article:publisher" content="https://www.facebook.com/congdongvnexpress/"/>
+    <meta property="og:url" itemprop="url" content="{{config('app.url')}}/p/{{$currentProduct->id}}/{{strtolower(str_replace(" ","-",$currentProduct->text_domain))}}"/>
+    @foreach($listImage as $image)
+        <meta property="og:image" itemprop="thumbnailUrl" content="{{ url($image->path . $image->name_to_store) }}"/>
+        @break
+    @endforeach
+    <meta property="og:image:width" content="800"/>
+    <meta property="og:image:height" content="354"/>
+    <meta content="'{{$currentProduct->name}}'" itemprop="headline" property="og:title"/>
+    <meta content="{{$currentProduct->summary}}" itemprop="description" property="og:description"/>
+    <meta property="article:tag" content="{{$currentProduct->name}}"/>
+    <meta name="liston_category" content="1003159,1003184"/>
+    <meta name="tt_site_id_detail" content="1003159" catename="In ấn"/>
+    <!-- END META FOR FACEBOOK -->
+@endsection
 @section('content')
     <h1 class="text-center text-uppercase mt-3 h1-header">Sản phẩm của {{$folderFather->name}}</h1>
     <div class="album py-2">
