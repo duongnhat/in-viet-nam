@@ -238,11 +238,19 @@ body {
     iframe {
         height: 235px;
     }
+
+    .carousel-item-div {
+        height: 300px;
+    }
 }
 
 @media only screen and (max-width: 540px) {
     .ba-no .carousel-inner {
         width: 100%;
+    }
+
+    .carousel-item-div {
+        height: 250px;
     }
 }
 

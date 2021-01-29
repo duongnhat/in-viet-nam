@@ -31,8 +31,8 @@
                 </div>
             @else
                 <div class="row mx-1">
-                    <div class="col-8">
-                        <div class="card border bg-light p-0 w-75 m-auto">
+                    <div class="col-12 col-lg-8">
+                        <div class="card border bg-light p-0 m-auto">
                             <div>
                                 <ul class="nav nav-tabs" id="image-video-product" role="tablist">
                                     <li class="nav-item">
@@ -91,7 +91,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="w-75 mx-auto mt-3">
+                        <div class="w-75 mx-auto my-3">
                             <strong>Share on: </strong>
                             <a class="mr-1" href="https://www.facebook.com/sharer.php?u={{url('')}}/pf/{{$folderFather->id}}/{{$currentProduct->id}}/{{strtolower(str_replace(" ","-",$currentProduct->text_domain))}}">
                                 <img src="{{ url('images/facebook.png') }}" alt="facebook">
@@ -110,7 +110,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-12 col-lg-4">
                         <div class="card border bg-light p-0" style="height: 550px">
                             <div>
                                 <ul class="nav nav-tabs" id="product-info" role="tablist">
