@@ -215,7 +215,7 @@
                 </div>
                 <div class="container-fluid">
                     <section>
-                        <div id="carousel-example-multi" class="carousel slide carousel-multi-item v-2 product-carousel" data-ride="carousel" data-interval="false">
+                        <div id="carousel-example-multi" class="carousel slide carousel-multi-item v-2 product-carousel" data-interval="false">
                             <div class="controls-top my-3 ml-1">
                                 <a class="btn btn-secondary btn-sm" href="#carousel-example-multi" data-slide="prev"><i class="carousel-control-prev-icon"></i></a>
                                 <a class="btn btn-secondary btn-sm" href="#carousel-example-multi" data-slide="next"><i class="carousel-control-next-icon"></i></a>
