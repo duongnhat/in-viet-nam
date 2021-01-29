@@ -213,46 +213,48 @@
                         </div>
                     </div>
                 </div>
-                <div class="container">
+                <div class="container-fluid">
                     <section>
                         <div id="carousel-example-multi" class="carousel slide carousel-multi-item v-2 product-carousel" data-ride="carousel" data-interval="false">
                             <div class="controls-top my-3 ml-1">
                                 <a class="btn btn-secondary btn-sm" href="#carousel-example-multi" data-slide="prev"><i class="carousel-control-prev-icon"></i></a>
                                 <a class="btn btn-secondary btn-sm" href="#carousel-example-multi" data-slide="next"><i class="carousel-control-next-icon"></i></a>
                             </div>
-                            <ol class="carousel-indicators">
-                                <?php $no = 0; ?>
-                                @foreach($list as $i => $item)
-                                    <li data-target="#carousel-example-multi" data-slide-to="{{$no}}" class="{{$no == 0 ? ' active' : ''}}"></li>
-                                    <?php $no++; ?>
-                                @endforeach
-                            </ol>
+{{--                            <ol class="carousel-indicators mt-3">--}}
+{{--                                @for($i = 1; $i <= ceil(count($list)/6); $i++)--}}
+{{--                                    <li data-target="#carousel-example-multi" data-slide-to="{{$i - 1}}" class="{{$i == 1 ? ' active' : ''}}"></li>--}}
+{{--                                @endfor--}}
+{{--                            </ol>--}}
                             <div class="carousel-inner" role="listbox">
-                                <?php $no = 0; ?>
-                                @foreach($list as $i => $item)
-                                    <div class="carousel-item{{$no == 0 ? ' active mx-auto' : ''}}">
-                                        <div class="col-12 col-md-4 col-lg-2">
-                                            <div class="card mb-2">
-                                                <div class="view overlay">
-                                                    @foreach($listImage as $image)
-                                                        @if($image->product_id == $item->id)
-                                                            <img class="card-img-top" src="{{ url($image->path . 'thumbnail/' . $image->name_to_store) }}" alt="">
-                                                            @break
-                                                        @endif
-                                                    @endforeach
-                                                </div>
-                                                <div class="card-body">
-                                                    <h5 class="card-title">{{$item->name}}</h5>
-                                                    <p class="card-text">{{$item->summary}}</p>
-                                                </div>
-                                                <div class="card-footer">
-                                                    <a type="button" class="btn btn-sm btn-outline-secondary card-text" href="/pf/{{$folderFather->id}}/{{$item->id}}/{{strtolower(str_replace(" ","-",$item->text_domain))}}">Xem chi tiết</a>
-                                                </div>
-                                            </div>
+                                @for($i = 1; $i <= ceil(count($list)/6); $i++)
+                                    <div class="carousel-item{{$i == 1 ? ' active mx-auto' : ''}}">
+                                        <div class="row">
+                                            @foreach($list as $y => $item)
+                                                @if($y >= (($i-1)*6) && $y < $i*6)
+                                                    <div class="col-4 col-md-3 col-lg-2">
+                                                        <div class="card mb-2">
+                                                            <div class="view overlay">
+                                                                @foreach($listImage as $image)
+                                                                    @if($image->product_id == $item->id)
+                                                                        <img class="card-img-top" src="{{ url($image->path . 'thumbnail/' . $image->name_to_store) }}" alt="">
+                                                                        @break
+                                                                    @endif
+                                                                @endforeach
+                                                            </div>
+                                                            <div class="card-body">
+                                                                <h5 class="card-title">{{$item->name}}</h5>
+                                                                <p class="card-text">{{$item->summary}}</p>
+                                                            </div>
+                                                            <div class="card-footer">
+                                                                <a type="button" class="btn btn-sm btn-outline-secondary card-text" href="/pf/{{$folderFather->id}}/{{$item->id}}/{{strtolower(str_replace(" ","-",$item->text_domain))}}">Xem chi tiết</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                            @endforeach
                                         </div>
                                     </div>
-                                    <?php $no++; ?>
-                                @endforeach
+                                @endfor
                             </div>
                         </div>
                     </section>
