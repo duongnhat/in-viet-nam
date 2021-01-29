@@ -68,7 +68,7 @@
                                                     <span class="sr-only">Next</span>
                                                 </a>
                                             </div>
-                                            <ol class="carousel-indicators carousel-indicators-custom m-0">
+                                            <ol class="carousel-indicators carousel-indicators-custom m-0 overflow-auto">
                                                 <?php $no = 0; ?>
                                                 @foreach($listImage as $image)
                                                     @if($image->product_id == $currentProduct->id)
@@ -93,19 +93,17 @@
                         </div>
                         <div class="w-75 mx-auto my-3">
                             <strong>Share on: </strong>
-                            <a class="mr-1" href="https://www.facebook.com/sharer.php?u={{url('')}}/pf/{{$folderFather->id}}/{{$currentProduct->id}}/{{strtolower(str_replace(" ","-",$currentProduct->text_domain))}}">
+                            <a class="mr-1" href="https://www.facebook.com/sharer.php?u={{url('')}}/pf/{{$folderFather->id}}/{{$currentProduct->id}}/{{strtolower(str_replace(" ","-",$currentProduct->text_domain))}}" target="_blank">
                                 <img src="{{ url('images/facebook.png') }}" alt="facebook">
                             </a>
-                            <a class="mr-1" href="https://www.facebook.com/sharer.php?u={{url('')}}/pf/{{$folderFather->id}}/{{$currentProduct->id}}/{{strtolower(str_replace(" ","-",$currentProduct->text_domain))}}">
-                                <img src="{{ url('images/zalo.png') }}" alt="zalo">
-                            </a>
-                            <a class="mr-1" href="https://www.facebook.com/sharer.php?u={{url('')}}/pf/{{$folderFather->id}}/{{$currentProduct->id}}/{{strtolower(str_replace(" ","-",$currentProduct->text_domain))}}">
-                                <img src="{{ url('images/instagram.png') }}" alt="instagram">
-                            </a>
-                            <a class="mr-1" href="https://www.facebook.com/sharer.php?u={{url('')}}/pf/{{$folderFather->id}}/{{$currentProduct->id}}/{{strtolower(str_replace(" ","-",$currentProduct->text_domain))}}">
+                            <script src="https://sp.zalo.me/plugins/sdk.js"></script>
+                            <div class="zalo-share-button d-inline mr-1" data-href="" data-oaid="579745863508352884" data-layout="2" data-color="blue" data-customize=true>
+                                <img src="{{ url('images/zalo.png') }}" alt="gmail">
+                            </div>
+                            <a class="mr-1" href="mailto:enteryour@addresshere.com?subject={{$currentProduct->name}}&amp;body=Check%20this%20out:%20{{url('')}}/pf/{{$folderFather->id}}/{{$currentProduct->id}}/{{strtolower(str_replace(" ","-",$currentProduct->text_domain))}}" target="_blank">
                                 <img src="{{ url('images/gmail.png') }}" alt="gmail">
                             </a>
-                            <a class="mr-1" href="https://www.facebook.com/sharer.php?u={{url('')}}/pf/{{$folderFather->id}}/{{$currentProduct->id}}/{{strtolower(str_replace(" ","-",$currentProduct->text_domain))}}">
+                            <a class="mr-1" href="https://t.me/share/url?url={{url('')}}/pf/{{$folderFather->id}}/{{$currentProduct->id}}/{{strtolower(str_replace(" ","-",$currentProduct->text_domain))}}&text={{$currentProduct->name}}" target="_blank">
                                 <img src="{{ url('images/telegram.png') }}" alt="telegram">
                             </a>
                         </div>

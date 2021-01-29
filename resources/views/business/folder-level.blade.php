@@ -11,7 +11,7 @@
                 </div>
             @else
                 <div class="row m-1">
-                    <div class="col-6">
+                    <div class="col-12 col-lg-6">
                         <div class="row">
                             @foreach($listFolder as $i => $item)
                                 <div class="col-6 d-sm-flex justify-content-between my-1 pb-1 border-bottom">
@@ -26,7 +26,7 @@
                             @endforeach
                         </div>
                     </div>
-                    <div class="col-6">
+                    <div class="col-12 col-lg-6">
                         <div class="mx-auto iframe-youtube">
                             <iframe src="https://www.youtube.com/embed/XKu_SEDAykw"></iframe>
                         </div>
